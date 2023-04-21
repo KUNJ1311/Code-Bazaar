@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 const Footer = () => {
 	return (
-		<div>
-			<footer className=" text-gray-600 body-font">
+		<div className="bg-second">
+			<footer className=" text-gray-600 body-font ">
 				<div className="container px-4 py-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 					<div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
 						<Link href={"/"}>

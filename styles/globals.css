@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +10,7 @@
 	max-width: 60%;
 	background-color: #088178;
 	position: absolute;
-	bottom: -7px;
+	bottom: -3px;
 	left: 0;
 	transition: all 0.3s cubic-bezier(0.3, 0, 0.3, 1);
 }

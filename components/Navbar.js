@@ -4,7 +4,7 @@ import React from "react";
 import { BsCart3 } from "react-icons/bs";
 const Navbar = () => {
 	return (
-		<nav className="flex items-center flex-col md:flex-row justify-center md:justify-between px-5 bg-second text-lg md:text-xl shadow-md tracking-wide">
+		<nav className="z-50 sticky top-0  flex items-center flex-col md:flex-row justify-center md:justify-between px-5 bg-second text-lg md:text-xl shadow-md tracking-wide">
 			<Link href="#">
 				<Image src="/logo.svg" alt="CodeBazaar" width={248} height={69} priority={true} />
 			</Link>

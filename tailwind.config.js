@@ -12,6 +12,9 @@ module.exports = {
 				"primary-light": "#dafef4",
 				second: "#e3e6f3",
 			},
+			fontFamily: {
+				spartan: ["League Spartan", "sans-serif"],
+			},
 		},
 	},
 	plugins: [],

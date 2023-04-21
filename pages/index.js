@@ -2,16 +2,27 @@ import Image from "next/image";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Typing from "@/components/Typing";
 
 export default function Home() {
 	return (
-		<div>
+		<div className="font-spartan bg-second">
 			<Head>
 				<title>CodeBazaar - Wear the code</title>
 				<meta name="description" content="CodeBazaar - Wear the code" />
 				<link rel="icon" href="favicon.ico" type="image/x-icon" />
 			</Head>
 			<Navbar />
+			<section id="hero" className="h-[500px] bg-[#D9DFFF] w-[100vw] flex flex-col items-start pl-16 justify-center">
+				<h4 className="text-xl font-semibold pb-2">Trade-in-offer</h4>
+				<h2 className="text-[46px] leading-[54px] font-semibold">Super value deals</h2>
+				<h1 className="text-[50px] leading-[64px] font-semibold text-primary">
+					On <Typing />
+				</h1>
+				<p className="text-lg font-medium text-gray-500 ">Save more with coupons & up to 70% off! </p>
+				<button className="text-[18px] bg-[url('../public/button.png')] bg-transparent text-primary bg-no-repeat py-[14px] pr-20 pl-[68px] font-bold mt-4">Shop Now</button>
+				<Image className="absolute right-5 z-0" src="/hero.png" width={700} height={479} alt="" priority={true}></Image>
+			</section>
 			<section className="text-gray-600 body-font">
 				<div className="container px-5 py-24 mx-auto">
 					<div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
