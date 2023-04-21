@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-under::before {
+	content: "";
+	width: 0px;
+	height: 2px;
+	max-width: 60%;
+	background-color: #088178;
+	position: absolute;
+	bottom: -7px;
+	left: 0;
+	transition: all 0.3s cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+.nav-under:hover::before {
+	width: 40px;
+}
+
+.transition-my {
+	transition: all 0.3s cubic-bezier(0.3, 0, 0.3, 1);
+}

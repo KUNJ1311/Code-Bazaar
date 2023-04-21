@@ -8,7 +8,8 @@ module.exports = {
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 			colors: {
-				primary: "hsl(165, 60%, 40%)",
+				primary: "#088178",
+				"primary-light": "#dafef4",
 				second: "#e3e6f3",
 			},
 		},
