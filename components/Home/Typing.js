@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-const words = ["Tshirt", "Hoodies", "Mugs", "Stickers"];
+const words = ["T-Shirts", "Hoodies", "Mugs", "Stickers"];
 const Typing = () => {
 	const [wordIndex, setWordIndex] = useState(0);
 	const [subIndex, setSubIndex] = useState(0);
