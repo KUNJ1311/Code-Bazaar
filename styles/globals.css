@@ -3,13 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (max-width: 768px) {
+	.navbar_main {
+		box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+	}
+	.navbar_main .li_m {
+		margin-bottom: 25px;
+	}
+}
 .nav-under::before {
 	content: "";
 	width: 0px;
 	height: 2px;
 	background-color: #088178;
 	position: absolute;
-	bottom: -7px;
+	bottom: -8px;
 	left: 50%;
 	transform: translateX(-50%);
 	transition: all 0.3s cubic-bezier(0.3, 0, 0.3, 1);
