@@ -6,7 +6,7 @@ import { CiDiscount1 } from "react-icons/ci";
 const Content = () => {
 	return (
 		<section className="text-gray-600 body-font px-9">
-			<div className="container px-5 py-24 mx-auto ">
+			<div className="container px-5 py-14 mx-auto ">
 				<div className="flex flex-wrap justify-center -m-4 ">
 					<div className="w-full xl:w-1/3 md:w-1/2 p-4 ">
 						<div className=" border border-gray-200 px-3 py-5 rounded-lg items-center justify-center flex  flex-col min-h-[200px]">

@@ -12,8 +12,10 @@ export default function Home() {
 				<link rel="icon" href="favicon.ico" type="image/x-icon" />
 			</Head>
 			<Hero />
-			<Content />
-			<Featured />
+			<div className="mx-auto lg:container">
+				<Content />
+				<Featured />
+			</div>
 		</div>
 	);
 }
