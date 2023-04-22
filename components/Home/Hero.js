@@ -12,9 +12,9 @@ const Hero = () => {
 					On <Typing />
 				</h1>
 				<p className="text-xl font-medium text-gray-500 pb-3">Save more with coupons & up to 70% off!</p>
-				<button className="text-[20px] bg-[url('../public/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-semibold ">
-					<Link href={"/shop"}>Shop Now</Link>
-				</button>
+				<Link href={"/shop"}>
+					<button className="text-[20px] bg-[url('../public/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-semibold hover:scale-110 transition-my">Shop Now</button>
+				</Link>
 			</div>
 			<Image className="absolute right-0 -z-0" src="/shop.png" width={530} height={500} alt="" priority={true}></Image>
 		</section>

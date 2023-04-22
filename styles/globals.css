@@ -19,7 +19,39 @@
 .nav-active::before {
 	width: 70%;
 }
-
+.shadow_box {
+	box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
+}
+.shadow_hover {
+	box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.6);
+}
 .transition-my {
 	transition: all 0.3s cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+.star_rating {
+	--percent: calc(var(--rating) / 5 * 100%);
+	display: inline-block;
+	font-size: 25px;
+	font-family: Times;
+	line-height: 1;
+	position: relative;
+	box-sizing: border-box;
+}
+.star_rating::before {
+	content: "★★★★★";
+	letter-spacing: 1px;
+	background: linear-gradient(90deg, #fc0 var(--percent), #fff var(--percent));
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+.star_rating::after {
+	content: "★★★★★";
+	z-index: -2;
+	position: absolute;
+	letter-spacing: 1px;
+	left: 0px;
+	top: 0px;
+	text-shadow: 0px 0px 1px black;
+	box-sizing: border-box;
 }

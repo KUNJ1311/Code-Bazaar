@@ -84,7 +84,7 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
-			<div className="bg-gray-100 border-t-2 border-gray-300">
+			<div className="bg-gray-100 border-t-2 border-gray-200">
 				<div className="container mx-auto py-4 px-4 flex flex-wrap flex-col sm:flex-row">
 					<p className="text-gray-500 text-sm text-center sm:text-left">
 						© 2023 Developed by
