@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Featured = () => {
+const Featured = (props) => {
 	const data = [
 		{
 			img: "/t2.jpg",
@@ -47,7 +47,7 @@ const Featured = () => {
 			img: "/t2.jpg",
 			title: "Hoodie",
 			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "5.0",
+			rating: "1.6",
 			mrp: "986",
 			newprice: "799",
 		},
@@ -56,13 +56,15 @@ const Featured = () => {
 		<section className="px-5 py-4 w-full mx-auto">
 			<div className="container flex flex-wrap w-full mb-4 mx-auto">
 				<div className="w-full">
-					<h1 className="text-5xl font-medium m-2 text-gray-900 text-center ">Featured Products</h1>
-					<p className="text-3xl font-normal text-[#606063] text-center ">New Morden Design</p>
+					<div className="pl-12 flex text-4xl font-normal text-gray-900 justify-startr text-start my-5 relative">
+						<h1 className="m-1">{props.title}</h1>
+						<span className="absolute top-12 w-40 h-1 bg-primary border rounded-xl border-transparent"></span>
+					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center">
 						{data.map((data, index) => (
 							<div key={index} className="px-3 py-[10px] my-[15px] mx-2 w-[23%] min-w-[200px] border rounded-[25px] border-[#cce7d0] transition duration-200 ease shadow-xl hover:shadow-2xl relative">
-								<div className="overflow-hidden border rounded-[20px] cursor-pointer">
-									<img className="border rounded-[20px] transition-my object-cover hover:scale-110" src={data.img} alt={data.title} />
+								<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer">
+									<img className="transition-my object-cover hover:scale-110" src={data.img} alt={data.title} />
 								</div>
 								<div className="text-start py-[10px] px-2">
 									<h3 className="text-[#606063] text-lg">{data.title}</h3>

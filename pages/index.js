@@ -14,7 +14,7 @@ export default function Home() {
 			<Hero />
 			<div className="mx-auto lg:container">
 				<Content />
-				<Featured />
+				<Featured title={"Featured Products"} />
 			</div>
 		</div>
 	);
