@@ -16,7 +16,9 @@ const Hero = () => {
 					<button className="text-[16px] md:text-[20px] bg-[url('../public/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-semibold hover:scale-110 transition-my">Shop Now</button>
 				</Link>
 			</div>
-			<img className="img_hero absolute right-0 -z-0 sm:w-[250px] sm:h-[236px] md:w-[530px] md:h-[500px]" src="/shop.png" alt=""></img>
+			<div className="right-0 absolute img_hero overflow-hidden sm:w-[250px] sm:h-[236px] md:w-[530px] md:h-[500px]">
+				<img className="-z-0 right-0 absolute " src="/shop.png" alt="" />
+			</div>
 		</section>
 	);
 };

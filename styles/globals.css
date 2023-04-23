@@ -41,7 +41,7 @@
 	}
 }
 @media (max-width: 410px) {
-	.img_hero {
+	.img_hero img {
 		right: -50px;
 	}
 }

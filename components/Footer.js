@@ -1,121 +1,103 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
 	return (
-		<footer className=" text-gray-600 body-font bg-gray-100 font-spartan">
-			<div className="container px-4 py-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-				<div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left ">
-					<Link href={"/"}>
-						<div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-							<Image src="/logo.svg" alt="CodeBazaar" width={248} height={69} priority={true} />
+		<footer className="relative bg-slate-200 pt-8 pb-4">
+			<div className="container mx-auto px-4">
+				<div className="flex flex-wrap text-left lg:text-left">
+					<div className="w-full lg:w-6/12 px-4">
+						<h4 className="text-3xl fonat-semibold text-slate-700">Let&apos;s keep in touch!</h4>
+						<h5 className="text-lg mt-0 mb-2 text-slate-600">Find us on any of these platforms.</h5>
+						<div className="flex space-x-2 mt-6 lg:mb-0 mb-6">
+							<Link href={"/"}>
+								<button className="flex bg-white border border-slate-200 hover:scale-125 transition-my shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+									<Image src="/instagram.svg" alt="" width={32} height={32} />
+								</button>
+							</Link>
+							<Link href={"/"}>
+								<button className="flex bg-white border border-slate-200 hover:scale-125 transition-my shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+									<Image src="/twitter.svg" alt="" width={32} height={32} />
+								</button>
+							</Link>
+							<Link href={"/"}>
+								<button className="flex bg-white border border-slate-200 hover:scale-125 transition-my shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+									<Image src="/facebook.svg" alt="" width={32} height={32} />
+								</button>
+							</Link>
+							<Link href={"/"}>
+								<button className="flex bg-white border border-slate-200 hover:scale-125 transition-my shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+									<Image src="/linkedin.svg" alt="" width={32} height={32} />
+								</button>
+							</Link>
 						</div>
-					</Link>
-					<p className="mt-1 px-16 text-lg text-gray-500">Wear The Code</p>
-				</div>
-				<div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-					<div className="lg:w-1/4 md:w-1/2 w-full px-4">
-						<h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-						<nav className="list-none mb-10">
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
-						</nav>
 					</div>
-					<div className="lg:w-1/4 md:w-1/2 w-full px-4">
-						<h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-						<nav className="list-none mb-10">
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
-						</nav>
-					</div>
-					<div className="lg:w-1/4 md:w-1/2 w-full px-4">
-						<h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-						<nav className="list-none mb-10">
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
-						</nav>
-					</div>
-					<div className="lg:w-1/4 md:w-1/2 w-full px-4">
-						<h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-						<nav className="list-none mb-10">
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
-						</nav>
+					<div className="w-full lg:w-6/12 px-4">
+						<div className="flex flex-wrap items-top mb-6">
+							<div className="w-full lg:w-4/12 px-4 ml-auto">
+								<span className="block uppercase text-slate-500 text-sm font-semibold mb-2">Links</span>
+								<ul className="list-unstyled">
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											About Us
+										</Link>
+									</li>
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											Blog
+										</Link>
+									</li>
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											Github
+										</Link>
+									</li>
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											Free Products
+										</Link>
+									</li>
+								</ul>
+							</div>
+							<div className="w-full lg:w-4/12 px-4">
+								<span className="block uppercase text-slate-500 text-sm font-semibold mb-2">Other Resources</span>
+								<ul className="list-unstyled">
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											MIT License
+										</Link>
+									</li>
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											Terms &amp; Conditions
+										</Link>
+									</li>
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											Privacy Policy
+										</Link>
+									</li>
+									<li>
+										<Link className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm" href="/">
+											Contact Us
+										</Link>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="bg-gray-100 border-t-2 border-gray-200">
-				<div className="container mx-auto py-4 px-4 flex flex-wrap flex-col sm:flex-row">
-					<p className="text-gray-500 text-sm text-center sm:text-left">
-						© 2023 Developed by
-						<a href="https://github.com/KUNJ1311" rel="noopener noreferrer" className="text-primary font-medium ml-1" target="_blank">
-							Kunj Faladu
-						</a>
-					</p>
-					<span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-						<a className="text-gray-500">
-							<svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-								<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-							</svg>
-						</a>
-						<a className="ml-3 text-gray-500">
-							<svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-								<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-							</svg>
-						</a>
-						<a className="ml-3 text-gray-500">
-							<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-								<rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-								<path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-							</svg>
-						</a>
-						<a className="ml-3 text-gray-500">
-							<svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0" className="w-5 h-5" viewBox="0 0 24 24">
-								<path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-								<circle cx="4" cy="4" r="2" stroke="none"></circle>
-							</svg>
-						</a>
-					</span>
+				<hr className="mb-4 border-slate-400" />
+				<div className="flex flex-wrap items-center md:justify-between justify-center">
+					<div className="w-full md:w-4/12 px-4 mx-auto text-center">
+						<div className="text-sm text-slate-500 font-semibold py-1">
+							Copyright © <span id="get-current-year">2023</span> Developed by
+							<Link href="https://github.com/KUNJ1311" className=" hover:scale-125" target="_blank">
+								<span className="text-primary font-bold"> Kunj Faladu</span>
+							</Link>
+						</div>
+					</div>
 				</div>
 			</div>
 		</footer>
