@@ -49,6 +49,9 @@ const Navbar = () => {
 	const handleMenuclick = () => {
 		setVisible(!visible);
 	};
+	const handleLinkClick = () => {
+		setVisible(false);
+	};
 	return (
 		<nav className="z-50 sticky top-0 bg-second flex shadow-md tracking-wide overflow-hidden">
 			<Link href="/">
@@ -57,7 +60,7 @@ const Navbar = () => {
 			<div className="flex space-x-8 ml-auto">
 				<ul className={`flex md:relative fixed pl-7 ${visible ? "right-0" : "-right-52 md:right-0 md:pr-5 "} md:h-full md:w-full w-52 h-[100vh] md:bg-none bg-[#e3e6f3] md:space-x-8 text-lg md:items-center items-start md:justify-center md:flex-row flex-col md:text-xl z-50 md:pt-0 md:pl-0 pt-20 pl-3 navbar_main transition-my`}>
 					{items.map((item, index) => (
-						<Link href={`${item.link}`} key={index}>
+						<Link href={`${item.link}`} key={index} onClick={handleLinkClick}>
 							<li className={`flex li_m cursor-pointer hover:text-primary nav-under relative transition-my space-x-2 items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
 								{item.icon}
 								<span>{item.name}</span>
