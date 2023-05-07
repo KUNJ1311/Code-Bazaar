@@ -1,4 +1,4 @@
-import SubNavbar from "@/components/Shop/SubNavbar";
+import SubNavbar from "@/components/Shop/ProductCarousel";
 import React from "react";
 import { useState } from "react";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
