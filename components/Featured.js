@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 
 const Featured = (props) => {
@@ -16,8 +15,8 @@ const Featured = (props) => {
 			title: "Hoodie",
 			desc: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: "4.5",
-			mrp: "986",
-			newprice: "799",
+			mrp: "999",
+			newprice: "820",
 		},
 		{
 			img: "/t4.jpg",

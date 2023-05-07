@@ -1,5 +1,6 @@
 import SubNavbar from "@/components/Shop/SubNavbar";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 
 const Mugs = () => {
 	return (
