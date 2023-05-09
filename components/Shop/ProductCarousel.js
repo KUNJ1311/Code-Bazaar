@@ -62,16 +62,6 @@ const SubNavbar = () => {
 			name: "T-Shirts",
 		},
 		{
-			img: "/hoodie.jpg",
-			link: "/shop/hoodies",
-			name: "Hoodies",
-		},
-		{
-			img: "/mugs.jpg",
-			link: "/shop/mugs",
-			name: "Mugs",
-		},
-		{
 			img: "/tshirts.jpg",
 			link: "/shop/tshirts",
 			name: "T-Shirts",
@@ -92,6 +82,11 @@ const SubNavbar = () => {
 			name: "T-Shirts",
 		},
 		{
+			img: "/tshirts.jpg",
+			link: "/shop/tshirts",
+			name: "T-Shirts",
+		},
+		{
 			img: "/hoodie.jpg",
 			link: "/shop/hoodies",
 			name: "Hoodies",
@@ -100,6 +95,11 @@ const SubNavbar = () => {
 			img: "/mugs.jpg",
 			link: "/shop/mugs",
 			name: "Mugs",
+		},
+		{
+			img: "/tshirts.jpg",
+			link: "/shop/tshirts",
+			name: "T-Shirts",
 		},
 	];
 	return (
@@ -108,8 +108,8 @@ const SubNavbar = () => {
 				<h1 className="m-1 relative">Product Category</h1>
 				<span className="absolute top-16 w-28 h-1 bg-primary border rounded-xl border-transparent"></span>
 			</div>
-			<div className="relative flex flex-auto justify-center ">
-				<div className="relative flex container items-center ">
+			<div className="relative flex justify-center mx-auto">
+				<div className="relative flex items-center md:container mx-2 overflow-hidden">
 					<div className="flex justify-between absolute items-center w-full h-full ">
 						<button onClick={movePrev} className="hover:bg-primary bg-slate-400 hover:text-white text-black w-12 items-center justify-center flex rounded-full h-12 text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 ml-2 transition-all ease-in-out duration-300" disabled={isDisabled("prev")}>
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-16 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -124,7 +124,7 @@ const SubNavbar = () => {
 							<span className="sr-only">Next</span>
 						</button>
 					</div>
-					<div ref={carousel} className="relative flex gap-5 py-10 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0 lg:container ">
+					<div ref={carousel} className="relative flex gap-5 py-10 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x ">
 						{data.map((data, index) => (
 							<div key={index} className="px-2 pt-2 pb-3 border rounded-2xl border-[#cce7d0] flex justify-center flex-col space-y-3 shadow-lg custom_shadow transition-my">
 								<div className="flex border border-slate-300 rounded-2xl overflow-hidden w-32 h-32 ">

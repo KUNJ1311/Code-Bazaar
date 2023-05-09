@@ -1,6 +1,5 @@
-import Featured from "@/components/Featured";
+import Featured from "@/components/Products";
 import SubNavbar from "@/components/Shop/ProductCarousel";
-import Link from "next/link";
 import React from "react";
 const index = () => {
 	return (

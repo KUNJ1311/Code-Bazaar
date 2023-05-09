@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
 	return (
 		<footer className="relative bg-second pt-8 ">
@@ -97,9 +96,9 @@ const Footer = () => {
 					</div>
 					<div className="px-4 text-center md:text-right">
 						<div className="text-sm text-slate-500 font-semibold py-1">
-							Copyright &copy; <span id="get-current-year">2023</span> Developed by
+							Copyright &copy; <span id="get-current-year">2023</span> Developed by{" "}
 							<Link href="https://github.com/KUNJ1311" className=" hover:scale-125" target="_blank">
-								<span className="text-primary font-bold"> Kunj Faladu</span>
+								<span className="text-primary font-bold  hover:underline">Kunj Faladu</span>
 							</Link>
 						</div>
 					</div>

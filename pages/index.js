@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Hero from "@/components/Home/Hero";
 import Content from "@/components/Home/Content";
-import Featured from "@/components/Featured";
+import Featured from "@/components/Products";
 
 export default function Home() {
 	return (

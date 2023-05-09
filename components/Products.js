@@ -52,10 +52,10 @@ const Featured = (props) => {
 		},
 	];
 	return (
-		<section className="px-5 py-4 w-full mx-auto">
+		<section className="md:px-5 py-4 w-full mx-auto">
 			<div className="container flex flex-wrap w-full mb-4 mx-auto">
 				<div className="w-full">
-					<div className="pl-12 flex text-4xl font-normal text-gray-900 justify-startr text-start my-5 relative">
+					<div className="md:pl-12 pl-6 flex text-4xl font-normal text-gray-900 justify-startr text-start my-5 relative">
 						<h1 className="m-1">{props.title}</h1>
 						<span className="absolute top-12 w-40 h-1 bg-primary border rounded-xl border-transparent"></span>
 					</div>

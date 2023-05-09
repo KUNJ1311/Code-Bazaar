@@ -6,7 +6,7 @@ export default function App({ Component, pageProps }) {
 	return (
 		<>
 			<Navbar />
-			<div className="font-spartan">
+			<div className="font-spartan ">
 				<Component {...pageProps} />
 			</div>
 			<Footer />
