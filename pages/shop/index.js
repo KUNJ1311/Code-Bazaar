@@ -1,11 +1,11 @@
-import Featured from "@/components/Products";
-import SubNavbar from "@/components/Shop/ProductCarousel";
+import Products from "@/components/Products";
+import ProductCarousel from "@/components/Shop/ProductCarousel";
 import React from "react";
 const index = () => {
 	return (
 		<>
-			<SubNavbar />
-			<Featured title={"Popular Products"} />
+			<ProductCarousel />
+			<Products title={"Popular Products"} />
 		</>
 	);
 };

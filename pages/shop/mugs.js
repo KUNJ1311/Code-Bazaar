@@ -1,9 +1,11 @@
-import SubNavbar from "@/components/Shop/ProductCarousel";
+import Products from "@/components/Products";
+import ProductCarousel from "@/components/Shop/ProductCarousel";
 
 const Mugs = () => {
 	return (
 		<>
-			<SubNavbar /> Mugs
+			<ProductCarousel />
+			<Products title={"Mugs"} />
 		</>
 	);
 };

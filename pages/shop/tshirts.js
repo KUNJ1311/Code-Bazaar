@@ -1,10 +1,12 @@
-import SubNavbar from "@/components/Shop/ProductCarousel";
+import Products from "@/components/Products";
+import ProductCarousel from "@/components/Shop/ProductCarousel";
 import React from "react";
 
 const Tshirts = () => {
 	return (
 		<>
-			<SubNavbar /> Tshirts
+			<ProductCarousel />
+			<Products title={"Tshirts"} />
 		</>
 	);
 };
