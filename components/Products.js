@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Products = (props) => {
@@ -62,12 +63,16 @@ const Products = (props) => {
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
 						{data.map((data, index) => (
 							<div key={index} className="px-3 py-[10px] my-[15px] mx-2 lg:w-[18%] w-[23%] min-w-[180px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card">
-								<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
-									<img className="transition-my object-cover hover:scale-110" src={data.img} alt={data.title} />
-								</div>
+								<Link href={`/product/${data.desc}`}>
+									<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
+										<img className="transition-my object-cover hover:scale-110" src={data.img} alt={data.title} />
+									</div>
+								</Link>
 								<div className="text-start py-[10px] px-2">
 									<h3 className="text-[#606063] lg:text-lg text-sm">{data.title}</h3>
-									<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-lg text-sm font-semibold cursor-pointer hover:text-primary">{data.desc}</h5>
+									<Link href={`/product/${data.desc}`}>
+										<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-lg text-sm font-semibold cursor-pointer hover:text-primary">{data.desc}</h5>
+									</Link>
 									<div className="star_rating" style={{ "--rating": data.rating }} />
 									<h4 className="space-x-2 ">
 										<del className="lg:text-lg text-sm font-semibold text-red-400">₹{data.mrp}</del>
