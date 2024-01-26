@@ -1,13 +1,17 @@
-import { addToCart } from "@/lib/actions/cartAction";
+import { addToCart, removeItem, updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
 const Cart = () => {
 	const ref = useRef();
 	const dispatch = useAppDispatch();
-	const { cart, subTotal } = useAppSelector((state) => state.cart);
+	const { cart } = useAppSelector((state) => state.cart);
+
+	const saveCart = (myCart) => {
+		localStorage.setItem("cart", myCart);
+	};
 
 	const toggleCart = () => {
 		dispatch(addToCart(1, 5, 1000, "kunj", 2, "nlue"));
@@ -20,10 +24,28 @@ const Cart = () => {
 		}
 	};
 
+	useEffect(() => {
+		const cartData = JSON.stringify(cart);
+		saveCart(cartData);
+	}, [cart]);
+
+	useEffect(() => {
+		try {
+			const cartData = localStorage.getItem("cart");
+			if (cartData) {
+				dispatch(updateCart(JSON.parse(cartData)));
+			}
+		} catch (error) {
+			console.error(error);
+			localStorage.removeItem("cart");
+		}
+	}, [dispatch]);
+
 	const [quantity, setQuantity] = useState(0);
 
 	const handleIncrement = () => {
 		setQuantity((prevQuantity) => prevQuantity + 1);
+		dispatch(removeItem(1));
 	};
 
 	const handleDecrement = () => {
