@@ -1,10 +1,16 @@
+import { addToCart } from "@/lib/actions/cartAction";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import React, { useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
 const Cart = () => {
 	const ref = useRef();
+	const dispatch = useAppDispatch();
+	const { cart, subTotal } = useAppSelector((state) => state.cart);
+
 	const toggleCart = () => {
+		dispatch(addToCart(1, 5, 1000, "kunj", 2, "nlue"));
 		if (ref.current.classList.contains("translate-x-full")) {
 			ref.current.classList.remove("translate-x-full");
 			ref.current.classList.add("translate-x-0");
@@ -47,6 +53,7 @@ const Cart = () => {
 
 		// More products...
 	];
+
 	return (
 		<>
 			<div type="button" onClick={toggleCart} className="flex">
