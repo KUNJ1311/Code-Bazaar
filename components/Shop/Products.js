@@ -1,55 +1,36 @@
+import { addToCart, saveCart } from "@/lib/actions/cartAction";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import React from "react";
+import StarRating from "./StarRating";
 
 const Products = (props) => {
+	const dispatch = useAppDispatch();
+	const { cart, subTotal } = useAppSelector((state) => state.cart);
 	const data = [
 		{
+			itemCode: 1234,
+			qty: 1,
 			img: "/t2.jpg",
 			title: "Hoodie",
-			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "4.1",
+			name: "Eat, Sleep, Code, Repeat - Hoodie",
+			rating: 1.6,
 			mrp: "986",
-			newprice: "799",
+			price: 799,
+			size: 2,
+			variant: "Black",
 		},
 		{
+			itemCode: 123314,
+			qty: 1,
 			img: "/t3.jpg",
 			title: "Hoodie",
-			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "4.5",
-			mrp: "999",
-			newprice: "820",
-		},
-		{
-			img: "/t4.jpg",
-			title: "Hoodie",
-			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "4",
+			name: "Eat, Sleep, Code, Repeat - Hoodie",
+			rating: 3.5,
 			mrp: "986",
-			newprice: "799",
-		},
-		{
-			img: "/t5.jpg",
-			title: "Hoodie",
-			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "3",
-			mrp: "986",
-			newprice: "799",
-		},
-		{
-			img: "/t6.jpg",
-			title: "Hoodie",
-			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "4.6",
-			mrp: "986",
-			newprice: "799",
-		},
-		{
-			img: "/t2.jpg",
-			title: "Hoodie",
-			desc: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: "1.6",
-			mrp: "986",
-			newprice: "799",
+			price: 7992,
+			size: 2,
+			variant: "Pink",
 		},
 	];
 	return (
@@ -62,24 +43,30 @@ const Products = (props) => {
 					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
 						{data.map((data, index) => (
-							<div key={index} className="px-3 py-[10px] my-[15px] mx-2 lg:w-[18%] w-[23%] min-w-[180px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card">
-								<Link href={`/product/${data.desc}`}>
+							<div key={index} className="sm:px-3 px-[6px] sm:py-[10px] py-[5px] my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card">
+								<Link href={`/product/${data.itemCode}`} className="flex items-center">
 									<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
 										<img className="transition-my object-cover hover:scale-110" src={data.img} alt={data.title} />
 									</div>
 								</Link>
-								<div className="text-start py-[10px] px-2">
+								<div className="text-start md:py-[10px] py-[5px] px-2 flex flex-col justify-start">
 									<h3 className="text-[#606063] lg:text-lg text-sm">{data.title}</h3>
-									<Link href={`/product/${data.desc}`}>
-										<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-lg text-sm font-semibold cursor-pointer hover:text-primary">{data.desc}</h5>
+									<Link href={`/product/${data.itemCode}`}>
+										<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-lg text-sm font-semibold cursor-pointer hover:text-primary">{data.name}</h5>
 									</Link>
-									<div className="star_rating" style={{ "--rating": data.rating }} />
+									<StarRating rating={data.rating} Code={data.itemCode} />
 									<h4 className="space-x-2 ">
 										<del className="lg:text-lg text-sm font-semibold text-red-400">₹{data.mrp}</del>
-										<span className="lg:text-xl text-base font-bold text-primary">₹{data.newprice}</span>
+										<span className="lg:text-xl text-base font-bold text-primary">₹{data.price}</span>
 									</h4>
 								</div>
-								<div className="leading-10 border border-slate-400 rounded-full flex justify-center items-center bg-slate-100 md:w-10 md:h-10  w-8 h-8 absolute bottom-3 md:bottom-6 md:right-4 right-3 cursor-pointer">
+								<div
+									onClick={() => {
+										dispatch(addToCart(data.itemCode, data.qty, data.price, data.name, data.size, data.variant));
+										dispatch(saveCart());
+									}}
+									className="leading-10 border border-slate-400 rounded-full flex justify-center items-center bg-slate-100 md:w-10 md:h-10  w-8 h-8 absolute bottom-3 md:bottom-6 md:right-4 right-3 cursor-pointer"
+								>
 									<svg className="md:w-6 md:h-6 w-5 h-5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<g clipPath="url(#clip0_1_2)">
 											<path

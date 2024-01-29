@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Hero from "@/components/Home/Hero";
 import Content from "@/components/Home/Content";
-import Featured from "@/components/Products";
+import Featured from "@/components/Shop/Products";
 
 export default function Home() {
 	return (
-		<div className="font-spartan">
+		<>
 			<Head>
 				<title>CodeBazaar - Wear the code</title>
 				<meta name="description" content="CodeBazaar - Wear the code" />
@@ -16,6 +16,6 @@ export default function Home() {
 				<Content />
 				<Featured title={"Featured Products"} />
 			</div>
-		</div>
+		</>
 	);
 }

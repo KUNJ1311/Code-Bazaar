@@ -126,7 +126,7 @@ const ProductCarousel = () => {
 						</button>
 					</div>
 
-					<div ref={carousel} className="relative flex lg:gap-5 gap-3 lg:py-4 py-2 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x">
+					<div ref={carousel} className="relative flex lg:gap-5 gap-3 lg:py-4 py-2 overflow-auto no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x">
 						{data.map((data, index) => (
 							<div key={index} className="relative lg:w-32 w-24 lg:h-32 h-24 rounded-full">
 								<Link href={data.link}>

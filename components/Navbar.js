@@ -3,9 +3,25 @@ import Link from "next/link";
 import { HiOutlineHome, HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi2";
 import { useRouter } from "next/router";
 import Cart from "./Shop/Cart";
+import { updateCart } from "@/lib/actions/cartAction";
+import { useAppDispatch } from "@/lib/hooks";
 
 const Navbar = () => {
 	const router = useRouter();
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		try {
+			const cartData = localStorage.getItem("cart");
+			if (cartData) {
+				dispatch(updateCart(JSON.parse(cartData)));
+			}
+		} catch (error) {
+			console.error(error);
+			localStorage.clear();
+		}
+	});
+
 	const items = [
 		{
 			icon: <HiOutlineHome className="relative text-2xl" />,
@@ -23,6 +39,7 @@ const Navbar = () => {
 			link: "/account",
 		},
 	];
+
 	const [active, setActive] = useState(0);
 	useEffect(() => {
 		const pathname = router.pathname;
@@ -32,6 +49,8 @@ const Navbar = () => {
 			setActive(1);
 		} else if (pathname === "/account") {
 			setActive(2);
+		} else {
+			setActive();
 		}
 	}, [router.pathname]);
 
@@ -42,7 +61,6 @@ const Navbar = () => {
 	const handleLinkClick = () => {
 		setVisible(false);
 	};
-
 	return (
 		<>
 			<nav className="z-50 sticky top-0 bg-second flex tracking-wide overflow-hidden">
