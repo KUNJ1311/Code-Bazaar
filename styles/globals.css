@@ -242,3 +242,17 @@
 		min-height: 460px !important;
 	}
 }
+@media (max-width: 300px) {
+	.padding-minus {
+		padding-inline: 0px;
+	}
+	.padding-add {
+		padding-left: 15px;
+	}
+}
+@media (max-width: 350px) {
+	.cart-img-small {
+		width: 70px;
+		height: 70px;
+	}
+}

@@ -10,10 +10,10 @@ const Checkout = () => {
 	return (
 		<>
 			<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-				<div className="px-4 lg:pb-8 pt-8 pb-0">
-					<p className="text-xl font-medium">Order Summary</p>
-					<p className="text-gray-400">Review Cart Items</p>
-					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6">
+				<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
+					<p className="text-xl font-medium padding-add">Order Summary</p>
+					<p className="text-gray-400 padding-add">Review Cart Items</p>
+					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 pb-6">
 						{cart.length == 0 ? (
 							<>
 								<div className="flex flex-col justify-center">
@@ -35,18 +35,11 @@ const Checkout = () => {
 						) : (
 							<>
 								<CartList />
-
-								<div className="border-t border-gray-200 py-3 mt-6">
-									<div className="flex justify-between font-medium text-gray-900">
-										<p className="font-medium text-gray-900 text-sm">Subtotal</p>
-										<p className="font-semibold text-gray-900 text-xl">₹{subTotal}</p>
-									</div>
-								</div>
 							</>
 						)}
 					</div>
 				</div>
-				<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10">
+				<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10 mb-8">
 					<p className="text-xl font-medium">Delivery Details</p>
 					<p className="text-gray-400">Complete your order by providing your delivery details.</p>
 					<div className="">
@@ -102,20 +95,20 @@ const Checkout = () => {
 
 						<div className="mt-6 border-t border-b py-2">
 							<div className="flex items-center justify-between">
-								<p className="text-sm font-medium text-gray-900">Subtotal</p>
-								<p className="font-semibold text-gray-900">₹{subTotal}</p>
+								<p className="text-base leading-4 text-gray-800">Subtotal</p>
+								<p className="font-normal text-gray-600">₹{subTotal}</p>
 							</div>
 							<div className="flex items-center justify-between">
-								<p className="text-sm font-medium text-gray-900">Shipping</p>
-								<p className="font-semibold text-gray-900">₹8.00</p>
+								<p className="text-base leading-4 text-gray-800">Shipping</p>
+								<p className="font-normal text-gray-600">₹8.00</p>
 							</div>
 						</div>
 						<div className="mt-6 flex items-center justify-between">
-							<p className="text-sm font-medium text-gray-900">Total</p>
-							<p className="text-2xl font-semibold text-gray-900">₹408.00</p>
+							<p className="text-xl font-semibold leading-4 text-gray-800">Total</p>
+							<p className="text-xl font-medium text-gray-600">₹408.00</p>
 						</div>
 					</div>
-					<div className="mt-4 mb-8 w-full">
+					<div className="mt-4 lg:mb-0 mb-8 w-full">
 						<Link href="#" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
 							Place Order
 						</Link>

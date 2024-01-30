@@ -27,16 +27,16 @@ const CartList = () => {
 				<ul role="list" className="-my-6 divide-y divide-gray-200">
 					{cart?.map((product) => (
 						<li key={product.itemCode} className="flex py-6">
-							<div className="h-16 w-16 md:h-24 md:w-24 lg:w-32 lg:h-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+							<div className="h-[85px] w-[85px] cart-img-small sm:h-24 sm:w-24 md:h-30 md:w-30 lg:w-32 lg:h-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 								<img src={product.imageSrc} alt={product.name} className="h-full w-full object-cover object-center" />
 							</div>
 
 							<div className="ml-4 flex flex-1 flex-col">
 								<div>
-									<div className="flex justify-between text-sm md:text-base font-medium text-gray-900">
+									<div className="flex justify-between text-xs sm:text-sm md:text-base font-medium text-gray-900">
 										<h3>
 											<a href={`/product/${product.name}`} className="hover:text-primary multi-line-ellipsis">
-												{truncateText(product.name, 70)}
+												{truncateText(product.name, 60)}
 											</a>
 										</h3>
 										<p className="ml-4">₹{product.price}</p>
