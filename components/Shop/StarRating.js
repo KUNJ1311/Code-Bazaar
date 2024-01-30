@@ -1,7 +1,7 @@
 import React from "react";
 
 const StarRating = ({ rating, Code }) => {
-	const filledStars = Math.floor(rating);
+	const filledStars = parseInt(rating);
 	const percentFilled = (rating % 1) * 100;
 
 	const getColorClass = () => {
@@ -19,9 +19,9 @@ const StarRating = ({ rating, Code }) => {
 		for (let i = 1; i <= 5; i++) {
 			const gradientStops = [];
 
-			if (i < filledStars) {
+			if (i <= filledStars) {
 				gradientStops.push(<stop key={`${i}${Code}1`} offset="0%" stopColor="#088178" />, <stop key={`${i}${Code}2`} offset="100%" stopColor="#088178" />);
-			} else if (i === filledStars) {
+			} else if (i === filledStars + 1) {
 				gradientStops.push(<stop key={`${i}${Code}1`} offset={`${percentFilled}%`} stopColor="#088178" />, <stop key={`${i}${Code}2`} offset={`${percentFilled}%`} stopColor="#fff" />, <stop key={`${i}${Code}3`} offset="100%" stopColor="#fff" />);
 			} else {
 				gradientStops.push(<stop key={`${i}${Code}1`} offset="0%" stopColor="#fff" />, <stop key={`${i}${Code}2`} offset="100%" stopColor="#fff" />);

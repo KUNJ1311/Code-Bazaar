@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import React from "react";
 import StarRating from "./StarRating";
+import { truncateText } from "../truncateText";
 
 const Products = (props) => {
 	const dispatch = useAppDispatch();
@@ -46,14 +47,6 @@ const Products = (props) => {
 		},
 	];
 
-	const truncateText = (text, maxLength) => {
-		if (text.length > maxLength) {
-			return text.substring(0, maxLength) + "...";
-		} else {
-			return text;
-		}
-	};
-
 	return (
 		<section className="md:px-5 w-full mx-auto">
 			<div className="lg:container flex flex-wrap w-full mb-4 mx-auto">
@@ -91,7 +84,7 @@ const Products = (props) => {
 										dispatch(addToCart(data.itemCode, data.qty, data.price, data.name, data.size, data.variant));
 										dispatch(saveCart());
 									}}
-									className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10  w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal"
+									className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10 w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal"
 								>
 									<svg className="md:w-6 md:h-6 w-5 h-5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<g clipPath="url(#clip0_1_2)">
