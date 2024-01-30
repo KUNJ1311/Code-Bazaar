@@ -4,6 +4,15 @@ const StarRating = ({ rating, Code }) => {
 	const filledStars = Math.floor(rating);
 	const percentFilled = (rating % 1) * 100;
 
+	const getColorClass = () => {
+		if (rating >= 4) {
+			return "text-primary";
+		} else if (rating >= 2) {
+			return "text-amber-500";
+		} else {
+			return "text-red-600";
+		}
+	};
 	const renderStars = () => {
 		const stars = [];
 
@@ -11,19 +20,16 @@ const StarRating = ({ rating, Code }) => {
 			const gradientStops = [];
 
 			if (i < filledStars) {
-				// Completely filled star
 				gradientStops.push(<stop key={`${i}${Code}1`} offset="0%" stopColor="#088178" />, <stop key={`${i}${Code}2`} offset="100%" stopColor="#088178" />);
 			} else if (i === filledStars) {
-				// Partially filled star
 				gradientStops.push(<stop key={`${i}${Code}1`} offset={`${percentFilled}%`} stopColor="#088178" />, <stop key={`${i}${Code}2`} offset={`${percentFilled}%`} stopColor="#fff" />, <stop key={`${i}${Code}3`} offset="100%" stopColor="#fff" />);
 			} else {
-				// Unfilled star
 				gradientStops.push(<stop key={`${i}${Code}1`} offset="0%" stopColor="#fff" />, <stop key={`${i}${Code}2`} offset="100%" stopColor="#fff" />);
 			}
 
 			stars.push(
-				<div key={i} className={`sm:w-5 w-4 sm:h-5 h-4 flex text-primary relative`}>
-					<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18px" height="18px" viewBox="0 0 24 24">
+				<div key={i} className={`w-4 h-5 flex text-primary items-center justify-center`}>
+					<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-5" viewBox="0 3 24 24">
 						<defs>
 							<linearGradient id={`starGradient${i}${Code}`}>{gradientStops}</linearGradient>
 						</defs>
@@ -37,10 +43,12 @@ const StarRating = ({ rating, Code }) => {
 	};
 
 	return (
-		<span className="flex items-center">
+		<>
+			<div className={`flex mr-1 w-6 h-4 items-center font-medium sm:text-base text-sm ${getColorClass()}`}>
+				<span>{rating}</span>
+			</div>
 			{renderStars()}
-			<span className="text-gray-600 ml-3">{rating}</span>
-		</span>
+		</>
 	);
 };
 export default StarRating;

@@ -126,11 +126,11 @@ const ProductCarousel = () => {
 						</button>
 					</div>
 
-					<div ref={carousel} className="relative flex lg:gap-5 gap-3 lg:py-4 py-2 overflow-auto no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x">
+					<div ref={carousel} className="relative flex lg:gap-5 gap-3 lg:py-4 py-4 overflow-auto no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x">
 						{data.map((data, index) => (
 							<div key={index} className="relative lg:w-32 w-24 lg:h-32 h-24 rounded-full">
 								<Link href={data.link}>
-									<div className="flex items-center justify-center lg:w-32 w-24 lg:h-32 h-24 bg-white rounded-full overflow-hidden shadow-md shadow-gray-400 hover:shadow-gray-500 hover:shadow-md">
+									<div className="flex items-center justify-center lg:w-32 w-24 lg:h-32 h-24 bg-white rounded-full button-style">
 										<img className="object-cover block" src={data.img} alt={data.name} width="128px" height="128px" />
 									</div>
 								</Link>

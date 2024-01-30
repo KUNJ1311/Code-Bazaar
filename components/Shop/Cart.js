@@ -35,6 +35,13 @@ const Cart = () => {
 		dispatch(saveCart());
 	};
 
+	const truncateText = (text, maxLength) => {
+		if (text.length > maxLength) {
+			return text.substring(0, maxLength) + "...";
+		} else {
+			return text;
+		}
+	};
 	return (
 		<>
 			<div type="button" onClick={toggleCart} className="flex">
@@ -49,7 +56,7 @@ const Cart = () => {
 				<div ref={ref} className="transition translate-x-full pointer-events-none fixed right-0 flex sm:max-h-[calc(100%-69px)] max-h-[calc(100%-56px)] max-w-full ">
 					<div className="pointer-events-auto w-screen max-w-md ">
 						<div className="flex h-full flex-col ">
-							<div className="flex-1 md:rounded-bl-2xl px-4 py-6 sm:px-6 md:pl-6 lg:pl-10 border-gray-300 border-b-2 border-l-2 bg-white overflow-y-auto overflow-x-hidden scroller">
+							<div className="flex-1 md:rounded-bl-2xl px-4 py-6 sm:px-6 md:pl-4 lg:pl-5 border-gray-300 border-b-2 border-l-2 bg-white overflow-y-auto overflow-x-hidden scroller remove-scrollbar">
 								<div className="flex items-start justify-between">
 									<div className="text-lg font-medium text-gray-900">Shopping cart</div>
 									<div className="ml-3 flex h-7 items-center">
@@ -93,7 +100,9 @@ const Cart = () => {
 																<div>
 																	<div className="flex justify-between text-sm md:text-base font-medium text-gray-900">
 																		<h3>
-																			<a href={`/product/${product.name}`}>{product.name}</a>
+																			<a href={`/product/${product.name}`} className="hover:text-primary multi-line-ellipsis">
+																				{truncateText(product.name, 70)}
+																			</a>
 																		</h3>
 																		<p className="ml-4">₹{product.price}</p>
 																	</div>
@@ -144,7 +153,7 @@ const Cart = () => {
 											</div>
 											<p className="mt-0.5 text-xs md:text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
 											<div className="mt-6">
-												<Link href="/checkout" className="flex items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-xs md:text-base font-medium text-white shadow-sm hover:bg-[#045f59]">
+												<Link href="/checkout" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-xs md:text-base font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow" onClick={toggleCart}>
 													Checkout
 												</Link>
 											</div>
