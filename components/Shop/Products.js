@@ -1,7 +1,6 @@
 import { addToCart, saveCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
-import React from "react";
 import StarRating from "./StarRating";
 import { truncateText } from "../truncateText";
 
@@ -16,9 +15,9 @@ const Products = (props) => {
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: 1.6,
-			mrp: "986",
+			mrp: 986,
 			price: 799,
-			size: 2,
+			size: "2XL",
 			variant: "Black",
 		},
 		{
@@ -28,9 +27,9 @@ const Products = (props) => {
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: 1.6,
-			mrp: "986",
+			mrp: 986,
 			price: 799,
-			size: 2,
+			size: "2XL",
 			variant: "Black",
 		},
 		{
@@ -40,9 +39,9 @@ const Products = (props) => {
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: 1.6,
-			mrp: "986",
+			mrp: 986,
 			price: 799,
-			size: 2,
+			size: "2XL",
 			variant: "Black",
 		},
 		{
@@ -52,9 +51,9 @@ const Products = (props) => {
 			title: "Hoodi3e",
 			name: "Hoodie",
 			rating: 4.8,
-			mrp: "986",
+			mrp: 986,
 			price: 799,
-			size: 2,
+			size: "2XL",
 			variant: "Black",
 		},
 		{
@@ -64,9 +63,9 @@ const Products = (props) => {
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
 			rating: 3.5,
-			mrp: "986",
+			mrp: 986,
 			price: 7992,
-			size: 2,
+			size: "2XL",
 			variant: "Pink",
 		},
 	];

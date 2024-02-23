@@ -41,7 +41,9 @@ const CartList = () => {
 										</h3>
 										<p className="ml-4">₹{product.price}</p>
 									</div>
-									<p className="mt-1 text-xs font-normal md:text-sm text-gray-400">{product.variant} - SM</p>
+									<p className="mt-1 text-xs font-normal md:text-sm text-gray-400">
+										{product.variant} - {product.size}
+									</p>
 								</div>
 								<div className="flex flex-1 items-end justify-between text-xs md:text-sm mt-2">
 									<form className="max-w-xs mr-auto">

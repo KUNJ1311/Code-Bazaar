@@ -90,9 +90,9 @@ const Post = () => {
 							<h2 className="mt-2 text-lg font-medium text-gray-900">Size</h2>
 							<div className="mt-2 flex select-none flex-wrap items-center gap-1">
 								{sizeData.map((item) => (
-									<label key={item} className="">
-										<input type="radio" name="subscription" value={item} className="peer sr-only" checked={selectedSize === item} onChange={() => setSelectedSize(item)} />
-										<p className={`peer-checked:bg-primary peer-checked:text-white rounded-lg border border-black md:px-6 px-3 py-1 md:py-2 font-bold ${selectedSize === item ? "bg-primary text-white border-primary" : ""}`}>{item}</p>
+									<label key={item}>
+										<input type="radio" name="size" value={item} className="peer sr-only cursor-pointer" checked={selectedSize === item} onChange={() => setSelectedSize(item)} />
+										<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-bold ${selectedSize === item ? "bg-primary text-white border-primary" : ""}`}>{item}</p>
 									</label>
 								))}
 							</div>

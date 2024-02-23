@@ -36,7 +36,7 @@ const Navbar = () => {
 		{
 			icon: <HiOutlineUser className="relative text-2xl" />,
 			name: "Account",
-			link: "/account",
+			link: "/login",
 		},
 	];
 
