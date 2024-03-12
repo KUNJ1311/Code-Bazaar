@@ -5,98 +5,99 @@ import StarRating from "./StarRating";
 import { truncateText } from "../truncateText";
 
 const Products = (props) => {
+	const { products, title } = props;
 	const dispatch = useAppDispatch();
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
-	const data = [
-		{
-			itemCode: 1234,
-			qty: 1,
-			img: "/t2.jpg",
-			title: "Hoodie",
-			name: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: 1.6,
-			mrp: 986,
-			price: 799,
-			size: "2XL",
-			variant: "Black",
-		},
-		{
-			itemCode: 234,
-			qty: 1,
-			img: "/t2.jpg",
-			title: "Hoodie",
-			name: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: 1.6,
-			mrp: 986,
-			price: 799,
-			size: "2XL",
-			variant: "Black",
-		},
-		{
-			itemCode: 1234534,
-			qty: 1,
-			img: "/t2.jpg",
-			title: "Hoodie",
-			name: "Eat, Sleep, Code, Repeat - Hoodie",
-			rating: 1.6,
-			mrp: 986,
-			price: 799,
-			size: "2XL",
-			variant: "Black",
-		},
-		{
-			itemCode: 12334,
-			qty: 1,
-			img: "/t2.jpg",
-			title: "Hoodi3e",
-			name: "Hoodie",
-			rating: 4.8,
-			mrp: 986,
-			price: 799,
-			size: "2XL",
-			variant: "Black",
-		},
-		{
-			itemCode: 123314,
-			qty: 1,
-			img: "/t3.jpg",
-			title: "Hoodie",
-			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
-			rating: 3.5,
-			mrp: 986,
-			price: 7992,
-			size: "2XL",
-			variant: "Pink",
-		},
-	];
+	// const data = [
+	// 	{
+	// 		itemCode: 1234,
+	// 		qty: 1,
+	// 		img: "/t2.jpg",
+	// 		title: "Hoodie",
+	// 		name: "Eat, Sleep, Code, Repeat - Hoodie",
+	// 		rating: 1.6,
+	// 		mrp: 986,
+	// 		price: 799,
+	// 		size: "2XL",
+	// 		variant: "Black",
+	// 	},
+	// 	{
+	// 		itemCode: 234,
+	// 		qty: 1,
+	// 		img: "/t2.jpg",
+	// 		title: "Hoodie",
+	// 		name: "Eat, Sleep, Code, Repeat - Hoodie",
+	// 		rating: 1.6,
+	// 		mrp: 986,
+	// 		price: 799,
+	// 		size: "2XL",
+	// 		variant: "Black",
+	// 	},
+	// 	{
+	// 		itemCode: 1234534,
+	// 		qty: 1,
+	// 		img: "/t2.jpg",
+	// 		title: "Hoodie",
+	// 		name: "Eat, Sleep, Code, Repeat - Hoodie",
+	// 		rating: 1.6,
+	// 		mrp: 986,
+	// 		price: 799,
+	// 		size: "2XL",
+	// 		variant: "Black",
+	// 	},
+	// 	{
+	// 		itemCode: 12334,
+	// 		qty: 1,
+	// 		img: "/t2.jpg",
+	// 		title: "Hoodi3e",
+	// 		name: "Hoodie",
+	// 		rating: 4.8,
+	// 		mrp: 986,
+	// 		price: 799,
+	// 		size: "2XL",
+	// 		variant: "Black",
+	// 	},
+	// 	{
+	// 		itemCode: 123314,
+	// 		qty: 1,
+	// 		img: "/t3.jpg",
+	// 		title: "Hoodie",
+	// 		name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
+	// 		rating: 3.5,
+	// 		mrp: 986,
+	// 		price: 7992,
+	// 		size: "2XL",
+	// 		variant: "Pink",
+	// 	},
+	// ];
 
 	return (
 		<section className="md:px-5 w-full mx-auto">
 			<div className="lg:container flex flex-wrap w-full mb-4 mx-auto">
 				<div className="w-full">
 					<div className="md:pl-12 pl-6 flex md:text-3xl text-2xl font-normal text-gray-900 justify-startr text-start mb-2 mt-2 md:mt-5 md:mb-5 relative">
-						<h1 className="m-1">{props.title}</h1>
+						<h1 className="m-1">{title}</h1>
 						<span className="absolute md:top-10 top-9 w-32 h-1 bg-primary border rounded-xl border-transparent"></span>
 					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
-						{data.map((data, index) => (
+						{products.map((data, index) => (
 							<div key={index} className="px-3 py-[10px] my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card ">
-								<Link href={`/product/${data.itemCode}`} className="flex items-center card-product-out">
+								<Link href={`/product/${data.slug}`} className="flex items-center card-product-out">
 									<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
 										<img className="transition-my object-cover hover:scale-110" src={data.img} alt={data.title} />
 									</div>
 								</Link>
 								<div className="text-start md:py-[10px] py-[5px] px-2 flex flex-col justify-start">
 									<h3 className="text-[#606063] lg:text-lg text-sm ">{data.title}</h3>
-									<Link href={`/product/${data.itemCode}`}>
-										<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base text-sm font-semibold cursor-pointer hover:text-primary multi-line-ellipsis">{truncateText(data.name, 70)}</h5>
+									<Link href={`/product/${data.slug}`}>
+										<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base text-sm font-semibold cursor-pointer hover:text-primary multi-line-ellipsis">{truncateText(data.slug, 70)}</h5>
 									</Link>
 									<div className="absolute sm:bottom-1 bottom-2">
 										<div className="flex items-center mt-1">
-											<StarRating rating={data.rating} Code={data.itemCode} />
+											<StarRating rating={parseFloat(data.rating.$numberDecimal)} Code={data.slug} />
 										</div>
 										<h4 className="space-x-2">
-											<del className="lg:text-lg text-sm font-semibold text-red-400">₹{data.mrp}</del>
+											<del className="lg:text-lg text-sm font-semibold text-red-400">₹999</del>
 											<span className="lg:text-xl text-base font-bold text-primary">₹{data.price}</span>
 										</h4>
 									</div>
@@ -104,7 +105,7 @@ const Products = (props) => {
 								<button
 									type="button"
 									onClick={() => {
-										dispatch(addToCart(data.itemCode, data.qty, data.price, data.name, data.size, data.variant));
+										dispatch(addToCart(data.slug, 1, data.price, data.title, data.size, data.color, data.img));
 										dispatch(saveCart());
 									}}
 									className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10 w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal"

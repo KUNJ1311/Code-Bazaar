@@ -11,6 +11,7 @@ const ProductSchema = new mongoose.Schema(
 		color: { type: String },
 		price: { type: Number, required: true },
 		availableQty: { type: String, required: true },
+		rating: { type: mongoose.Types.Decimal128, required: true },
 	},
 	{ timesstamps: true }
 );

@@ -34,7 +34,7 @@ const Signup = () => {
 							<p className="text-sm leading-relaxed text-slate-900">
 								Already have an account?{" "}
 								<Link href="/login" className="font-bold text-indigo-500">
-									Log In
+									Sign In
 								</Link>
 							</p>
 						</form>
