@@ -5,10 +5,13 @@ import { useRouter } from "next/router";
 import Cart from "./Shop/Cart";
 import { updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch } from "@/lib/hooks";
+import { BsCart3 } from "react-icons/bs";
 
 const Navbar = () => {
+	const ref = useRef();
 	const router = useRouter();
 	const dispatch = useAppDispatch();
+	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
 		try {
@@ -39,56 +42,124 @@ const Navbar = () => {
 			link: "/login",
 		},
 	];
-
 	const [active, setActive] = useState(0);
-	useEffect(() => {
+
+	const indicatorStyle = {
+		transform: `translateX(${active * 56}px)`,
+	};
+
+	const getPath = () => {
 		const pathname = router.pathname;
 		if (pathname === "/") {
 			setActive(0);
 		} else if (pathname.startsWith("/shop")) {
 			setActive(1);
-		} else if (pathname === "/account") {
+		} else if (pathname === "/login") {
 			setActive(2);
 		} else {
 			setActive();
 		}
+	};
+
+	useEffect(() => {
+		getPath();
 	}, [router.pathname]);
 
-	const [visible, setVisible] = useState(false);
-	const handleMenuclick = () => {
-		setVisible(!visible);
+	const toggleCart = () => {
+		if (ref.current.classList.contains("translate-x-full")) {
+			setActive(3);
+			ref.current.classList.remove("translate-x-full");
+			ref.current.classList.add("translate-x-0");
+		} else if (!ref.current.classList.contains("translate-x-full")) {
+			getPath();
+			ref.current.classList.remove("translate-x-0");
+			ref.current.classList.add("translate-x-full");
+		}
 	};
-	const handleLinkClick = () => {
-		setVisible(false);
+
+	const hideCart = () => {
+		if (!ref.current.classList.contains("translate-x-full")) {
+			getPath();
+			ref.current.classList.remove("translate-x-0");
+			ref.current.classList.add("translate-x-full");
+		}
 	};
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 767);
+		};
+
+		handleResize(); // Initial check
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
 	return (
 		<>
 			<nav className="z-50 sticky top-0 bg-second flex tracking-wide overflow-hidden">
 				<Link href="/">
 					<img className="sm:w-[248px] sm:h-[69px] w-[200px] h-[56px]" src="/logo.svg" alt="CodeBazaar" />
 				</Link>
-				<div className="flex space-x-8 ml-auto z-10">
-					<ul className={`flex md:relative fixed  ${visible ? "right-0" : "-right-52 md:right-0 md:pr-5 "} md:top-0 sm:top-[69px] top-[56px] md:h-full md:w-full w-[150px] h-44 md:border-none  border-gray-300 border-b-2 border-l-2 md:bg-second bg-white md:space-x-5 text-lg md:items-center items-start md:justify-center md:flex-row flex-col md:text-xl md:pt-0 md:pl-0 pt-4 md:rounded-none rounded-bl-2xl pl-5 navbar_main transition-my`}>
-						{items.map((item, index) => (
-							<Link href={`${item.link}`} key={index} onClick={handleLinkClick} className="w-full h-full jmd:ustify-center items-center flex">
-								<li className={`flex li_m cursor-pointer hover:text-primary nav-under relative transition-my space-x-2  items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
-									{item.icon}
-									<span>{item.name}</span>
-								</li>
-							</Link>
-						))}
-					</ul>
-				</div>
-				<Cart />
-
-				<div className="flex md:hidden mr-3 z-50">
-					<button onClick={handleMenuclick} className="mx-2 z-40 flex items-center">
-						<div style={{ width: "24px", height: "18px", position: "relative", transform: "rotate(0deg)" }}>
-							<span className="transition-my" style={{ display: "block", height: "2px", width: "100%", background: "#088178", borderRadius: "1px", transformOrigin: "center center", position: "absolute", transform: !visible ? "translate3d(0px, 0px, 0px) rotate(0deg)" : "translate3d(0px, 9px, 0px) rotate(-45deg)", marginTop: "-1px" }}></span>
-							<span className="transition-my" style={{ display: "block", height: "2px", width: "100%", background: "#088178", borderRadius: "1px", transformOrigin: "center center", position: "absolute", right: visible ? "-80px" : "0px", marginTop: "8px" }}></span>
-							<span className="transition-my" style={{ display: "block", height: "2px", width: "100%", background: "#088178", borderRadius: "1px", transformOrigin: "center center", position: "absolute", transform: !visible ? "translate3d(0px, 18px, 0px) rotate(0deg)" : "translate3d(0px, 9px, 0px) rotate(45deg)", marginTop: "-1px" }}></span>
+				{!isMobile ? (
+					<div className="flex space-x-8 ml-auto z-10 navbar_main">
+						<ul className={`flex relative right-0 top-0 h-full w-full border-none border-gray-300 border-b-2 border-l-2 bg-secon space-x-5 text-xl items-center justify-center flex-row pt-0 pl-0 transition-my`}>
+							{items.map((item, index) => (
+								<Link href={`${item.link}`} key={index} className="w-full h-full justify-center flex" onClick={hideCart}>
+									<li className={`flex cursor-pointer hover:text-primary nav-under before:bottom-[11px] relative transition-my space-x-2 items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
+										{item.icon}
+										<span>{item.name}</span>
+									</li>
+								</Link>
+							))}
+							<div type="button" onClick={toggleCart} className="flex nav-cart">
+								<ul className="flex items-center pr-5">
+									<li className={`flex cursor-pointer hover:text-primary nav-under relative transition-my space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
+										<BsCart3 className="relative text-2xl" />
+										<span className="cart_hide">Cart</span>
+									</li>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				) : (
+					<>
+						{/* Mobile Nav */}
+						<div className="nav-mobile bottom-2 w-full flex-1 mx-auto z-50 fixed justify-center hidden">
+							<div className="w-[270px] justify-center h-14 items-center flex rounded-2xl bg-second border nav-mobile-shadow">
+								<div className="flex w-56 justify-center h-14 items-center">
+									<ul className="flex h-full w-64 z-1">
+										{items.map((item, index) => (
+											<li key={index} className={`relative flex list-none w-14 h-14 z-1 justify-center items-center ${active === index ? "nav-mobile-active" : ""}`} onClick={hideCart}>
+												<Link className="relative flex justify-center items-center flex-col text-center font-medium" href={item.link}>
+													<span className="mobile-icon relative text-[1.5em] text-center block z-20">{item.icon}</span>
+													<span className="mobile-text absolute font-normal text-sm z-20">{item.name}</span>
+												</Link>
+											</li>
+										))}
+										<li className={`relative flex list-none w-14 h-14 z-1 justify-center items-center ${active === 3 ? "nav-mobile-active" : ""}`} onClick={toggleCart}>
+											<button type="button" className="relative flex justify-center items-center flex-col text-center font-medium">
+												<span className="mobile-icon relative text-[1.5em] text-center block z-20">
+													<BsCart3 className="relative text-2xl" />
+												</span>
+												<span className="mobile-text absolute font-normal text-sm z-20">Cart</span>
+											</button>
+										</li>
+										{active >= 0 ? <div className="nav-indicator absolute w-14 h-14 bg-second -top-1/2 rounded-full -z-1" style={indicatorStyle}></div> : ""}
+									</ul>
+								</div>
+							</div>
 						</div>
-					</button>
+					</>
+				)}
+				{/* Cart */}
+				<div className="relative sm:top-[69px] top-[56px] right-0 z-0 sm:pt-[-69px] pt-[-56px]">
+					<div ref={ref} className="transition translate-x-full pointer-events-none fixed right-0 flex sm:max-h-[calc(100%-69px)] max-h-[calc(100%-56px)] max-w-full ">
+						<Cart toggleCart={toggleCart} />
+					</div>
 				</div>
 			</nav>
 		</>

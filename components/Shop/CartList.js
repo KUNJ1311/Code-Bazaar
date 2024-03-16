@@ -1,4 +1,3 @@
-import React from "react";
 import { truncateText } from "../truncateText";
 import { addQuantity, addToCart, removeItem, saveCart, subtractQuantity, updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
@@ -51,13 +50,13 @@ const CartList = () => {
 											Quantity:
 										</label>
 										<div className="relative flex items-center max-w-[7rem]">
-											<button type="button" id="decrement-button" onClick={() => handleDecrement(product.slug)} className={`flex justify-center items-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-7 ${product.qty === 1 ? "cursor-not-allowed" : ""}`} disabled={product.qty === 1}>
+											<button type="button" onClick={() => handleDecrement(product.slug)} className={`flex justify-center items-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-7 ${product.qty === 1 ? "cursor-not-allowed" : ""}`} disabled={product.qty === 1}>
 												<svg className="w-2 h-2 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
 													<path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
 												</svg>
 											</button>
-											<input id="quantity-input" value={product.qty} className="bg-gray-50 border border-x-0 border-gray-300 h-7 text-center text-gray-900 text-sm block w-full py-2.5 focus:outline-none cursor-default" readOnly />
-											<button type="button" id="increment-button" onClick={() => handleIncrement(product.slug)} className="flex justify-center items-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-7">
+											<input value={product.qty} className="bg-gray-50 border border-x-0 border-gray-300 h-7 text-center text-gray-900 text-sm block w-full py-2.5 focus:outline-none cursor-default" readOnly />
+											<button type="button" onClick={() => handleIncrement(product.slug)} className="flex justify-center items-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-7">
 												<svg className="w-2 h-2 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
 													<path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />
 												</svg>

@@ -1,7 +1,11 @@
 import React from "react";
-
+import NavbarMobile from "@/components/NavbarMobile";
 const Contact = () => {
-	return <div>Contact</div>;
+	return (
+		<div>
+			<NavbarMobile />
+		</div>
+	);
 };
 
 export default Contact;

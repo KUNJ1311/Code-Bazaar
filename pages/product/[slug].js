@@ -1,3 +1,4 @@
+import NavbarMobile from "@/components/NavbarMobile";
 import StarRating from "@/components/Shop/StarRating";
 import { addToCart, saveCart } from "@/lib/actions/cartAction";
 import { useAppDispatch } from "@/lib/hooks";
@@ -32,9 +33,9 @@ const Post = () => {
 	};
 
 	const renderColorButtons = () => {
-		const colors = ["088178", "440cde", "fff", "e3e6f3"];
+		const colors = ["#088178", "#440cde", "#fff", "#e3e6f3"];
 
-		return colors.map((color, index) => <button type="button" key={index} className={`border-2 mr-2 border-gray-300 rounded-full w-7 h-7 ${selectedColor === color ? "ring-2 ring-gray-400" : ""} focus:outline-none`} style={{ background: "#" + color }} onClick={() => handleColorButtonClick(color)}></button>);
+		return colors.map((color, index) => <button type="button" key={index} className={`border-2 mr-2 border-gray-300 rounded-full w-7 h-7 ${selectedColor === color ? "ring-2 ring-gray-400" : ""} focus:outline-none`} style={{ background: color }} onClick={() => handleColorButtonClick(color)}></button>);
 	};
 
 	const sizeData = ["SM", "M", "L", "XL"];
