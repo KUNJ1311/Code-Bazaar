@@ -15,6 +15,7 @@ const handler = async (req, res) => {
 				price: req.body[i].price,
 				availableQty: req.body[i].availableQty,
 				rating: req.body[i].rating || 5.0,
+				colorCode: req.body[i].colorCode,
 			});
 			await p.save();
 		}

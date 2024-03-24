@@ -8,68 +8,6 @@ const Products = (props) => {
 	const { products, title } = props;
 	const dispatch = useAppDispatch();
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
-	// const data = [
-	// 	{
-	// 		itemCode: 1234,
-	// 		qty: 1,
-	// 		img: "/t2.jpg",
-	// 		title: "Hoodie",
-	// 		name: "Eat, Sleep, Code, Repeat - Hoodie",
-	// 		rating: 1.6,
-	// 		mrp: 986,
-	// 		price: 799,
-	// 		size: "2XL",
-	// 		variant: "Black",
-	// 	},
-	// 	{
-	// 		itemCode: 234,
-	// 		qty: 1,
-	// 		img: "/t2.jpg",
-	// 		title: "Hoodie",
-	// 		name: "Eat, Sleep, Code, Repeat - Hoodie",
-	// 		rating: 1.6,
-	// 		mrp: 986,
-	// 		price: 799,
-	// 		size: "2XL",
-	// 		variant: "Black",
-	// 	},
-	// 	{
-	// 		itemCode: 1234534,
-	// 		qty: 1,
-	// 		img: "/t2.jpg",
-	// 		title: "Hoodie",
-	// 		name: "Eat, Sleep, Code, Repeat - Hoodie",
-	// 		rating: 1.6,
-	// 		mrp: 986,
-	// 		price: 799,
-	// 		size: "2XL",
-	// 		variant: "Black",
-	// 	},
-	// 	{
-	// 		itemCode: 12334,
-	// 		qty: 1,
-	// 		img: "/t2.jpg",
-	// 		title: "Hoodi3e",
-	// 		name: "Hoodie",
-	// 		rating: 4.8,
-	// 		mrp: 986,
-	// 		price: 799,
-	// 		size: "2XL",
-	// 		variant: "Black",
-	// 	},
-	// 	{
-	// 		itemCode: 123314,
-	// 		qty: 1,
-	// 		img: "/t3.jpg",
-	// 		title: "Hoodie",
-	// 		name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
-	// 		rating: 3.5,
-	// 		mrp: 986,
-	// 		price: 7992,
-	// 		size: "2XL",
-	// 		variant: "Pink",
-	// 	},
-	// ];
 
 	return (
 		<section className="md:px-5 w-full mx-auto">
@@ -85,7 +23,7 @@ const Products = (props) => {
 								<div key={products[data]._id} className="px-3 py-[10px] my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card ">
 									<Link href={`/product/${products[data].slug}`} className="flex items-center card-product-out">
 										<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
-											<img className="transition-my object-cover hover:scale-110" src={products[data].img} alt={products[data].title} />
+											<img className="transition-my object-cover hover:scale-110 " src={products[data].img} alt={products[data].title} />
 										</div>
 									</Link>
 									<div className="text-start md:py-[10px] py-[5px] px-2 flex flex-col justify-start">
@@ -106,7 +44,7 @@ const Products = (props) => {
 									<button
 										type="button"
 										onClick={() => {
-											dispatch(addToCart(products[data].slug, 1, products[data].price, products[data].title, products[data].size, products[data].color, products[data].img));
+											dispatch(addToCart(products[data].slug, 1, products[data].price, products[data].title, products[data].size[0], products[data].color[0], products[data].img));
 											dispatch(saveCart());
 										}}
 										className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10 w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal"

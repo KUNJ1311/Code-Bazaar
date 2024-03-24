@@ -8,6 +8,7 @@ const handler = async (req, res) => {
 		if (item.title in tshirts) {
 			if (!tshirts[item.title].color.includes(item.color) && item.availableQty > 0) {
 				tshirts[item.title].color.push(item.color);
+				tshirts[item.title].colorCode.push(item.colorCode);
 			}
 			if (!tshirts[item.title].size.includes(item.size) && item.availableQty > 0) {
 				tshirts[item.title].size.push(item.size);
@@ -17,6 +18,7 @@ const handler = async (req, res) => {
 			if (item.availableQty > 0) {
 				tshirts[item.title].color = [item.color];
 				tshirts[item.title].size = [item.size];
+				tshirts[item.title].colorCode = [item.colorCode];
 			}
 		}
 	}

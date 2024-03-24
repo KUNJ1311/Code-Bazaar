@@ -1,18 +1,21 @@
-import NavbarMobile from "@/components/NavbarMobile";
 import StarRating from "@/components/Shop/StarRating";
 import { addToCart, saveCart } from "@/lib/actions/cartAction";
 import { useAppDispatch } from "@/lib/hooks";
+import Product from "@/models/Product";
+import mongoose from "mongoose";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Post = () => {
+const Post = (props) => {
+	const { product, variants } = props;
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const { slug } = router.query;
 	const [pin, setPin] = useState();
 	const [service, setService] = useState();
-	const [selectedColor, setSelectedColor] = useState("088178");
-	const [selectedSize, setSelectedSize] = useState("SM");
+
+	const [selectedColor, setSelectedColor] = useState(product.color);
+	const [selectedSize, setSelectedSize] = useState("");
 
 	const checkServiceability = async () => {
 		let pins = await fetch("http://localhost:3000/api/pincode");
@@ -28,17 +31,38 @@ const Post = () => {
 		setPin(e.target.value);
 	};
 
-	const handleColorButtonClick = (color) => {
+	const handleColorButtonClick = (color, e) => {
+		e.preventDefault();
 		setSelectedColor(color);
+		setSelectedSize("");
+	};
+
+	const handleSizeChange = (size, e) => {
+		e.preventDefault();
+		setSelectedSize(size);
+		const selectedVariant = variants[selectedColor].size[size];
+		if (selectedVariant) {
+			router.push({ pathname: router.pathname, query: { ...router.query, slug: selectedVariant.slug } });
+		}
 	};
 
 	const renderColorButtons = () => {
-		const colors = ["#088178", "#440cde", "#fff", "#e3e6f3"];
-
-		return colors.map((color, index) => <button type="button" key={index} className={`border-2 mr-2 border-gray-300 rounded-full w-7 h-7 ${selectedColor === color ? "ring-2 ring-gray-400" : ""} focus:outline-none`} style={{ background: color }} onClick={() => handleColorButtonClick(color)}></button>);
+		const colors = Object.keys(variants);
+		return colors.map((color, index) => <button type="button" key={index} className={`border-2 mr-2 border-gray-300 rounded-full w-7 h-7 ${selectedColor === color ? "ring-2 ring-gray-400" : ""} focus:outline-none`} style={{ background: variants[color].colorCode }} onClick={(e) => handleColorButtonClick(color, e)}></button>);
 	};
 
-	const sizeData = ["SM", "M", "L", "XL"];
+	const renderSizeButtons = () => {
+		const sizesForColor = variants[selectedColor]?.size || {};
+		const sizes = Object.keys(sizesForColor);
+
+		return sizes.map((size) => (
+			<label key={size}>
+				<input type="radio" name="size" value={size} className="peer sr-only cursor-pointer" checked={selectedSize === size} onChange={(e) => handleSizeChange(size, e)} />
+				<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-bold ${selectedSize === size ? "bg-primary text-white border-primary" : ""}`}>{size}</p>
+			</label>
+		));
+	};
+
 	return (
 		<>
 			<section className="sm:py-5">
@@ -89,21 +113,21 @@ const Post = () => {
 							</div>
 							{renderColorButtons()}
 							<h2 className="mt-2 text-lg font-medium text-gray-900">Size</h2>
-							<div className="mt-2 flex select-none flex-wrap items-center gap-1">
-								{sizeData.map((item) => (
-									<label key={item}>
-										<input type="radio" name="size" value={item} className="peer sr-only cursor-pointer" checked={selectedSize === item} onChange={() => setSelectedSize(item)} />
-										<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-bold ${selectedSize === item ? "bg-primary text-white border-primary" : ""}`}>{item}</p>
-									</label>
-								))}
-							</div>
+							<div className="mt-2 flex select-none flex-wrap items-center gap-1">{renderSizeButtons()}</div>
 
 							<div className="mt-8 flex items-center justify-between border-t border-b py-4 flex-row">
 								<div className="flex items-end">
 									<h1 className="sm:text-3xl text-2xl font-bold">₹6099</h1>
 								</div>
 
-								<button type="button" className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 py-3 text-center sm:text-lg text-base font-bold text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow">
+								<button
+									type="button"
+									className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 py-3 text-center sm:text-lg text-base font-bold text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow"
+									onClick={() => {
+										dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.img));
+										dispatch(saveCart());
+									}}
+								>
 									<svg xmlns="http://www.w3.org/2000/svg" className="shrink-0 mr-3 h-6 w-6" fill="none" viewBox="0 2 24 24" stroke="currentColor" strokeWidth="2">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
 									</svg>
@@ -153,5 +177,25 @@ const Post = () => {
 		</>
 	);
 };
+
+export async function getServerSideProps(context) {
+	if (!mongoose.connections[0].readyState) {
+		await mongoose.connect(process.env.MONGO_URI);
+	}
+	let product = await Product.findOne({ slug: context.query.slug });
+	let variants = await Product.find({ title: product.title });
+	let colorSizeSlug = {};
+
+	for (let item of variants) {
+		if (!colorSizeSlug[item.color]) {
+			colorSizeSlug[item.color] = { size: {}, colorCode: item.colorCode };
+		}
+
+		colorSizeSlug[item.color].size[item.size] = { slug: item.slug };
+	}
+	return {
+		props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) },
+	};
+}
 
 export default Post;
