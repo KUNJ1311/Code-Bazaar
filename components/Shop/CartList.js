@@ -1,6 +1,7 @@
 import { truncateText } from "../truncateText";
 import { addQuantity, addToCart, removeItem, saveCart, subtractQuantity, updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import Link from "next/link";
 
 const CartList = () => {
 	const dispatch = useAppDispatch();
@@ -34,9 +35,9 @@ const CartList = () => {
 								<div>
 									<div className="flex justify-between text-xs sm:text-sm md:text-base font-medium text-gray-900">
 										<h3>
-											<a href={`/product/${product.title}`} className="hover:text-primary multi-line-ellipsis">
-												{truncateText(product.title, 60)}
-											</a>
+											<Link href={`/product/${product.slug}`} className="hover:text-primary multi-line-ellipsis">
+												{product.title}
+											</Link>
 										</h3>
 										<p className="ml-4">₹{product.price}</p>
 									</div>
@@ -46,7 +47,7 @@ const CartList = () => {
 								</div>
 								<div className="flex flex-1 items-end justify-between text-xs md:text-sm mt-2">
 									<form className="max-w-xs mr-auto">
-										<label htmlFor="quantity-input" className="block mb-1 text-xs md:text-sm font-medium text-gray-600">
+										<label htmlFor={`quantity-input-${product.slug}`} className="block mb-1 text-xs md:text-sm font-medium text-gray-600">
 											Quantity:
 										</label>
 										<div className="relative flex items-center max-w-[7rem]">
@@ -55,7 +56,7 @@ const CartList = () => {
 													<path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
 												</svg>
 											</button>
-											<input value={product.qty} className="bg-gray-50 border border-x-0 border-gray-300 h-7 text-center text-gray-900 text-sm block w-full py-2.5 focus:outline-none cursor-default" readOnly />
+											<input id={`quantity-input-${product.slug}`} value={product.qty} className="bg-gray-50 border border-x-0 border-gray-300 h-7 text-center text-gray-900 text-sm block w-full py-2.5 focus:outline-none cursor-default" readOnly />
 											<button type="button" onClick={() => handleIncrement(product.slug)} className="flex justify-center items-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-7">
 												<svg className="w-2 h-2 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
 													<path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />

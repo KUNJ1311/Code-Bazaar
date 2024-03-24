@@ -15,8 +15,7 @@ const Post = (props) => {
 	const [service, setService] = useState();
 
 	const [selectedColor, setSelectedColor] = useState(product.color);
-	const [selectedSize, setSelectedSize] = useState("");
-
+	const [selectedSize, setSelectedSize] = useState();
 	const checkServiceability = async () => {
 		let pins = await fetch("http://localhost:3000/api/pincode");
 		let pinJson = await pins.json();
@@ -31,16 +30,42 @@ const Post = (props) => {
 		setPin(e.target.value);
 	};
 
-	const handleColorButtonClick = (color, e) => {
-		e.preventDefault();
+	// const handleColorButtonClick = (color) => {
+	// 	console.log(color);
+	// 	setSelectedColor(color);
+	// 	const defaultSize = Object.keys(variants[color]?.size || {})[0];
+	// 	handleSizeChange(defaultSize);
+	// 	console.log("click size:", defaultSize, selectedColor);
+	// };
+
+	useEffect(() => {
+		const defaultSize = Object.keys(variants[selectedColor]?.size || {})[0];
+		handleSizeChange(defaultSize);
+	}, []);
+
+	// const handleSizeChange = (size) => {
+	// 	setSelectedSize(size);
+	// 	const selectedVariant = variants[selectedColor].size[size];
+	// 	console.log("size:", variants[selectedColor].size, "color", selectedColor, size);
+	// 	if (selectedVariant) {
+	// 		router.push({ pathname: router.pathname, query: { ...router.query, slug: selectedVariant.slug } });
+	// 	}
+	// };
+
+	const handleColorButtonClick = (color) => {
 		setSelectedColor(color);
-		setSelectedSize("");
+		const defaultSize = Object.keys(variants[color]?.size || {})[0];
+		setSelectedSize(defaultSize);
+		updateData(color, defaultSize);
 	};
 
-	const handleSizeChange = (size, e) => {
-		e.preventDefault();
+	const handleSizeChange = (size) => {
 		setSelectedSize(size);
-		const selectedVariant = variants[selectedColor].size[size];
+		updateData(selectedColor, size);
+	};
+
+	const updateData = (color, size) => {
+		const selectedVariant = variants[color]?.size[size];
 		if (selectedVariant) {
 			router.push({ pathname: router.pathname, query: { ...router.query, slug: selectedVariant.slug } });
 		}
@@ -57,7 +82,7 @@ const Post = (props) => {
 
 		return sizes.map((size) => (
 			<label key={size}>
-				<input type="radio" name="size" value={size} className="peer sr-only cursor-pointer" checked={selectedSize === size} onChange={(e) => handleSizeChange(size, e)} />
+				<input type="radio" name="size" value={size} className="peer sr-only cursor-pointer" checked={selectedSize === size} onChange={() => handleSizeChange(size)} />
 				<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-bold ${selectedSize === size ? "bg-primary text-white border-primary" : ""}`}>{size}</p>
 			</label>
 		));
@@ -72,7 +97,7 @@ const Post = (props) => {
 							<div className="lg:flex lg:items-start justify-center">
 								<div className="lg:order-2 lg:ml-5 justify-center flex">
 									<div className="max-w-xl overflow-hidden rounded-lg">
-										<img className="h-full w-full max-w-full object-cover" src="/t2.jpg" alt="" />
+										<img className="h-full w-full max-w-full object-cover" src={product.img} alt="" />
 									</div>
 								</div>
 
@@ -97,7 +122,9 @@ const Post = (props) => {
 								<div className="flex flex-row">
 									<h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
 								</div>
-								<h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{slug}</h1>
+								<h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+									{product.title} ({product.size}/{product.color.charAt(0).toUpperCase() + product.color.slice(1)})
+								</h1>
 								<div className="flex items-center py-2">
 									<div className="flex items-center justify-center h-4">
 										<StarRating rating={3.5} Code={1341} />
@@ -107,7 +134,7 @@ const Post = (props) => {
 									</div>
 								</div>
 							</div>
-							<p className="leading-relaxed border-b py-4">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+							<p className="leading-relaxed border-b py-4">{product.desc}</p>
 							<div className="flex items-center mb-2">
 								<span className="mt-3 text-lg font-medium text-gray-900">Colors</span>
 							</div>

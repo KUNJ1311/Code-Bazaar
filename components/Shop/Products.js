@@ -22,14 +22,17 @@ const Products = (props) => {
 							Object.keys(products).map((data) => (
 								<div key={products[data]._id} className="px-3 py-[10px] my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card ">
 									<Link href={`/product/${products[data].slug}`} className="flex items-center card-product-out">
-										<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
+										{/* <div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
 											<img className="transition-my object-cover hover:scale-110 " src={products[data].img} alt={products[data].title} />
+										</div> */}
+										<div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img" style={{ position: "relative", width: "100%", paddingTop: "120%" }}>
+											<img className="absolute top-0 left-0 w-full h-full object-cover hover:scale-110 transition-my" src={products[data].img} alt={products[data].title} />
 										</div>
 									</Link>
 									<div className="text-start md:py-[10px] py-[5px] px-2 flex flex-col justify-start">
-										<h3 className="text-[#606063] lg:text-lg text-sm">{products[data].title}</h3>
+										<h3 className="text-[#606063] lg:text-lg text-sm">{products[data].category}</h3>
 										<Link href={`/product/${products[data].slug}`}>
-											<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base text-sm font-semibold cursor-pointer hover:text-primary multi-line-ellipsis">{truncateText(products[data].slug, 70)}</h5>
+											<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base text-sm font-semibold cursor-pointer hover:text-primary multi-line-ellipsis">{products[data].title}</h5>
 										</Link>
 										<div className="absolute sm:bottom-1 bottom-2">
 											<div className="flex items-center mt-1">
