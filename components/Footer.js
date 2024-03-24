@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 const Footer = () => {
 	return (
 		<footer className="relative bg-second pt-8 main-footer">
@@ -9,7 +8,7 @@ const Footer = () => {
 					<div className="w-full lg:w-6/12 px-4">
 						<h4 className="text-3xl fonat-semibold text-slate-700">Let&apos;s keep in touch!</h4>
 						<h5 className="text-lg mt-0 mb-2 text-slate-600">Find us on any of these platforms.</h5>
-						<div className="flex space-x-2 mt-6 lg:mb-0 mb-6">
+						<div className="flex space-x-2 mt-6 lg:mb-0 mb-6 flex-wrap">
 							<Link href={"/"}>
 								<button className="flex bg-white border border-slate-200 hover:scale-110 transition-my font-normal shadow-slate-400 shadow-md h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
 									<Image src="/instagram.svg" alt="" width={27} height={27} priority={false} />

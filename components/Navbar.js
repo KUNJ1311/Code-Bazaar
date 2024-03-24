@@ -100,7 +100,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className="z-50 sticky top-0 bg-second flex tracking-wide overflow-hidden">
+			<nav className="z-50 sticky top-0 bg-second flex tracking-wide overflow-hidden font-poppins">
 				<Link href="/">
 					<img className="sm:w-[248px] sm:h-[69px] w-[200px] h-[56px]" src="/logo.svg" alt="CodeBazaar" />
 				</Link>
@@ -109,19 +109,17 @@ const Navbar = () => {
 						<ul className={`flex relative right-0 top-0 h-full w-full border-none border-gray-300 border-b-2 border-l-2 bg-secon space-x-5 text-xl items-center justify-center flex-row pt-0 pl-0 transition-my`}>
 							{items.map((item, index) => (
 								<Link href={`${item.link}`} key={index} className="w-full h-full justify-center flex" onClick={hideCart}>
-									<li className={`flex cursor-pointer hover:text-primary nav-under before:bottom-[11px] relative transition-my space-x-2 items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
+									<li className={`flex cursor-pointer hover:text-primary nav-under before:bottom-[15px] relative transition-my space-x-2 items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
 										{item.icon}
 										<span>{item.name}</span>
 									</li>
 								</Link>
 							))}
-							<div type="button" onClick={toggleCart} className="flex nav-cart">
-								<ul className="flex items-center pr-5">
-									<li className={`flex cursor-pointer hover:text-primary nav-under relative transition-my space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
-										<BsCart3 className="relative text-2xl" />
-										<span className="cart_hide">Cart</span>
-									</li>
-								</ul>
+							<div type="button" onClick={toggleCart} className="flex nav-cart w-full h-full justify-center">
+								<li className={`mr-5 flex cursor-pointer hover:text-primary nav-under before:bottom-[15px] relative transition-my space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
+									<BsCart3 className="relative text-2xl" />
+									<span className="cart_hide">Cart</span>
+								</li>
 							</div>
 						</ul>
 					</div>

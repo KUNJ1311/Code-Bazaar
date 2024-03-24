@@ -43,7 +43,7 @@ const Cart = (props) => {
 							<>
 								<CartList />
 								<div className="border-t border-gray-200 px-4 py-6 sm:px-6 mt-8">
-									<div className="flex justify-between text-xs md:text-sm font-medium text-gray-900">
+									<div className="flex justify-between text-sm md:text-base font-medium text-gray-900 font-robot">
 										<p>Subtotal</p>
 										<p>₹{subTotal}</p>
 									</div>

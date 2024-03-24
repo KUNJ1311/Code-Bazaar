@@ -5,15 +5,14 @@ import Product from "@/models/Product";
 import mongoose from "mongoose";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Post = (props) => {
 	const { product, variants } = props;
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const { slug } = router.query;
 	const [pin, setPin] = useState();
 	const [service, setService] = useState();
-
 	const [selectedColor, setSelectedColor] = useState(product.color);
 	const [selectedSize, setSelectedSize] = useState();
 	const checkServiceability = async () => {
@@ -30,27 +29,10 @@ const Post = (props) => {
 		setPin(e.target.value);
 	};
 
-	// const handleColorButtonClick = (color) => {
-	// 	console.log(color);
-	// 	setSelectedColor(color);
-	// 	const defaultSize = Object.keys(variants[color]?.size || {})[0];
-	// 	handleSizeChange(defaultSize);
-	// 	console.log("click size:", defaultSize, selectedColor);
-	// };
-
 	useEffect(() => {
 		const defaultSize = Object.keys(variants[selectedColor]?.size || {})[0];
 		handleSizeChange(defaultSize);
 	}, []);
-
-	// const handleSizeChange = (size) => {
-	// 	setSelectedSize(size);
-	// 	const selectedVariant = variants[selectedColor].size[size];
-	// 	console.log("size:", variants[selectedColor].size, "color", selectedColor, size);
-	// 	if (selectedVariant) {
-	// 		router.push({ pathname: router.pathname, query: { ...router.query, slug: selectedVariant.slug } });
-	// 	}
-	// };
 
 	const handleColorButtonClick = (color) => {
 		setSelectedColor(color);
@@ -83,7 +65,7 @@ const Post = (props) => {
 		return sizes.map((size) => (
 			<label key={size}>
 				<input type="radio" name="size" value={size} className="peer sr-only cursor-pointer" checked={selectedSize === size} onChange={() => handleSizeChange(size)} />
-				<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-bold ${selectedSize === size ? "bg-primary text-white border-primary" : ""}`}>{size}</p>
+				<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-semibold text-lg ${selectedSize === size ? "bg-primary text-white border-primary" : ""}`}>{size}</p>
 			</label>
 		));
 	};
@@ -97,7 +79,7 @@ const Post = (props) => {
 							<div className="lg:flex lg:items-start justify-center">
 								<div className="lg:order-2 lg:ml-5 justify-center flex">
 									<div className="max-w-xl overflow-hidden rounded-lg">
-										<img className="h-full w-full max-w-full object-cover" src={product.img} alt="" />
+										<img className="h-full w-full max-w-full object-cover" src={product.img} alt={product.title} />
 									</div>
 								</div>
 
@@ -120,52 +102,52 @@ const Post = (props) => {
 						<div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
 							<div className="flex flex-col border-b">
 								<div className="flex flex-row">
-									<h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+									<h2 className="title-font text-gray-500 tracking-widest lg:text-base md:text-sm text-xs font-semibold">BRAND NAME</h2>
 								</div>
-								<h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+								<h1 className="text-base font-semibold text-gray-900 sm:text-lg md:text-xl lg:text-2xl">
 									{product.title} ({product.size}/{product.color.charAt(0).toUpperCase() + product.color.slice(1)})
 								</h1>
 								<div className="flex items-center py-2">
-									<div className="flex items-center justify-center h-4">
-										<StarRating rating={3.5} Code={1341} />
-										<div className="ml-2 flex h-4 items-center font-medium sm:text-base text-sm text-gray-500">
+									<div className="flex items-center justify-start h-4 flex-wrap">
+										<StarRating rating={parseFloat(product.rating.$numberDecimal).toFixed(1)} Code={product.slug} />
+										<div className="ml-2 flex h-4 items-center font-medium text-sm md:text-base text-gray-500">
 											<span>1,209 Reviews</span>
 										</div>
 									</div>
 								</div>
 							</div>
-							<p className="leading-relaxed border-b py-4">{product.desc}</p>
+							<p className="leading-relaxed lg:text-lg md:base text-sm border-b py-4">{product.desc}</p>
 							<div className="flex items-center mb-2">
-								<span className="mt-3 text-lg font-medium text-gray-900">Colors</span>
+								<span className="mt-3 md:lg text-base font-medium text-gray-900">Colors</span>
 							</div>
 							{renderColorButtons()}
-							<h2 className="mt-2 text-lg font-medium text-gray-900">Size</h2>
+							<h2 className="mt-2 md:lg text-base font-medium text-gray-900">Size</h2>
 							<div className="mt-2 flex select-none flex-wrap items-center gap-1">{renderSizeButtons()}</div>
 
 							<div className="mt-8 flex items-center justify-between border-t border-b py-4 flex-row">
 								<div className="flex items-end">
-									<h1 className="sm:text-3xl text-2xl font-bold">₹6099</h1>
+									<h1 className="lg:text-3xl md:text-2xl text-xl font-bold ">
+										<span className="font-sans">₹</span>6099
+									</h1>
 								</div>
 
 								<button
 									type="button"
-									className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 py-3 text-center sm:text-lg text-base font-bold text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow"
+									className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 sm:py-3 py-2 text-center md:text-lg sm:text-base text-sm font-medium text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow"
 									onClick={() => {
 										dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.img));
 										dispatch(saveCart());
 									}}
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" className="shrink-0 mr-3 h-6 w-6" fill="none" viewBox="0 2 24 24" stroke="currentColor" strokeWidth="2">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-									</svg>
+									<HiOutlineShoppingBag className="mr-2 mb-[2px] sm:h-6 sm:w-6 h-4 w-4 max-[300px]:hidden" />
 									Add to cart
 								</button>
 							</div>
 							<div className="flex flex-col">
-								<span className="text-base mt-4 mb-1">Check Availability At</span>
+								<span className="text-xs sm:text-sm md:text-base mt-4 mb-1">Check Availability At</span>
 								<div className="flex space-x-2 text-sm">
-									<input type="text" className="px-2 border-2 sm:w-[192px] w-[150px] border-gray-400 rounded-md text-base" placeholder="Enter Pincode" onChange={onChangePin} />
-									<button type="button" className="flex ml-auto text-white bg-primary border-0 py-2  sm:px-6 px-4 focus:outline-none hover:bg-primary-dark rounded text-base active:scale-95 shadow-slate-400 shadow-md active:shadow" onClick={checkServiceability}>
+									<input type="text" className="px-2 border-2 min-[350px]:w-[192px] w-full border-gray-400 rounded-md text-xs sm:text-sm md:text-base" placeholder="Enter Pincode" onChange={onChangePin} />
+									<button type="button" className="flex ml-auto text-white bg-primary border-0 py-2 sm:px-6 px-4 focus:outline-none hover:bg-primary-dark rounded text-xs sm:text-sm md:text-base active:scale-95 shadow-slate-400 shadow-md active:shadow" onClick={checkServiceability}>
 										Check
 									</button>
 								</div>

@@ -2,7 +2,6 @@ import { addToCart, saveCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import StarRating from "./StarRating";
-import { truncateText } from "../truncateText";
 
 const Products = (props) => {
 	const { products, title } = props;
@@ -30,17 +29,17 @@ const Products = (props) => {
 										</div>
 									</Link>
 									<div className="text-start md:py-[10px] py-[5px] px-2 flex flex-col justify-start">
-										<h3 className="text-[#606063] lg:text-lg text-sm">{products[data].category}</h3>
+										<h3 className="text-[#606063] lg:text-base text-sm font-semibold">Brand Name</h3>
 										<Link href={`/product/${products[data].slug}`}>
-											<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base text-sm font-semibold cursor-pointer hover:text-primary multi-line-ellipsis">{products[data].title}</h5>
+											<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base text-sm font-medium cursor-pointer hover:text-primary multi-line-ellipsis">{products[data].title}</h5>
 										</Link>
 										<div className="absolute sm:bottom-1 bottom-2">
-											<div className="flex items-center mt-1">
-												<StarRating rating={parseFloat(products[data].rating.$numberDecimal)} Code={products[data].slug} />
+											<div className="flex items-center mt-1 w-full h-full">
+												<StarRating rating={parseFloat(products[data].rating.$numberDecimal).toFixed(1)} Code={products[data].slug} />
 											</div>
 											<h4 className="space-x-2">
-												<del className="lg:text-lg text-sm font-semibold text-red-400">₹999</del>
-												<span className="lg:text-xl text-base font-bold text-primary">₹{products[data].price}</span>
+												<del className="lg:text-lg text-sm font-medium text-red-400">₹999</del>
+												<span className="lg:text-xl text-base font-semibold text-primary">₹{products[data].price}</span>
 											</h4>
 										</div>
 									</div>

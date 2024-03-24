@@ -2,6 +2,7 @@ import { truncateText } from "../truncateText";
 import { addQuantity, addToCart, removeItem, saveCart, subtractQuantity, updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
+import { HiOutlineTrash } from "react-icons/hi2";
 
 const CartList = () => {
 	const dispatch = useAppDispatch();
@@ -41,8 +42,8 @@ const CartList = () => {
 										</h3>
 										<p className="ml-4">₹{product.price}</p>
 									</div>
-									<p className="mt-1 text-xs font-normal md:text-sm text-gray-400">
-										{product.color} - {product.size}
+									<p className="mt-1 md:text-sm text-gray-500 text-xs font-medium">
+										{product.size} - {product.color.charAt(0).toUpperCase() + product.color.slice(1)}
 									</p>
 								</div>
 								<div className="flex flex-1 items-end justify-between text-xs md:text-sm mt-2">
@@ -64,15 +65,15 @@ const CartList = () => {
 											</button>
 										</div>
 									</form>
-									<div className="flex">
+									<div className="flex mb-1">
 										<button
 											type="button"
-											className="text-xs md:text-sm font-medium text-primary hover:text-red-500"
+											className="text-xl md:text-2xl text-primary hover:text-red-500"
 											onClick={() => {
 												handleRemove(product.slug);
 											}}
 										>
-											Remove
+											<HiOutlineTrash />
 										</button>
 									</div>
 								</div>

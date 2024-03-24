@@ -14,7 +14,7 @@ module.exports = {
 				second: "#e3e6f3",
 			},
 			fontFamily: {
-				spartan: ["League Spartan", "sans-serif"],
+				poppins: ["Poppins", "sans-serif"],
 			},
 		},
 	},

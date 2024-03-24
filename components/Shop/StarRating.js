@@ -29,7 +29,7 @@ const StarRating = ({ rating, Code }) => {
 
 			stars.push(
 				<div key={i} className={`w-4 h-5 flex text-primary items-center justify-center`}>
-					<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-5" viewBox="0 3 24 24">
+					<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-5" viewBox="0 1 24 24">
 						<defs>
 							<linearGradient id={`starGradient${i}${Code}`}>{gradientStops}</linearGradient>
 						</defs>

@@ -8,7 +8,7 @@ const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
 
 	return (
-		<>
+		<div className="">
 			{cart.length == 0 ? (
 				<>
 					<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
@@ -31,15 +31,15 @@ const Checkout = () => {
 				<>
 					<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
 						<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
-							<p className="text-xl font-medium padding-add">Order Summary</p>
-							<p className="text-gray-400 padding-add">Review Cart Items</p>
+							<p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium padding-add">Order Summary</p>
+							<p className="text-xs md:text-sm lg:text-base text-gray-500 padding-add">Review Cart Items</p>
 							<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 pb-6">
 								<CartList />
 							</div>
 						</div>
 						<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10 mb-8">
-							<p className="text-xl font-medium">Delivery Details</p>
-							<p className="text-gray-400">Complete your order by providing your delivery details.</p>
+							<p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium">Delivery Details</p>
+							<p className="text-sm md:text-base text-gray-500">Complete your order by providing your delivery details.</p>
 							<div className="">
 								<label htmlFor="email" className="mt-4 mb-2 block text-sm font-medium">
 									Email
@@ -115,7 +115,7 @@ const Checkout = () => {
 					</div>
 				</>
 			)}
-		</>
+		</div>
 	);
 };
 
