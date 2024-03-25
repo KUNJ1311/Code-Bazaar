@@ -67,14 +67,14 @@ const Order = () => {
 
 	return (
 		<>
-			<div className="flex justify-start items-center space-y-2 flex-col mt-4">
-				<h1 className="text-2xl lg:text-3xl font-semibold leading-7 lg:leading-9  text-gray-800">Order #13432</h1>
+			<div className="flex justify-start items-center space-y-2 flex-col mt-4 font-poppins">
+				<h1 className="text-2xl lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Order #13432</h1>
 				<p className="text-sm font-medium leading-6 text-gray-600">21st Mart 2021 at 10:34 PM</p>
 			</div>
-			<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+			<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 font-poppins">
 				<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
 					<p className="text-xl font-medium padding-add">Order Summary</p>
-					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6">
+					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 ">
 						<div className="mt-8">
 							<div className="flow-root">
 								<ul role="list" className="-my-6 divide-y divide-gray-200 pb-5">

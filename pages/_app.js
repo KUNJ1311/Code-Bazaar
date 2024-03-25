@@ -7,9 +7,7 @@ export default function App({ Component, pageProps }) {
 	return (
 		<StoreProvider>
 			<Navbar />
-			<div className="font-poppins">
-				<Component {...pageProps} />
-			</div>
+			<Component {...pageProps} />
 			<Footer />
 		</StoreProvider>
 	);

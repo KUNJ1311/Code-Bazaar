@@ -7,7 +7,7 @@ const Tshirts = (props) => {
 	return (
 		<>
 			<ProductCarousel />
-			<Products title={"Tshirts"} products={props.products} />
+			<Products title={"T-Shirts"} products={props.products} />
 		</>
 	);
 };

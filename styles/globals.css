@@ -84,9 +84,10 @@
 	transition: all 0.3s cubic-bezier(0.3, 0, 0.3, 1);
 }
 
+.nav-name:hover .nav-under::before,
 .nav-under:hover::before,
 .nav-active::before {
-	width: 70%;
+	width: 100%;
 }
 
 .shadow_box {

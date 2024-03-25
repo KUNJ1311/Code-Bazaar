@@ -17,8 +17,27 @@ export async function getServerSideProps(context) {
 		await mongoose.connect(process.env.MONGO_URI);
 	}
 	let products = await Product.find({ category: "mug" });
+	let mugs = {};
+	for (let item of products) {
+		if (item.title in mugs) {
+			if (!mugs[item.title].color.includes(item.color) && item.availableQty > 0) {
+				mugs[item.title].color.push(item.color);
+				mugs[item.title].colorCode.push(item.colorCode);
+			}
+			if (!mugs[item.title].size.includes(item.size) && item.availableQty > 0) {
+				mugs[item.title].size.push(item.size);
+			}
+		} else {
+			mugs[item.title] = JSON.parse(JSON.stringify(item));
+			if (item.availableQty > 0) {
+				mugs[item.title].color = [item.color];
+				mugs[item.title].size = [item.size];
+				mugs[item.title].colorCode = [item.colorCode];
+			}
+		}
+	}
 	return {
-		props: { products: JSON.parse(JSON.stringify(products)) },
+		props: { products: mugs },
 	};
 }
 

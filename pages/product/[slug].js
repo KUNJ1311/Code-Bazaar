@@ -5,7 +5,6 @@ import Product from "@/models/Product";
 import mongoose from "mongoose";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Post = (props) => {
 	const { product, variants } = props;
@@ -13,8 +12,8 @@ const Post = (props) => {
 	const dispatch = useAppDispatch();
 	const [pin, setPin] = useState();
 	const [service, setService] = useState();
-	const [selectedColor, setSelectedColor] = useState(product.color);
-	const [selectedSize, setSelectedSize] = useState();
+	const [selectedColor, setSelectedColor] = useState("");
+	const [selectedSize, setSelectedSize] = useState("");
 	const checkServiceability = async () => {
 		let pins = await fetch("http://localhost:3000/api/pincode");
 		let pinJson = await pins.json();
@@ -30,9 +29,9 @@ const Post = (props) => {
 	};
 
 	useEffect(() => {
-		const defaultSize = Object.keys(variants[selectedColor]?.size || {})[0];
-		handleSizeChange(defaultSize);
-	}, []);
+		setSelectedColor(product.color);
+		setSelectedSize(product.size);
+	}, [product]);
 
 	const handleColorButtonClick = (color) => {
 		setSelectedColor(color);
@@ -43,7 +42,9 @@ const Post = (props) => {
 
 	const handleSizeChange = (size) => {
 		setSelectedSize(size);
-		updateData(selectedColor, size);
+		if (selectedColor) {
+			updateData(selectedColor, size);
+		}
 	};
 
 	const updateData = (color, size) => {
@@ -72,13 +73,13 @@ const Post = (props) => {
 
 	return (
 		<>
-			<section className="sm:py-5">
+			<section className="sm:py-5 font-poppins">
 				<div className="container mx-auto px-4">
 					<div className="lg:col-gap-12 xl:col-gap-16 mt-6 grid grid-cols-1 md:gap-5 sm:gap-9 gap-4 lg:mt-12 lg:grid-cols-5 lg:gap-12">
 						<div className="lg:col-span-3 lg:row-end-1">
 							<div className="lg:flex lg:items-start justify-center">
 								<div className="lg:order-2 lg:ml-5 justify-center flex">
-									<div className="max-w-xl overflow-hidden rounded-lg">
+									<div className="max-w-md overflow-hidden rounded-lg">
 										<img className="h-full w-full max-w-full object-cover" src={product.img} alt={product.title} />
 									</div>
 								</div>
@@ -99,7 +100,7 @@ const Post = (props) => {
 							</div>
 						</div>
 
-						<div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
+						<div className="lg:col-span-4 lg:row-span-2 lg:row-end-2">
 							<div className="flex flex-col border-b">
 								<div className="flex flex-row">
 									<h2 className="title-font text-gray-500 tracking-widest lg:text-base md:text-sm text-xs font-semibold">BRAND NAME</h2>
@@ -126,9 +127,7 @@ const Post = (props) => {
 
 							<div className="mt-8 flex items-center justify-between border-t border-b py-4 flex-row">
 								<div className="flex items-end">
-									<h1 className="lg:text-3xl md:text-2xl text-xl font-bold ">
-										<span className="font-sans">₹</span>6099
-									</h1>
+									<h1 className="lg:text-3xl md:text-2xl text-xl font-bold ">₹6099</h1>
 								</div>
 
 								<button
@@ -139,7 +138,6 @@ const Post = (props) => {
 										dispatch(saveCart());
 									}}
 								>
-									<HiOutlineShoppingBag className="mr-2 mb-[2px] sm:h-6 sm:w-6 h-4 w-4 max-[300px]:hidden" />
 									Add to cart
 								</button>
 							</div>

@@ -9,12 +9,12 @@ const Products = (props) => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
 
 	return (
-		<section className="md:px-5 w-full mx-auto">
+		<section className="md:px-5 w-full mx-auto font-poppins">
 			<div className="lg:container flex flex-wrap w-full mb-4 mx-auto">
 				<div className="w-full">
 					<div className="md:pl-12 pl-6 flex md:text-3xl text-2xl font-normal text-gray-900 justify-startr text-start mb-2 mt-2 md:mt-5 md:mb-5 relative">
 						<h1 className="m-1">{title}</h1>
-						<span className="absolute md:top-10 top-9 w-32 h-1 bg-primary border rounded-xl border-transparent"></span>
+						<span className="absolute md:top-11 top-10 w-32 h-1 bg-primary border rounded-xl border-transparent"></span>
 					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
 						{products &&

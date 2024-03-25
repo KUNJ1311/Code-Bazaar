@@ -109,16 +109,16 @@ const Navbar = () => {
 						<ul className={`flex relative right-0 top-0 h-full w-full border-none border-gray-300 border-b-2 border-l-2 bg-secon space-x-5 text-xl items-center justify-center flex-row pt-0 pl-0 transition-my`}>
 							{items.map((item, index) => (
 								<Link href={`${item.link}`} key={index} className="w-full h-full justify-center flex" onClick={hideCart}>
-									<li className={`flex cursor-pointer hover:text-primary nav-under before:bottom-[15px] relative transition-my space-x-2 items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
+									<li className={`nav-name flex cursor-pointer transition-my hover:text-primary space-x-2 items-center justify-center ${active === index ? "nav-active text-primary" : ""}`}>
 										{item.icon}
-										<span>{item.name}</span>
+										<span className={`nav-under before:-bottom-[4px] relative ${active === index ? "nav-active text-primary" : ""}`}>{item.name}</span>
 									</li>
 								</Link>
 							))}
 							<div type="button" onClick={toggleCart} className="flex nav-cart w-full h-full justify-center">
-								<li className={`mr-5 flex cursor-pointer hover:text-primary nav-under before:bottom-[15px] relative transition-my space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
+								<li className={`nav-name mr-5 flex cursor-pointer hover:text-primary relative transition-my space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
 									<BsCart3 className="relative text-2xl" />
-									<span className="cart_hide">Cart</span>
+									<span className={`nav-under before:-bottom-[4px] relative cart_hide ${active === 3 ? "nav-active text-primary" : ""}`}>Cart</span>
 								</li>
 							</div>
 						</ul>
