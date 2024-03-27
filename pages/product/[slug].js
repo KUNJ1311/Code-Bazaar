@@ -149,8 +149,8 @@ const Post = (props) => {
 										Check
 									</button>
 								</div>
-								{!service && service != null && <div className="text-red-700 text-sm mt-2">Sorry! We do not deliver to this pincode yet</div>}
-								{service && service != null && <div className="text-green-700 text-sm mt-2">Yay! This pincode is serviceable</div>}
+								{!service && service != null && <div className="text-red-700 font-semibold text-sm mt-2">Sorry! We do not deliver to this pincode yet</div>}
+								{service && service != null && <div className="text-primary-dark font-semibold text-sm mt-2">Yay! This pincode is serviceable</div>}
 							</div>
 						</div>
 					</div>

@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HiOutlineHome, HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi2";
 import { useRouter } from "next/router";
 import Cart from "./Shop/Cart";
 import { updateCart } from "@/lib/actions/cartAction";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { BsCart3 } from "react-icons/bs";
 
 const Navbar = () => {
 	const ref = useRef();
 	const router = useRouter();
 	const dispatch = useAppDispatch();
+	const { totalQty } = useAppSelector((state) => state.cart);
 	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
@@ -23,7 +24,7 @@ const Navbar = () => {
 			console.error(error);
 			localStorage.clear();
 		}
-	});
+	}, [dispatch]);
 
 	const items = [
 		{
@@ -117,6 +118,7 @@ const Navbar = () => {
 							))}
 							<div type="button" onClick={toggleCart} className="flex nav-cart w-full h-full justify-center">
 								<li className={`nav-name mr-5 flex cursor-pointer hover:text-primary relative transition-my space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
+									<div className="absolute z-20 left-5 top-3 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-primary-dark rounded-full">{totalQty}</div>
 									<BsCart3 className="relative text-2xl" />
 									<span className={`nav-under before:-bottom-[4px] relative cart_hide ${active === 3 ? "nav-active text-primary" : ""}`}>Cart</span>
 								</li>
@@ -141,6 +143,7 @@ const Navbar = () => {
 										<li className={`relative flex list-none w-14 h-14 z-1 justify-center items-center ${active === 3 ? "nav-mobile-active" : ""}`} onClick={toggleCart}>
 											<button type="button" className="relative flex justify-center items-center flex-col text-center font-medium">
 												<span className="mobile-icon relative text-[1.5em] text-center block z-20">
+													<div className="absolute z-20 left-3 -top-2 inline-flex items-center justify-center w-[17px] h-[17px] text-[10px] font-bold text-white bg-primary-dark rounded-full">{totalQty}</div>
 													<BsCart3 className="relative text-2xl" />
 												</span>
 												<span className="mobile-text absolute font-normal text-sm z-20">Cart</span>

@@ -8,8 +8,7 @@ const OrderSchema = new mongoose.Schema(
 		amount: { type: Number, requied: true },
 		status: { type: Number, default: "Pending", requied: true },
 	},
-	{ timesstamps: true }
+	{ timestamps: true }
 );
 
-mongoose.models = {};
-export default mongoose.model("Order", OrderSchema);
+export default mongoose.models.Order || mongoose.model("Order", OrderSchema);

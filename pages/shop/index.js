@@ -5,7 +5,8 @@ const index = () => {
 	return (
 		<>
 			<ProductCarousel />
-			<Products title={"Popular Products"} />
+			{/* // TODO: ADD Popular products or change design like amazon using grid */}
+			<Products title={"Popular Products (todo: make design)"} products={""} />
 		</>
 	);
 };

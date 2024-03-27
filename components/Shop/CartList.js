@@ -1,4 +1,3 @@
-import { truncateText } from "../truncateText";
 import { addQuantity, addToCart, removeItem, saveCart, subtractQuantity, updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";

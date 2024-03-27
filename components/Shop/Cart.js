@@ -12,7 +12,7 @@ const Cart = (props) => {
 				<div className="flex h-full flex-col">
 					<div className="flex-1 md:rounded-bl-2xl px-4 py-6 sm:px-6 md:pl-4 lg:pl-5 border-gray-300 border-b-2 border-l-2 bg-white overflow-y-auto overflow-x-hidden scroller remove-scrollbar footer-mobile">
 						<div className="flex items-start justify-between">
-							<div className="text-lg font-medium text-gray-900">Shopping cart</div>
+							<div className="text-lg font-medium text-gray-900">Shopping Cart</div>
 							<div className="ml-3 flex h-7 items-center">
 								<button type="button" className="relative -m-2 p-2 text-gray-400 hover:text-gray-500" onClick={props.toggleCart}>
 									<span className="absolute -inset-0.5" />
@@ -27,8 +27,8 @@ const Cart = (props) => {
 									<div className="pt-7 pb-5 flex justify-center">
 										<img src="/cart.svg" className="w-44 h-44" alt="Empty Cart" />
 									</div>
-									<span className="text-center text-2xl text-red-800 font-bold font-spartan">OOPS!</span>
-									<span className="text-center text-xl text-black font-bold font-spartan mt-1">Your Cart Is Empty...</span>
+									<span className="text-center text-2xl text-red-700 font-medium font-spartan">OOPS!</span>
+									<span className="text-center text-xl text-black font-medium font-spartan mt-1">Your Cart Is Empty...</span>
 								</div>
 								<div className="pt-5 flex justify-center text-center text-xs md:text-sm text-gray-500">
 									<p>

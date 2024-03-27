@@ -56,51 +56,6 @@ const ProductCarousel = () => {
 			link: "/shop/mugs",
 			name: "Mugs",
 		},
-		{
-			img: "/tshirts.jpg",
-			link: "/shop/tshirts",
-			name: "T-Shirts",
-		},
-		{
-			img: "/tshirts.jpg",
-			link: "/shop/tshirts",
-			name: "T-Shirts",
-		},
-		{
-			img: "/hoodie.jpg",
-			link: "/shop/hoodies",
-			name: "Hoodies",
-		},
-		{
-			img: "/mugs.jpg",
-			link: "/shop/mugs",
-			name: "Mugs",
-		},
-		{
-			img: "/mugs.jpg",
-			link: "/shop/mugs",
-			name: "Mugs",
-		},
-		{
-			img: "/tshirts.jpg",
-			link: "/shop/tshirts",
-			name: "T-Shirts",
-		},
-		{
-			img: "/tshirts.jpg",
-			link: "/shop/tshirts",
-			name: "T-Shirts",
-		},
-		{
-			img: "/hoodie.jpg",
-			link: "/shop/hoodies",
-			name: "Hoodies",
-		},
-		{
-			img: "/mugs.jpg",
-			link: "/shop/mugs",
-			name: "Mugs",
-		},
 	];
 	return (
 		<>
@@ -126,7 +81,7 @@ const ProductCarousel = () => {
 						</button>
 					</div>
 
-					<div ref={carousel} className="relative flex lg:gap-5 gap-3 lg:py-4 py-4 overflow-auto no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x">
+					<div ref={carousel} className="relative flex lg:gap-5 gap-3 px-2 lg:py-4 py-4 overflow-auto no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x">
 						{data.map((data, index) => (
 							<div key={index} className="relative lg:w-32 w-24 lg:h-32 h-24 rounded-full">
 								<Link href={data.link}>

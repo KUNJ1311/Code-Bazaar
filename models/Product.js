@@ -14,7 +14,7 @@ const ProductSchema = new mongoose.Schema(
 		rating: { type: mongoose.Types.Decimal128, required: true },
 		colorCode: { type: String, required: true },
 	},
-	{ timesstamps: true }
+	{ timestamps: true }
 );
-mongoose.models = {};
-export default mongoose.model("Product", ProductSchema);
+
+export default mongoose.models.Product || mongoose.model("Product", ProductSchema);

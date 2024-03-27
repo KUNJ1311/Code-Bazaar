@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
 	return (
@@ -9,7 +9,7 @@ const Login = () => {
 					<div className="flex items-center max-[500px]:min-w-[350px] max-[360px]:min-w-[300px] max-[300px]:min-w-[230px] min-w-[500px]">
 						<form className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl">
 							<h3 className="mb-3 text-4xl font-bold text-slate-900">Sign In</h3>
-							<a className="flex items-center justify-center w-full py-4 my-6 text-base font-medium transition duration-300 rounded-2xl text-slate-900 bg-slate-100 hover:bg-slate-200 focus:ring-4 focus:ring-slate-200 cursor-pointer">
+							{/* <a className="flex items-center justify-center w-full py-4 my-6 text-base font-medium transition duration-300 rounded-2xl text-slate-900 bg-slate-100 hover:bg-slate-200 focus:ring-4 focus:ring-slate-200 cursor-pointer">
 								<FcGoogle className="mr-2 h-6 w-6" />
 								Sign In with Google
 							</a>
@@ -17,7 +17,7 @@ const Login = () => {
 								<hr className="h-0 border-b border-solid border-gray-500 grow" />
 								<p className="mx-4 text-gray-600">or</p>
 								<hr className="h-0 border-b border-solid border-gray-500 grow" />
-							</div>
+							</div> */}
 							<label htmlFor="email" className="mb-2 text-base text-start text-slate-900">
 								Email
 							</label>

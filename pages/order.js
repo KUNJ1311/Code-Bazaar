@@ -1,4 +1,3 @@
-import { truncateText } from "@/components/truncateText";
 import Link from "next/link";
 
 const Order = () => {
@@ -56,7 +55,7 @@ const Order = () => {
 			qty: 1,
 			img: "/t3.jpg",
 			title: "Hoodie",
-			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
+			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeee eeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
 			rating: 3.5,
 			mrp: 986,
 			price: 7992,
@@ -80,16 +79,16 @@ const Order = () => {
 								<ul role="list" className="-my-6 divide-y divide-gray-200 pb-5">
 									{cart?.map((product) => (
 										<li key={product.itemCode} className="flex py-6">
-											<div className="w-20 h-20 sm:h-28 sm:w-28 lg:w-32 lg:h-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 cart-img-small">
+											<div className="h-[85px] w-[85px] cart-img-small sm:h-24 sm:w-24 md:h-30 md:w-30 lg:w-32 lg:h-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 												<img src={product.imageSrc} alt={product.name} className="h-full w-full object-cover object-center" />
 											</div>
 
-											<div className="ml-4 flex flex-1 flex-col justify-between">
+											<div className="ml-4 flex flex-1 flex-col">
 												<div>
 													<div className="flex justify-between text-xs sm:text-sm md:text-base font-medium text-gray-900">
 														<h3>
 															<a href={`/product/${product.name}`} className="hover:text-primary multi-line-ellipsis">
-																{truncateText(product.name, 60)}
+																{product.name}
 															</a>
 														</h3>
 														<p className="ml-4">₹{product.price}</p>
