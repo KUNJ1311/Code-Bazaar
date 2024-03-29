@@ -20,12 +20,15 @@ const Signup = () => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 	return (
-		<div className=" flex flex-col mx-auto bg-white rounded-lg pt-2">
-			<div className="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
-				<div className="flex items-center justify-center w-full lg:p-10 pt-10 px-4">
-					<div className="flex items-center max-[500px]:min-w-[350px] max-[360px]:min-w-[300px] max-[300px]:min-w-[230px] min-w-[500px]">
+		<div className=" flex flex-col mx-auto bg-white rounded-lg font-poppins">
+			<div className="text-[#333] bg-white flex items-start justify-center py-12">
+				<div className="sm:shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] w-full sm:w-11/12 max-w-4xl rounded-md p-6">
+					<div className="grid md:grid-cols-2 items-center md:gap-8">
+						<div className="max-md:order-1">
+							<img src="/shop.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
+						</div>
 						<form onSubmit={handleSubmit} className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl">
-							<h3 className="mb-3 text-4xl font-bold text-slate-900">Sign Up</h3>
+							<h3 className="mb-3 text-4xl font-bold text-primary">Sign Up</h3>
 							{/* <a className="flex items-center justify-center w-full py-4 my-6 text-base font-medium transition duration-300 rounded-2xl text-slate-900 bg-slate-100 hover:bg-slate-200 focus:ring-4 focus:ring-slate-200 cursor-pointer">
 								<FcGoogle className="mr-2 h-6 w-6" />
 								Sign Up with Google
@@ -47,11 +50,11 @@ const Signup = () => {
 								Password
 							</label>
 							<input onChange={onChange} name="password" id="password" type="password" placeholder="Enter a password" className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-base font-normal outline-none focus:bg-slate-200 placeholder:text-slate-500 bg-slate-100 text-slate-900 rounded-2xl" />
-							<button className="w-full px-6 py-5 mb-5 text-base font-semibold leading-none text-white transition duration-300 rounded-2xl hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-100 bg-indigo-600">Sign Up</button>
+							<button className="w-full px-6 py-5 mb-5 text-base font-semibold leading-none text-white transition duration-300 rounded-2xl hover:bg-primary-dark focus:ring-4 focus:ring-primary-light bg-primary">Sign Up</button>
 							<p className="text-base leading-relaxed text-slate-900">
 								Already have an account?{" "}
-								<Link href="/login" className="font-semibold text-indigo-500">
-									Sign In
+								<Link href="/login" className="font-semibold text-primary">
+									Log In
 								</Link>
 							</p>
 						</form>

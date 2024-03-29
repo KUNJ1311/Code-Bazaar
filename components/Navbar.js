@@ -55,7 +55,7 @@ const Navbar = () => {
 			setActive(0);
 		} else if (pathname.startsWith("/shop")) {
 			setActive(1);
-		} else if (pathname === "/login") {
+		} else if (pathname === "/account") {
 			setActive(2);
 		} else {
 			setActive();
