@@ -2,6 +2,7 @@ import { addToCart, saveCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import StarRating from "./StarRating";
+import { toast } from "react-toastify";
 
 const Products = (props) => {
 	const { products, title } = props;
@@ -17,7 +18,7 @@ const Products = (props) => {
 						<span className="absolute md:top-11 top-10 w-32 h-1 bg-primary border rounded-xl border-transparent"></span>
 					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
-						{products && Object.keys(products).length === 0 && <img className="rounded-3xl" src="/outstock.jpg" alt="Out of Stock" />}
+						<div className="max-w-2xl p-4">{products && Object.keys(products).length === 0 && <img className="rounded-3xl border border-indigo-200" src="/outstock.jpg" alt="Out of Stock" />}</div>
 						{products &&
 							Object.keys(products).map((data) => (
 								<div key={products[data]._id} className="px-3 py-[10px] my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card ">
@@ -49,6 +50,13 @@ const Products = (props) => {
 										onClick={() => {
 											dispatch(addToCart(products[data].slug, 1, products[data].price, products[data].title, products[data].size[0], products[data].color[0], products[data].img));
 											dispatch(saveCart());
+											toast.success(
+												<>
+													<span className="line-clamp-1 text-gray-900 lg:text-base text-sm font-medium">{products[data].title}</span>
+													<span className="text-gray-900 lg:text-base text-sm font-medium">Added to your cart.</span>
+												</>,
+												{ autoClose: 4000 }
+											);
 										}}
 										className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10 w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal"
 									>

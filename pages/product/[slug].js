@@ -5,6 +5,7 @@ import Product from "@/models/Product";
 import mongoose from "mongoose";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Post = (props) => {
 	const { product, variants } = props;
@@ -15,11 +16,13 @@ const Post = (props) => {
 	const [selectedColor, setSelectedColor] = useState("");
 	const [selectedSize, setSelectedSize] = useState("");
 	const checkServiceability = async () => {
-		let pins = await fetch("http://localhost:3000/api/pincode");
+		let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
 		let pinJson = await pins.json();
 		if (pinJson.includes(parseInt(pin))) {
+			toast.success(<span className="text-gray-900 lg:text-base text-sm font-medium">Yay! This pincode is serviceable</span>);
 			setService(true);
 		} else {
+			toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">Sorry! We do not deliver to this pincode yet</span>);
 			setService(false);
 		}
 	};
@@ -136,6 +139,13 @@ const Post = (props) => {
 									onClick={() => {
 										dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.img));
 										dispatch(saveCart());
+										toast.success(
+											<>
+												<span className="line-clamp-1 text-gray-900 lg:text-base text-sm font-medium">{product.title}</span>
+												<span className="text-gray-900 lg:text-base text-sm font-medium">Added to your cart.</span>
+											</>,
+											{ autoClose: 4000 }
+										);
 									}}
 								>
 									Add to cart

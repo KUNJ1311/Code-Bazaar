@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-toastify";
 // import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
@@ -7,7 +8,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { name, email, password } = credentials;
-		const response = await fetch(`http://localhost:3000/api/signup`, {
+		const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -15,6 +16,11 @@ const Signup = () => {
 			body: JSON.stringify({ name, email, password }),
 		});
 		const json = await response.json();
+		if (json.success) {
+			toast.success(<span className="text-gray-900 lg:text-base text-sm font-medium">Your account has been created successfully.</span>);
+		} else {
+			toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">User already exists!</span>);
+		}
 	};
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });

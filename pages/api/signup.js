@@ -1,13 +1,15 @@
 import User from "@/models/User";
 import connectDb from "@/middleware/mongoose";
+import CryptoJS from "crypto-js";
 
 const handler = async (req, res) => {
 	if (req.method == "POST") {
-		let u = new User(req.body);
+		const { name, email } = req.body;
+		let u = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password, process.env.SECRET).toString() });
 		await u.save();
-		res.status(200).json({ success: "success" });
+		res.status(200).json({ success: true });
 	} else {
-		res.status(405).json({ error: "This method is not allowed" });
+		res.status(405).json({ success: false, error: "This method is not allowed" });
 	}
 };
 

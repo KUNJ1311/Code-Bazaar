@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-// import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const Login = () => {
 	const router = useRouter();
@@ -9,7 +9,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { email, password } = credentials;
-		const response = await fetch(`http://localhost:3000/api/login`, {
+		const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -18,7 +18,9 @@ const Login = () => {
 		});
 		const json = await response.json();
 		if (json.success) {
-			router.push("http://localhost:3000/account");
+			router.push(`${process.env.NEXT_PUBLIC_HOST}/account`);
+		} else {
+			toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">Wrong credentials. Try again...</span>);
 		}
 	};
 	const onChange = (e) => {

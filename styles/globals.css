@@ -8,6 +8,11 @@
 	user-select: none;
 }
 
+:root {
+	--toastify-text-color-light: #111827 !important;
+	--toastify-font-family: "Poppins", "sans-serif" !important;
+}
+
 .multi-line-ellipsis {
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
