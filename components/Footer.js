@@ -1,32 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
+
 const Footer = () => {
 	return (
 		<footer className="relative bg-second pt-8 main-footer">
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap text-left lg:text-left">
 					<div className="w-full lg:w-6/12 px-4">
-						<h4 className="text-3xl fonat-semibold text-slate-700">Let&apos;s keep in touch!</h4>
-						<h5 className="text-lg mt-0 mb-2 text-slate-600">Find us on any of these platforms.</h5>
+						<h4 className="lg:text-3xl md:text-2xl text-xl fonat-semibold text-slate-700">Let&apos;s keep in touch!</h4>
+						<h5 className="lg:text-lg md:text-base text-sm mt-0 mb-2 text-slate-600">Find us on any of these platforms.</h5>
 						<div className="flex space-x-2 mt-6 lg:mb-0 mb-6 flex-wrap">
 							<Link href={"/"}>
 								<button className="flex bg-white border border-slate-200 hover:scale-110 transition-my font-normal shadow-slate-400 shadow-md h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-									<Image src="/instagram.svg" alt="" width={27} height={27} priority={false} />
+									<Image src="/assets/instagram.svg" alt="" width={27} height={27} priority={false} />
 								</button>
 							</Link>
 							<Link href={"/"}>
 								<button className="flex bg-white border border-slate-200 hover:scale-110 transition-my font-normal shadow-slate-400 shadow-md h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-									<Image src="/twitter.svg" alt="" width={27} height={27} priority={false} />
+									<Image src="/assets/twitter.svg" alt="" width={27} height={27} priority={false} />
 								</button>
 							</Link>
 							<Link href={"/"}>
 								<button className="flex bg-white border border-slate-200 hover:scale-110 transition-my font-normal shadow-slate-400 shadow-md h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-									<Image src="/facebook.svg" alt="" width={27} height={27} priority={false} />
+									<Image src="/assets/facebook.svg" alt="" width={27} height={27} priority={false} />
 								</button>
 							</Link>
 							<Link href={"/"}>
 								<button className="flex bg-white border border-slate-200 hover:scale-110 transition-my font-normal shadow-slate-400 shadow-md h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-									<Image src="/linkedin.svg" alt="" width={27} height={27} priority={false} />
+									<Image src="/assets/linkedin.svg" alt="" width={27} height={27} priority={false} />
 								</button>
 							</Link>
 						</div>

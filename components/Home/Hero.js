@@ -1,4 +1,3 @@
-import React from "react";
 import Typing from "./Typing";
 import Link from "next/link";
 const Hero = () => {
@@ -12,11 +11,11 @@ const Hero = () => {
 				</h1>
 				<p className="text-lg md:text-xl font-normal md:font-medium text-gray-500 pb-3">Save more with coupons & up to 70% off!</p>
 				<Link href={"/shop"}>
-					<button className="text-[16px] md:text-[20px] bg-[url('../public/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-semibold hover:scale-110 transition-my">Shop Now</button>
+					<button className="text-[16px] md:text-[20px] bg-[url('../public/assets/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-semibold hover:scale-110 transition-my">Shop Now</button>
 				</Link>
 			</div>
 			<div className="right-0 absolute img_hero overflow-hidden sm:w-[250px] sm:h-[236px] md:w-[530px] md:h-[500px]">
-				<img className="-z-0 right-0 absolute " src="/shop.png" alt="" />
+				<img className="-z-0 right-0 absolute " src="/assets/shop.png" alt="" />
 			</div>
 		</section>
 	);

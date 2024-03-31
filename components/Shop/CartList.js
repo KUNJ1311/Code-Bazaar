@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import { HiOutlineTrash } from "react-icons/hi2";
 
-const CartList = () => {
+const CartList = ({ toggleCart }) => {
 	const dispatch = useAppDispatch();
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
 
@@ -35,7 +35,7 @@ const CartList = () => {
 								<div>
 									<div className="flex justify-between text-xs sm:text-sm md:text-base font-medium text-gray-900">
 										<h3>
-											<Link href={`/product/${product.slug}`} className="hover:text-primary multi-line-ellipsis">
+											<Link href={`/product/${product.slug}`} onClick={toggleCart} className="hover:text-primary multi-line-ellipsis">
 												{product.title}
 											</Link>
 										</h3>

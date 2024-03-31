@@ -5,7 +5,7 @@ const Order = () => {
 		{
 			itemCode: 1234,
 			qty: 1,
-			img: "/t2.jpg",
+			img: "/assets/t2.jpg",
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: 1.6,
@@ -17,7 +17,7 @@ const Order = () => {
 		{
 			itemCode: 234,
 			qty: 1,
-			img: "/t2.jpg",
+			img: "/assets/t2.jpg",
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: 1.6,
@@ -29,7 +29,7 @@ const Order = () => {
 		{
 			itemCode: 1234534,
 			qty: 1,
-			img: "/t2.jpg",
+			img: "/assets/t2.jpg",
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodie",
 			rating: 1.6,
@@ -41,7 +41,7 @@ const Order = () => {
 		{
 			itemCode: 12334,
 			qty: 1,
-			img: "/t2.jpg",
+			img: "/assets/t2.jpg",
 			title: "Hoodi3e",
 			name: "Hoodie",
 			rating: 4.8,
@@ -53,7 +53,7 @@ const Order = () => {
 		{
 			itemCode: 123314,
 			qty: 1,
-			img: "/t3.jpg",
+			img: "/assets/t3.jpg",
 			title: "Hoodie",
 			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeee eeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
 			rating: 3.5,

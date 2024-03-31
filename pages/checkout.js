@@ -14,7 +14,7 @@ const Checkout = () => {
 					<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus font-poppins">
 						<div className="flex flex-col justify-center">
 							<div className="pt-7 pb-5 flex justify-center">
-								<img src="/emptycart.jpg" className="max-h-[550px]" alt="Empty Cart" />
+								<img src="/assets/emptycart.jpg" className="max-h-[550px]" alt="Empty Cart" />
 							</div>
 						</div>
 						<div className="pt-4 pb-5 flex justify-center text-center text-xs md:text-sm text-gray-500">
@@ -82,7 +82,7 @@ const Checkout = () => {
 								<div className="relative mb-3 flex">
 									<input type="text" id="billing-address" name="billing-address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="Street Address" />
 									<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-										<img className="h-4 w-4 object-contain" src="/india.svg" alt="" />
+										<img className="h-4 w-4 object-contain" src="/assets/india.svg" alt="" />
 									</div>
 								</div>
 								<div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-3">

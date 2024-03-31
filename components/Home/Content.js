@@ -1,4 +1,3 @@
-import React from "react";
 import { IoShirtOutline } from "react-icons/io5";
 import { FaShippingFast } from "react-icons/fa";
 import { CiDiscount1 } from "react-icons/ci";

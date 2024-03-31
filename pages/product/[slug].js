@@ -90,13 +90,13 @@ const Post = (props) => {
 								<div className="mt-6 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
 									<div className="flex flex-row items-start lg:flex-col">
 										<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-											<img className="h-full w-full object-cover" src="/t2.jpg" alt="" />
+											<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 										</button>
 										<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-											<img className="h-full w-full object-cover" src="/t2.jpg" alt="" />
+											<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 										</button>
 										<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-											<img className="h-full w-full object-cover" src="/t2.jpg" alt="" />
+											<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 										</button>
 									</div>
 								</div>
@@ -113,7 +113,7 @@ const Post = (props) => {
 								</h1>
 								<div className="flex items-center py-2">
 									<div className="flex items-center justify-start h-4 flex-wrap">
-										<StarRating rating={parseFloat(product.rating.$numberDecimal).toFixed(1)} Code={product.slug} />
+										<StarRating rating={parseFloat(product.rating).toFixed(1)} Code={product.slug} />
 										<div className="ml-2 flex h-4 items-center font-medium text-sm md:text-base text-gray-500">
 											<span>1,209 Reviews</span>
 										</div>
@@ -141,8 +141,10 @@ const Post = (props) => {
 										dispatch(saveCart());
 										toast.success(
 											<>
-												<span className="line-clamp-1 text-gray-900 lg:text-base text-sm font-medium">{product.title}</span>
-												<span className="text-gray-900 lg:text-base text-sm font-medium">Added to your cart.</span>
+												<div>
+													<p className="font-semibold">Product Added Successfully</p>
+													<p className="text-xs text-gray-900 lg:text-sm font-medium line-clamp-1">{product.title}</p>
+												</div>
 											</>,
 											{ autoClose: 4000 }
 										);

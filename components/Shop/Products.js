@@ -18,7 +18,7 @@ const Products = (props) => {
 						<span className="absolute md:top-11 top-10 w-32 h-1 bg-primary border rounded-xl border-transparent"></span>
 					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
-						<div className="max-w-2xl p-4">{products && Object.keys(products).length === 0 && <img className="rounded-3xl border border-indigo-200" src="/outstock.jpg" alt="Out of Stock" />}</div>
+						<div className="max-w-2xl p-4">{products && Object.keys(products).length === 0 && <img className="rounded-3xl border border-indigo-200" src="/assets/outstock.jpg" alt="Out of Stock" />}</div>
 						{products &&
 							Object.keys(products).map((data) => (
 								<div key={products[data]._id} className="px-3 py-[10px] my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[25px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card ">
@@ -37,7 +37,7 @@ const Products = (props) => {
 										</Link>
 										<div className="absolute sm:bottom-1 bottom-2">
 											<div className="flex items-center mt-1 w-full h-full">
-												<StarRating rating={parseFloat(products[data].rating.$numberDecimal).toFixed(1)} Code={products[data].slug} />
+												<StarRating rating={parseFloat(products[data].rating).toFixed(1)} Code={products[data].slug} />
 											</div>
 											<h4 className="space-x-2">
 												<del className="lg:text-lg text-sm font-medium text-red-400">₹999</del>
@@ -52,8 +52,10 @@ const Products = (props) => {
 											dispatch(saveCart());
 											toast.success(
 												<>
-													<span className="line-clamp-1 text-gray-900 lg:text-base text-sm font-medium">{products[data].title}</span>
-													<span className="text-gray-900 lg:text-base text-sm font-medium">Added to your cart.</span>
+													<div>
+														<p className="font-semibold">Product Added Successfully</p>
+														<p className="text-xs text-gray-900 lg:text-sm font-medium line-clamp-1">{products[data].title}</p>
+													</div>
 												</>,
 												{ autoClose: 4000 }
 											);
