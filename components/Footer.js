@@ -91,7 +91,7 @@ const Footer = () => {
 				<div className="flex flex-wrap items-center justify-center md:justify-between">
 					<div className="flex">
 						<Link href="/">
-							<Image width={200} height={56} src="/logo.svg" alt="CodeBazaar" />
+							<Image width={200} height={56} src="assets/logo.svg" alt="CodeBazaar" />
 						</Link>
 					</div>
 					<div className="px-4 text-center md:text-right">

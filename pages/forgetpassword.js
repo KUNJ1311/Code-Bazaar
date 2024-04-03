@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const forgetpassword = () => {
+const ForgetPassword = () => {
 	return (
 		<div className=" flex flex-col mx-auto bg-white rounded-lg font-poppins">
 			<div className="text-[#333] flex items-start justify-center lg:py-12 sm:py-3 py-0">
@@ -28,4 +28,4 @@ const forgetpassword = () => {
 	);
 };
 
-export default forgetpassword;
+export default ForgetPassword;

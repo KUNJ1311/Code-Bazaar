@@ -86,7 +86,6 @@ const Post = (props) => {
 										<img className="h-full w-full max-w-full object-cover" src={product.img} alt={product.title} />
 									</div>
 								</div>
-
 								<div className="mt-6 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
 									<div className="flex flex-row items-start lg:flex-col">
 										<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
@@ -102,7 +101,6 @@ const Post = (props) => {
 								</div>
 							</div>
 						</div>
-
 						<div className="lg:col-span-4 lg:row-span-2 lg:row-end-2">
 							<div className="flex flex-col border-b">
 								<div className="flex flex-row">
@@ -127,12 +125,10 @@ const Post = (props) => {
 							{renderColorButtons()}
 							<h2 className="mt-2 md:lg text-base font-medium text-gray-900">Size</h2>
 							<div className="mt-2 flex select-none flex-wrap items-center gap-1">{renderSizeButtons()}</div>
-
 							<div className="mt-8 flex items-center justify-between border-t border-b py-4 flex-row">
 								<div className="flex items-end">
 									<h1 className="lg:text-3xl md:text-2xl text-xl font-bold ">₹6099</h1>
 								</div>
-
 								<button
 									type="button"
 									className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 sm:py-3 py-2 text-center md:text-lg sm:text-base text-sm font-medium text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow"
@@ -174,14 +170,12 @@ const Post = (props) => {
 										{" "}
 										Description{" "}
 									</a>
-
 									<a href="#" title="" className="inline-flex items-center border-b-2 border-transparent mt-5 pb-2 text-sm font-medium text-gray-600">
 										Reviews
 										<span className="ml-2 block rounded-full bg-gray-500 px-2 py-px text-xs font-bold text-gray-100"> 1,209 </span>
 									</a>
 								</nav>
 							</div>
-
 							<div className="mt-8 flow-root sm:mt-12">
 								<h1 className="text-3xl font-bold">Delivered To Your Door</h1>
 								<p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusantium nesciunt fuga.</p>
