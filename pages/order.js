@@ -70,46 +70,41 @@ const Order = () => {
 				<h1 className="text-xl md:text-2xl lg:text-3xl md:font-semibold font-medium leading-4 md:leading-7 lg:leading-9 text-gray-800">Order #13432</h1>
 				<p className="md:text-sm text-xs font-medium md:leading-6 leading-4 text-gray-600">21st Mart 2021 at 10:34 PM</p>
 			</div>
-			<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 font-poppins">
-				<div className="px-4 lg:pb-8 md:pt-8 pt-4 pb-0 padding-minus">
+			<div className="flex sm:px-10 lg:flex-row flex-col lg:px-20 xl:px-32 font-poppins">
+				<div className="px-4 lg:pb-8 md:pt-8 pt-4 pb-0 padding-minus lg:w-1/2">
 					<p className="md:text-xl text-lg font-medium padding-add">Order Summary</p>
-					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 ">
-						<div className="mt-8">
-							<div className="flow-root">
-								<ul role="list" className="-my-6 divide-y divide-gray-200 pb-5">
-									{cart?.map((product) => (
-										<li key={product.itemCode} className="flex py-6">
-											<div className="h-[85px] w-[85px] cart-img-small sm:h-24 sm:w-24 md:h-30 md:w-30 lg:w-32 lg:h-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-												<img src={product.imageSrc} alt={product.name} className="h-full w-full object-cover object-center" />
-											</div>
+					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-3">
+						<div className="flow-root">
+							<ul role="list" className="divide-y divide-gray-200">
+								{cart?.map((product) => (
+									<li key={product.itemCode} className="flex py-3">
+										<div className="h-[102px] w-[85px] cart-img-small sm:h-[115px] sm:w-24 lg:w-32 lg:h-[153px] flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+											<img src={product.img} alt={product.name} className="h-full w-full object-cover object-center" />
+										</div>
 
-											<div className="ml-4 flex flex-1 flex-col">
-												<div>
-													<div className="flex justify-between text-xs sm:text-sm md:text-base font-medium text-gray-900">
-														<h3>
-															<a href={`/product/${product.name}`} className="hover:text-primary multi-line-ellipsis">
-																{product.name}
-															</a>
-														</h3>
-														<p className="ml-4">₹{product.price}</p>
-													</div>
-												</div>
-												<div className="flex flex-col">
-													<div className="flex flex-1 items-end justify-between text-xs md:text-sm">
+										<div className="md:ml-4 ml-2 flex flex-1 flex-col">
+											<h3 className="flex text-xs sm:text-sm md:text-base font-medium text-gray-900">
+												<Link href={`/product/${product.name}`} className="hover:text-primary multi-line-ellipsis-orders">
+													{product.name}
+												</Link>
+											</h3>
+											<div className="flex flex-1 justify-between w-full h-full">
+												<div className="flex flex-col justify-end h-full">
+													<div className="flex items-end justify-between text-xs md:text-sm">
 														<div className="max-w-xs mr-auto">
 															<span className="block text-xs md:text-sm font-semibold text-gray-600">
 																Variant: <span className="font-medium">{product.variant}</span>
 															</span>
 														</div>
 													</div>
-													<div className="flex flex-1 items-end justify-between text-xs md:text-sm">
+													<div className="flex items-end justify-between text-xs md:text-sm">
 														<div className="max-w-xs mr-auto">
 															<span className="block text-xs md:text-sm font-semibold text-gray-600">
 																Size: <span className="font-medium">{product.size}</span>
 															</span>
 														</div>
 													</div>
-													<div className="flex flex-1 items-end justify-between text-xs md:text-sm">
+													<div className="flex items-end justify-between text-xs md:text-sm">
 														<div className="max-w-xs mr-auto">
 															<span className="block text-xs md:text-sm font-semibold text-gray-600">
 																Quantity: <span className="font-medium">{product.qty}</span>
@@ -117,15 +112,18 @@ const Order = () => {
 														</div>
 													</div>
 												</div>
+												<div className="flex items-end">
+													<p className="text-xs sm:text-sm md:text-base font-medium">₹{product.price}</p>
+												</div>
 											</div>
-										</li>
-									))}
-								</ul>
-							</div>
+										</div>
+									</li>
+								))}
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10 mb-8">
+				<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10 mb-8 lg:w-1/2">
 					<h3 className="md:text-xl text-lg md:font-semibold font-medium leading-5 text-gray-800">Summary</h3>
 					<div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
 						<div className="flex justify-between w-full mt-5">

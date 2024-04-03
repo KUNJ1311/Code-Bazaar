@@ -11,6 +11,7 @@ const Signup = () => {
 		if (localStorage.getItem("token")) {
 			router.push("/");
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleSubmit = async (e) => {

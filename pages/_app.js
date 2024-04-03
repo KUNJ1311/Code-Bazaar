@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }) {
 		router.events.on("routeChangeComplete", () => {
 			setProgress(100);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.query]);
 
 	return (

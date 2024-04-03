@@ -34,6 +34,20 @@ body,
 	line-height: 1.3em;
 }
 
+.multi-line-ellipsis-orders {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	display: -moz-box;
+	-moz-line-clamp: 2;
+	-moz-box-orient: vertical;
+	display: -ms-flexbox;
+	-ms-flex-line-pack: end;
+	max-height: 3em;
+	overflow: hidden;
+	line-height: 1.3em;
+}
+
 .sec {
 	z-index: 999;
 	display: flex;
@@ -295,7 +309,7 @@ body,
 @media (max-width: 350px) {
 	.cart-img-small {
 		width: 70px;
-		height: 70px;
+		height: 84px;
 	}
 }
 

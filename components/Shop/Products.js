@@ -1,5 +1,5 @@
 import { addToCart, saveCart } from "@/lib/actions/cartAction";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useAppDispatch } from "@/lib/hooks";
 import Link from "next/link";
 import StarRating from "./StarRating";
 import { toast } from "react-toastify";
@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 const Products = (props) => {
 	const { products, title } = props;
 	const dispatch = useAppDispatch();
-	const { cart, subTotal } = useAppSelector((state) => state.cart);
 
 	return (
 		<section className="md:px-5 w-full mx-auto font-poppins flex flex-1">

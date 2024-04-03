@@ -11,6 +11,7 @@ const Login = () => {
 		if (localStorage.getItem("token")) {
 			router.push("/");
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleSubmit = async (e) => {
@@ -45,15 +46,6 @@ const Login = () => {
 						</div>
 						<form onSubmit={handleSubmit} className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl">
 							<h3 className="mb-3 sm:text-4xl text-2xl sm:font-bold font-semibold text-primary">Log In</h3>
-							{/* <a className="flex items-center justify-center w-full py-4 my-6 text-base font-medium transition duration-300 rounded-2xl text-slate-900 bg-slate-100 hover:bg-slate-200 focus:ring-4 focus:ring-slate-200 cursor-pointer">
-								<FcGoogle className="mr-2 h-6 w-6" />
-								Sign In with Google
-							</a>
-							<div className="flex items-center mb-3">
-								<hr className="h-0 border-b border-solid border-gray-500 grow" />
-								<p className="mx-4 text-gray-600">or</p>
-								<hr className="h-0 border-b border-solid border-gray-500 grow" />
-							</div> */}
 							<label htmlFor="email" className="mb-2 sm:text-base text-sm text-start text-slate-900">
 								Email
 							</label>

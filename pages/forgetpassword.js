@@ -9,6 +9,7 @@ const ForgetPassword = () => {
 		if (localStorage.getItem("token")) {
 			router.push("/");
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<div className=" flex flex-col flex-1 justify-center mx-auto bg-white rounded-lg font-poppins">

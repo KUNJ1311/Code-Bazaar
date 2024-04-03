@@ -1,5 +1,3 @@
-import React from "react";
-
 const StarRating = ({ rating, Code }) => {
 	const filledStars = parseInt(rating);
 	const percentFilled = (rating % 1) * 100;
