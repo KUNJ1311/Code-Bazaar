@@ -13,6 +13,13 @@
 	--toastify-font-family: "Poppins", "sans-serif" !important;
 }
 
+html,
+body,
+#__next {
+	height: 100%;
+	width: 100%;
+}
+
 .multi-line-ellipsis {
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -43,9 +50,11 @@
 	justify-content: center;
 	font-family: "Poppins", "sans-serif";
 }
-.account-card {
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+.shadow-card {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.4) 0px 1px 3px -1px;
 }
+
 .button-style {
 	appearance: none;
 	background-color: #fcfcfd;

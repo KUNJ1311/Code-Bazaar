@@ -64,8 +64,8 @@ const ProductCarousel = () => {
 				<span className="absolute md:top-16 top-14 w-24 h-1 bg-primary border rounded-xl border-transparent"></span>
 			</div>
 
-			<div className="relative flex justify-center mx-auto mt-1">
-				<div className="relative flex items-center lg:container mx-2 overflow-hidden justify-center  ">
+			<div className="relative flex justify-center mx-auto mt-1 w-full">
+				<div className="relative flex items-center lg:container overflow-hidden justify-center w-full">
 					<div className="flex justify-between absolute items-center w-full h-full">
 						<button onClick={movePrev} className="hover:bg-primary bg-slate-500 hover:text-white text-black w-8 h-8 lg:w-12 lg:h-12 items-center justify-center flex rounded-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 ml-2 transition-all ease-in-out duration-300" disabled={isDisabled("prev")}>
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-9 lg:h-7 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

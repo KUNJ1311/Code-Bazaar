@@ -4,11 +4,11 @@ import { CiDiscount1 } from "react-icons/ci";
 
 const Content = () => {
 	return (
-		<section className="text-gray-600 body-font px-9">
+		<section className="text-gray-600 body-font px-9 font-poppins">
 			<div className="container px-5 py-14 mx-auto ">
 				<div className="flex flex-wrap justify-center -m-4 ">
 					<div className="w-full xl:w-1/3 md:w-1/2 p-4 ">
-						<div className=" border border-gray-200 px-3 py-5 rounded-lg items-center justify-center flex  flex-col min-h-[200px]">
+						<div className=" border border-gray-200 px-3 py-5 rounded-lg items-center justify-center flex flex-col min-h-[200px]">
 							<div className="w-12 border border-gray-300 h-12 inline-flex items-center justify-center rounded-full bg-primary-light text-primary mb-4">
 								<IoShirtOutline className="text-3xl" />
 							</div>

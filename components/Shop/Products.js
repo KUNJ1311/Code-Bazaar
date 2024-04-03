@@ -10,7 +10,7 @@ const Products = (props) => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
 
 	return (
-		<section className="md:px-5 w-full mx-auto font-poppins">
+		<section className="md:px-5 w-full mx-auto font-poppins flex flex-1">
 			<div className="lg:container flex flex-wrap w-full mb-4 mx-auto">
 				<div className="w-full">
 					<div className="md:pl-12 pl-6 flex md:text-3xl text-2xl font-normal text-gray-900 justify-startr text-start mb-2 mt-2 md:mt-5 md:mb-5 relative">

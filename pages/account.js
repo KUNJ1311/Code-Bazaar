@@ -11,14 +11,14 @@ const Account = () => {
 		router.push(`${process.env.NEXT_PUBLIC_HOST}`);
 	};
 	return (
-		<div className="flex w-full h-full justify-center font-poppins">
-			<div className="flex flex-col justify-center max-w-5xl">
+		<div className="flex flex-1 w-full h-full justify-center font-poppins">
+			<div className="flex flex-1 h-full flex-col justify-start max-w-5xl">
 				<h2 className="font-medium lg:text-4xl md:text-3xl text-2xl py-5 justify-center flex">Your Account</h2>
 				<div className="flex flex-wrap justify-center max-w-5xl">
 					<Link href={"/orders"}>
-						<div className="account-card border border-gray-300 min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
+						<div className="shadow-card min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
 							<div className="flex justify-center items-center mr-4 w-1/4">
-								<img src="/assets/orders.svg" alt="order" width="65px" height="65px" />
+								<img src="/assets/orders.svg" alt="your orders" width="65px" height="65px" />
 							</div>
 							<div className="flex flex-col w-3/4">
 								<span className="font-medium text-lg">Your Orders</span>
@@ -26,7 +26,7 @@ const Account = () => {
 							</div>
 						</div>
 					</Link>
-					<div className="account-card border border-gray-300 min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
+					<div className="shadow-card min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
 						<div className="flex justify-center items-center mr-4 w-1/4">
 							<img src="/assets/user.svg" alt="profile" width="55px" height="55px" />
 						</div>
@@ -35,7 +35,7 @@ const Account = () => {
 							<span className="text-gray-600 text-base font-normal">Edit name, email and mobile number</span>
 						</div>
 					</div>
-					<div className="account-card border border-gray-300 min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
+					<div className="shadow-card min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
 						<div className="flex justify-center items-center mr-4 w-1/4">
 							<img src="/assets/location.svg" alt="address" width="55px" height="55px" />
 						</div>
@@ -44,19 +44,25 @@ const Account = () => {
 							<span className="text-gray-600 text-base font-normal">Edit address for orders</span>
 						</div>
 					</div>
-					<Link href={"/contact"}>
-						<div className="account-card border border-gray-300 min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
-							<div className="flex justify-center items-center mr-4 w-1/4">
-								<img src="/assets/contact.svg" alt="contact us" width="55px" height="55px" />
-							</div>
-							<div className="flex flex-col w-3/4">
-								<span className="font-medium text-lg">Contact Us</span>
-							</div>
+					<Link href={"/changepassword"} className="shadow-card min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
+						<div className="flex justify-center items-center mr-4 w-1/4 h-[55px]">
+							<img src="/assets/changepass.svg" alt="Change Password" width="55px" height="55px" />
+						</div>
+						<div className="flex flex-col w-3/4">
+							<span className="font-medium text-lg">Change Password</span>
 						</div>
 					</Link>
-					<div className="account-card border border-gray-300 min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-red-100 cursor-pointer transition-all sm:mr-4 mb-4" onClick={handleLogout}>
+					<Link href={"/contact"} className="shadow-card min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-gray-100 cursor-pointer transition-all sm:mr-4 mb-4">
 						<div className="flex justify-center items-center mr-4 w-1/4">
-							<img src="/assets/logout.svg" alt="order" width="55px" height="55px" />
+							<img src="/assets/contact.svg" alt="contact us" width="55px" height="55px" />
+						</div>
+						<div className="flex flex-col w-3/4">
+							<span className="font-medium text-lg">Contact Us</span>
+						</div>
+					</Link>
+					<div className="shadow-card min-[320px]:w-80 w-full flex items-center rounded-md px-4 py-3 hover:bg-red-100 cursor-pointer transition-all sm:mr-4 mb-4" onClick={handleLogout}>
+						<div className="flex justify-center items-center mr-4 w-1/4">
+							<img src="/assets/logout.svg" alt="logout" width="55px" height="55px" />
 						</div>
 						<div className="flex flex-col w-3/4">
 							<span className="font-medium text-lg">Logout</span>

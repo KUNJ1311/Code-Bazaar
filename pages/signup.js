@@ -1,10 +1,18 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-// import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
 	const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
+	const router = useRouter();
+
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			router.push("/");
+		}
+	}, []);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { name, email, password } = credentials;
@@ -17,18 +25,19 @@ const Signup = () => {
 		});
 		const json = await response.json();
 		if (json.success) {
-			toast.success(<span className="text-gray-900 lg:sm:text-base text-sm text-sm font-medium">Your account has been created successfully.</span>);
+			toast.success(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Your account has been created successfully.</span>);
 		} else {
-			toast.error(<span className="text-gray-900 lg:sm:text-base text-sm text-sm font-medium">User already exists!</span>);
+			toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">User already exists!</span>);
 		}
 	};
+
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 	return (
-		<div className=" flex flex-col mx-auto bg-white rounded-lg font-poppins">
-			<div className="text-[#333] flex items-start justify-center lg:py-12 sm:py-3 py-0">
-				<div className="sm:shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] w-full sm:w-11/12 max-w-4xl rounded-md p-6 bg-white">
+		<div className="flex flex-col flex-1 justify-center mx-auto bg-white rounded-lg font-poppins">
+			<div className="text-[#333] flex items-start justify-center py-3 px-2">
+				<div className="shadow-card w-full sm:w-11/12 max-w-4xl rounded-md p-6 bg-white">
 					<div className="grid md:grid-cols-2 items-center md:gap-8">
 						<div className="max-md:order-1">
 							<img src="/assets/shop.svg" className="md:flex hidden w-full object-cover" alt="login-image" />

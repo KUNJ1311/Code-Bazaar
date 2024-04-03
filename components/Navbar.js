@@ -108,7 +108,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav key={userData.key} className="z-50 sticky top-0 bg-second flex tracking-wide overflow-hidden font-poppins">
+			<nav key={userData.key} className="z-50 sm:h-[69px] h-[56px] sticky top-0 bg-second flex tracking-wide font-poppins">
 				<Link href="/">
 					<img className="sm:w-[248px] sm:h-[69px] w-[200px] h-[56px]" src="/assets/logo.svg" alt="CodeBazaar" />
 				</Link>

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
 	return (
-		<footer className="relative bg-second pt-8 main-footer">
+		<footer className="relative bg-second pt-8 main-footer flex">
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap text-left lg:text-left">
 					<div className="w-full lg:w-6/12 px-4">
@@ -91,7 +91,7 @@ const Footer = () => {
 				<div className="flex flex-wrap items-center justify-center md:justify-between">
 					<div className="flex">
 						<Link href="/">
-							<Image width={200} height={56} src="assets/logo.svg" alt="CodeBazaar" />
+							<Image width={200} height={56} src="/assets/logo.svg" alt="CodeBazaar" />
 						</Link>
 					</div>
 					<div className="px-4 text-center md:text-right">

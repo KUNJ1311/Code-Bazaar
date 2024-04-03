@@ -55,7 +55,7 @@ const Order = () => {
 			qty: 1,
 			img: "/assets/t3.jpg",
 			title: "Hoodie",
-			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee eeeeeek  eeeeeeeeeeee eeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek",
+			name: "Eat, Sleep, Code, Repeat - Hoodiee eeeeeeeeeee sdas dsa dsa das das das dsad dsa das ",
 			rating: 3.5,
 			mrp: 986,
 			price: 7992,
@@ -67,12 +67,12 @@ const Order = () => {
 	return (
 		<>
 			<div className="flex justify-start items-center space-y-2 flex-col mt-4 font-poppins">
-				<h1 className="text-2xl lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Order #13432</h1>
-				<p className="text-sm font-medium leading-6 text-gray-600">21st Mart 2021 at 10:34 PM</p>
+				<h1 className="text-xl md:text-2xl lg:text-3xl md:font-semibold font-medium leading-4 md:leading-7 lg:leading-9 text-gray-800">Order #13432</h1>
+				<p className="md:text-sm text-xs font-medium md:leading-6 leading-4 text-gray-600">21st Mart 2021 at 10:34 PM</p>
 			</div>
 			<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 font-poppins">
-				<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
-					<p className="text-xl font-medium padding-add">Order Summary</p>
+				<div className="px-4 lg:pb-8 md:pt-8 pt-4 pb-0 padding-minus">
+					<p className="md:text-xl text-lg font-medium padding-add">Order Summary</p>
 					<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 ">
 						<div className="mt-8">
 							<div className="flow-root">
@@ -126,33 +126,33 @@ const Order = () => {
 					</div>
 				</div>
 				<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10 mb-8">
-					<h3 className="text-xl font-semibold leading-5 text-gray-800">Summary</h3>
+					<h3 className="md:text-xl text-lg md:font-semibold font-medium leading-5 text-gray-800">Summary</h3>
 					<div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
 						<div className="flex justify-between w-full mt-5">
-							<p className="text-base leading-4 text-gray-800">Subtotal</p>
-							<p className="text-base leading-4 text-gray-600">₹56.00</p>
+							<p className="md:text-base text-sm leading-4 text-gray-800">Subtotal</p>
+							<p className="md:text-base text-sm leading-4 text-gray-600">₹56.00</p>
 						</div>
 						<div className="flex justify-between items-center w-full">
-							<p className="text-base leading-4 text-gray-800">Discount</p>
-							<p className="text-base leading-4 text-gray-600">-₹28.00 (50%)</p>
+							<p className="md:text-base text-sm leading-4 text-gray-800">Discount</p>
+							<p className="md:text-base text-sm leading-4 text-gray-600">-₹28.00 (50%)</p>
 						</div>
 						<div className="flex justify-between items-center w-full">
-							<p className="text-base leading-4 text-gray-800">Shipping</p>
-							<p className="text-base leading-4 text-gray-600">₹8.00</p>
+							<p className="md:text-base text-sm leading-4 text-gray-800">Shipping</p>
+							<p className="md:text-base text-sm leading-4 text-gray-600">₹8.00</p>
 						</div>
 					</div>
 					<div className="flex justify-between items-center w-full mt-5">
-						<p className="text-xl font-semibold leading-4 text-gray-800">Total</p>
-						<p className="text-xl font-semibold leading-4 text-gray-600">₹36.00</p>
+						<p className="md:text-xl text-lg md:font-semibold font-medium leading-4 text-gray-800">Total</p>
+						<p className="md:text-xl text-lg md:font-semibold font-medium leading-4 text-gray-600">₹36.00</p>
 					</div>
 					<div className="flex justify-start mt-5 xl:flex-col flex-col md:space-x-6 lg:space-x-8 xl:space-x-0 space-y-4 xl:space-y-12 md:space-y-0 md:flex-row items-start">
 						<div className="flex justify-start items-start flex-col space-y-2 xl:mt-8">
-							<p className="text-base font-semibold leading-4 text-center md:text-left text-gray-800">Shipping Address</p>
-							<p className="w-56 lg:w-full xl:w-48 text-left text-sm leading-5 text-gray-600">180 North King Street, Northhampton MA 1060</p>
+							<p className="md:text-base text-sm md:font-semibold font-medium leading-4 text-center md:text-left text-gray-800">Shipping Address</p>
+							<p className="w-56 lg:w-full xl:w-48 text-left md:text-sm text-xs leading-5 text-gray-600">180 North King Street, Northhampton MA 1060</p>
 						</div>
 					</div>
 					<div className="mt-4 lg:mb-0 mb-8 w-full">
-						<Link href="#" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
+						<Link href="#" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 md:text-base text-sm md:font-medium font-normal text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
 							Track Order
 						</Link>
 					</div>
