@@ -1,11 +1,11 @@
-import { addQuantity, addToCart, removeItem, saveCart, subtractQuantity, updateCart } from "@/lib/actions/cartAction";
+import { addQuantity, removeItem, saveCart, subtractQuantity, updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import { HiOutlineTrash } from "react-icons/hi2";
 
 const CartList = ({ toggleCart }) => {
 	const dispatch = useAppDispatch();
-	const { cart, subTotal } = useAppSelector((state) => state.cart);
+	const { cart } = useAppSelector((state) => state.cart);
 
 	const handleIncrement = (slug) => {
 		dispatch(addQuantity(slug));

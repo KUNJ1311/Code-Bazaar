@@ -264,8 +264,8 @@ body,
 		flex-direction: row;
 		width: 100%;
 		min-height: 150px;
-		margin: 7px 9px;
-		padding: 6px;
+		margin: 3px 9px;
+		padding: 5px;
 	}
 	.card-product-img {
 		max-width: 120px;

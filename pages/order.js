@@ -78,10 +78,9 @@ const Order = () => {
 							<ul role="list" className="divide-y divide-gray-200">
 								{cart?.map((product) => (
 									<li key={product.itemCode} className="flex py-3">
-										<div className="h-[102px] w-[85px] cart-img-small sm:h-[115px] sm:w-24 lg:w-32 lg:h-[153px] flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+										<div className="h-[102px] w-[85px] sm:h-[115px] sm:w-24 lg:w-32 lg:h-[153px] flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 											<img src={product.img} alt={product.name} className="h-full w-full object-cover object-center" />
 										</div>
-
 										<div className="md:ml-4 ml-2 flex flex-1 flex-col">
 											<h3 className="flex text-xs sm:text-sm md:text-base font-medium text-gray-900">
 												<Link href={`/product/${product.name}`} className="hover:text-primary multi-line-ellipsis-orders">
@@ -90,21 +89,21 @@ const Order = () => {
 											</h3>
 											<div className="flex flex-1 justify-between w-full h-full">
 												<div className="flex flex-col justify-end h-full">
-													<div className="flex items-end justify-between text-xs md:text-sm">
+													<div className="text-xs md:text-sm">
 														<div className="max-w-xs mr-auto">
 															<span className="block text-xs md:text-sm font-semibold text-gray-600">
 																Variant: <span className="font-medium">{product.variant}</span>
 															</span>
 														</div>
 													</div>
-													<div className="flex items-end justify-between text-xs md:text-sm">
+													<div className="text-xs md:text-sm">
 														<div className="max-w-xs mr-auto">
 															<span className="block text-xs md:text-sm font-semibold text-gray-600">
 																Size: <span className="font-medium">{product.size}</span>
 															</span>
 														</div>
 													</div>
-													<div className="flex items-end justify-between text-xs md:text-sm">
+													<div className="text-xs md:text-sm">
 														<div className="max-w-xs mr-auto">
 															<span className="block text-xs md:text-sm font-semibold text-gray-600">
 																Quantity: <span className="font-medium">{product.qty}</span>
