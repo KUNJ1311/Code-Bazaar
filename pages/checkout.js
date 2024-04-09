@@ -3,10 +3,59 @@ import { FaAddressCard } from "react-icons/fa6";
 import { HiPhone } from "react-icons/hi2";
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
+import { useRouter } from "next/router";
 
 const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
+	const router = useRouter();
 
+	const makePayment = async () => {
+		try {
+			const res = await fetch("/api/order/create?amount=" + subTotal);
+			if (!res.status) {
+				console.log("try again");
+				return;
+			}
+			const { order } = await res.json();
+			const options = {
+				key: process.env.NEXT_PUBLIC_RAZORPAY_API_KEY,
+				name: "Kunj Faladu",
+				currency: order.currency,
+				amount: order.amount,
+				order_id: order.id,
+				theme: {
+					color: "#088178",
+				},
+				prefill: {
+					email: "kunjfaladu1311@gmail.com",
+				},
+				handler: async function (response) {
+					const data = await fetch("/api/order/verify", {
+						method: "POST",
+						body: JSON.stringify({
+							razorpay_payment_id: response.razorpay_payment_id,
+							razorpay_order_id: response.razorpay_order_id,
+							razorpay_signature: response.razorpay_signature,
+							email: "kunjfaladu1311@gmail.com",
+							amount: order.amount,
+						}),
+					});
+					if (data.status === 200) {
+						router.push("/order");
+					}
+				},
+			};
+
+			const paymentObject = new window.Razorpay(options);
+			paymentObject.open();
+
+			paymentObject.on("payment.failed", function (response) {
+				alert("Payment failed. Please try again.");
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<>
 			{cart.length == 0 ? (
@@ -107,9 +156,9 @@ const Checkout = () => {
 								</div>
 							</div>
 							<div className="mt-4 lg:mb-0 mb-8 w-full">
-								<Link href="#" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
+								<button type="button" onClick={makePayment} className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
 									Place Order
-								</Link>
+								</button>
 							</div>
 						</div>
 					</div>

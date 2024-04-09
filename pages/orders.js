@@ -8,7 +8,7 @@ const Orders = () => {
 		{
 			id: 1,
 			orderNumber: "WU88191111",
-			totalAmount: "₹160.00",
+			totalAmount: "160.00",
 			status: "Cancelled",
 			time: "Jul 6, 2021",
 			items: [
@@ -19,7 +19,7 @@ const Orders = () => {
 		{
 			id: 2,
 			orderNumber: "WU88192222",
-			totalAmount: "₹180.00",
+			totalAmount: "180.00",
 			status: "Delivered",
 			time: "Jul 6, 2021",
 			items: [
@@ -31,7 +31,7 @@ const Orders = () => {
 		{
 			id: 3,
 			orderNumber: "WU881923222",
-			totalAmount: "₹1300.00",
+			totalAmount: "1300.00",
 			status: "Shipped",
 			time: "Jul 7, 2022",
 			items: [
@@ -76,10 +76,10 @@ const Orders = () => {
 											</div>
 											<div className="">
 												<dt className="font-medium sm:text-base text-sm text-gray-900">Total amount</dt>
-												<dd className="mt-1 sm:text-sm text-xs font-medium text-gray-700">{order.totalAmount}</dd>
+												<dd className="mt-1 sm:text-sm text-xs font-medium text-gray-700">₹{order.totalAmount}</dd>
 											</div>
 											<div className="absolute sm:top-[-13px] top-[-11px]">
-												<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${`bg-${order.status === "Delivered" ? "primary" : order.status === "Shipped" ? "indigo-500" : "red-500"}`}`}>
+												<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${order.status === "Delivered" ? "bg-primary" : order.status === "Shipped" ? "bg-indigo-500" : "bg-red-500"}`}>
 													{order.status} - {order.time}
 												</dd>
 											</div>
@@ -108,11 +108,11 @@ const Orders = () => {
 											</div>
 										</div>
 										<div className="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
-											<a href="#" className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+											<a href="#" className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
 												<span>View Order</span>
 												<span className="sr-only">{order.orderNumber}</span>
 											</a>
-											<a href="#" className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+											<a href="#" className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
 												<span>View Invoice</span>
 												<span className="sr-only">for order {order.orderNumber}</span>
 											</a>
