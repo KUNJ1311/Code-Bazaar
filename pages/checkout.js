@@ -4,30 +4,50 @@ import { HiPhone } from "react-icons/hi2";
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
 	const router = useRouter();
+	const [disabled, setDisabled] = useState(true);
+	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "Ahmedabad", state: "Gujarat", pincode: "" });
+	const { name, email, phone, address, city, state, pincode } = details;
+	const onChange = (e) => {
+		setDetails({ ...details, [e.target.name]: e.target.value });
+	};
+	useEffect(() => {
+		if (name && email && phone && address && city && state && pincode) {
+			setDisabled(false);
+		} else {
+			setDisabled(true);
+		}
+	}, [details]);
 
 	const makePayment = async () => {
 		try {
-			const res = await fetch("/api/order/create?amount=" + subTotal);
-			if (!res.status) {
-				console.log("try again");
+			const res = await fetch("/api/order/create", {
+				method: "POST",
+				body: JSON.stringify({ email: email, amount: subTotal, cart: cart, phone: phone, address: `${address}, ${city}, ${state} - ${pincode}.` }),
+			});
+			if (res.status !== 200) {
+				toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">User not found. Enter valid email.</span>);
 				return;
 			}
 			const { order } = await res.json();
 			const options = {
 				key: process.env.NEXT_PUBLIC_RAZORPAY_API_KEY,
-				name: "Kunj Faladu",
+				name: "CodeBazaar",
 				currency: order.currency,
 				amount: order.amount,
 				order_id: order.id,
 				theme: {
 					color: "#088178",
 				},
+				image: `${process.env.NEXT_PUBLIC_HOST}/assets/icon.svg`,
 				prefill: {
-					email: "kunjfaladu1311@gmail.com",
+					name: name,
+					email: email,
 				},
 				handler: async function (response) {
 					const data = await fetch("/api/order/verify", {
@@ -36,8 +56,6 @@ const Checkout = () => {
 							razorpay_payment_id: response.razorpay_payment_id,
 							razorpay_order_id: response.razorpay_order_id,
 							razorpay_signature: response.razorpay_signature,
-							email: "kunjfaladu1311@gmail.com",
-							amount: order.amount,
 						}),
 					});
 					if (data.status === 200) {
@@ -50,10 +68,10 @@ const Checkout = () => {
 			paymentObject.open();
 
 			paymentObject.on("payment.failed", function (response) {
-				alert("Payment failed. Please try again.");
+				toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Payment failed. Please try again.</span>);
 			});
 		} catch (error) {
-			console.log(error);
+			toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Please try again.</span>);
 		}
 	};
 	return (
@@ -94,7 +112,7 @@ const Checkout = () => {
 									Email
 								</label>
 								<div className="relative flex">
-									<input type="text" id="email" name="email" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="your.email@gmail.com" />
+									<input onChange={onChange} type="email" id="email" name="email" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="your.email@gmail.com" />
 									<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 											<path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
@@ -103,11 +121,11 @@ const Checkout = () => {
 								</div>
 								<div className="flex flex-col sm:flex-row sm:space-x-2">
 									<div className="flex flex-col flex-1">
-										<label htmlFor="Name" className="mt-4 mb-2 block text-sm font-medium">
+										<label htmlFor="name" className="mt-4 mb-2 block text-sm font-medium">
 											Name
 										</label>
 										<div className="relative flex">
-											<input type="text" id="Name" name="Name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="Enter Your Name" />
+											<input onChange={onChange} type="text" id="name" name="name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Name" />
 											<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 												<FaAddressCard className="h-4 w-4 text-gray-400 " />
 											</div>
@@ -118,26 +136,26 @@ const Checkout = () => {
 											Phone
 										</label>
 										<div className="relative flex">
-											<input type="text" id="phone" name="phone" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="Enter Your Phone No." />
+											<input onChange={onChange} type="text" id="phone" name="phone" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Phone No." />
 											<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 												<HiPhone className="h-4 w-4 text-gray-400 " />
 											</div>
 										</div>
 									</div>
 								</div>
-								<label htmlFor="billing-address" className="mt-4 mb-2 block text-sm font-medium">
+								<label htmlFor="address" className="mt-4 mb-2 block text-sm font-medium">
 									Billing Address
 								</label>
 								<div className="relative mb-3 flex">
-									<input type="text" id="billing-address" name="billing-address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="Street Address" />
+									<textarea onChange={onChange} type="text" id="address" name="address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary max-h-16 min-h-[45px]" placeholder="Street Address" />
 									<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 										<img className="h-4 w-4 object-contain" src="/assets/india.svg" alt="" />
 									</div>
 								</div>
 								<div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-3">
-									<input type="text" name="billing-city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="City" />
-									<input type="text" name="billing-state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="State" />
-									<input type="text" name="billing-zip" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-primary focus:ring-primary" placeholder="ZIP" />
+									<input onChange={onChange} type="text" name="pincode" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="PIN Code" />
+									<input value={details.city} type="text" name="city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="City" readOnly />
+									<input value={details.state} type="text" name="state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="State" readOnly />
 								</div>
 
 								<div className="mt-6 border-t border-b py-2">
@@ -152,11 +170,11 @@ const Checkout = () => {
 								</div>
 								<div className="mt-6 flex items-center justify-between">
 									<p className="text-xl font-semibold leading-4 text-gray-800">Total</p>
-									<p className="text-xl font-medium text-gray-600">₹408.00</p>
+									<p className="text-xl font-medium text-gray-600">₹{subTotal}</p>
 								</div>
 							</div>
 							<div className="mt-4 lg:mb-0 mb-8 w-full">
-								<button type="button" onClick={makePayment} className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
+								<button type="button" onClick={makePayment} disabled={disabled} className="disabled:opacity-60 disabled:cursor-not-allowed transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 disabled:active:scale-100 shadow-slate-400 shadow-md active:shadow">
 									Place Order
 								</button>
 							</div>

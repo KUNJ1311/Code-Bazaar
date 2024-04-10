@@ -152,13 +152,13 @@ const Post = (props) => {
 							<div className="flex flex-col">
 								<span className="text-xs sm:text-sm md:text-base mt-4 mb-1">Check Availability At</span>
 								<div className="flex space-x-2 text-sm">
-									<input type="text" className="px-2 border-2 min-[350px]:w-[192px] w-full border-gray-400 rounded-md text-xs sm:text-sm md:text-base" placeholder="Enter Pincode" onChange={onChangePin} />
+									<input type="text" className="px-2 border-2 min-[350px]:w-[192px] w-full border-gray-400 rounded-md text-xs sm:text-sm md:text-base" placeholder="Enter PIN Code" onChange={onChangePin} />
 									<button type="button" className="flex ml-auto text-white bg-primary border-0 py-2 sm:px-6 px-4 focus:outline-none hover:bg-primary-dark rounded text-xs sm:text-sm md:text-base active:scale-95 shadow-slate-400 shadow-md active:shadow" onClick={checkServiceability}>
 										Check
 									</button>
 								</div>
-								{!service && service != null && <div className="text-red-700 font-semibold text-sm mt-2">Sorry! We do not deliver to this pincode yet</div>}
-								{service && service != null && <div className="text-primary-dark font-semibold text-sm mt-2">Yay! This pincode is serviceable</div>}
+								{!service && service != null && <div className="text-red-700 font-semibold text-sm mt-2">Sorry! We do not deliver to this PIN Code yet</div>}
+								{service && service != null && <div className="text-primary-dark font-semibold text-sm mt-2">Yay! This PIN Code is serviceable</div>}
 							</div>
 						</div>
 					</div>

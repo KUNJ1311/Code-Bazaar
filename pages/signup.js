@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-	const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
 	const router = useRouter();
+	const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
+
+	const onChange = (e) => {
+		setCredentials({ ...credentials, [e.target.name]: e.target.value });
+	};
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
@@ -32,9 +36,6 @@ const Signup = () => {
 		}
 	};
 
-	const onChange = (e) => {
-		setCredentials({ ...credentials, [e.target.name]: e.target.value });
-	};
 	return (
 		<div className="flex flex-col flex-1 justify-center mx-auto bg-white rounded-lg font-poppins">
 			<div className="text-[#333] flex items-start justify-center py-3 px-2">

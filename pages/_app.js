@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
 		<Provider store={store}>
 			<ToastContainer position="top-center" limit={3} autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
 			<ProgressBar height="3px" color="#25756d" startPosition={0.3} options={{ showSpinner: false }} shallowRouting />
-			<div className="h-full w-full flex flex-col">
+			<div className="flex flex-col">
 				<Navbar />
 				<Component {...pageProps} />
 				<Footer />
