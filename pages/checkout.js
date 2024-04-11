@@ -59,7 +59,7 @@ const Checkout = () => {
 						}),
 					});
 					if (data.status === 200) {
-						router.push("/order");
+						router.push(`/order?id=${response.razorpay_order_id}`);
 					}
 				},
 			};

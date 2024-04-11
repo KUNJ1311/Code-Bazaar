@@ -19,10 +19,10 @@ const Post = (props) => {
 		let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
 		let pinJson = await pins.json();
 		if (pinJson.includes(parseInt(pin))) {
-			toast.success(<span className="text-gray-900 lg:text-base text-sm font-medium">Yay! This pincode is serviceable</span>);
+			toast.success(<span className="text-gray-900 lg:text-base text-sm font-medium">Yay! This PIN Code is serviceable</span>);
 			setService(true);
 		} else {
-			toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">Sorry! We do not deliver to this pincode yet</span>);
+			toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">Sorry! We do not deliver to this PIN Code yet</span>);
 			setService(false);
 		}
 	};

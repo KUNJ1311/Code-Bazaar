@@ -8,7 +8,7 @@ const Account = () => {
 	const dispatch = useAppDispatch();
 	const handleLogout = () => {
 		dispatch(logoutUser());
-		router.push(`${process.env.NEXT_PUBLIC_HOST}`);
+		router.push("/");
 	};
 	return (
 		<div className="flex flex-1 w-full h-full justify-center font-poppins">
