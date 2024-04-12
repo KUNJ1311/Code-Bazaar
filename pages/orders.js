@@ -9,7 +9,7 @@ const Orders = () => {
 	const router = useRouter();
 
 	useEffect(() => {
-		const { token } = JSON.parse(localStorage.getItem("token"));
+		const token = localStorage.getItem("token");
 		const fetchOrders = async () => {
 			try {
 				const data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/order/myorders`, {
@@ -17,7 +17,7 @@ const Orders = () => {
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({ token }),
+					body: JSON.stringify({ token: JSON.parse(token).token }),
 				});
 				const res = await data.json();
 				setOrders(res.orders);
@@ -32,7 +32,6 @@ const Orders = () => {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-	console.log(orders);
 
 	const toggleMenu = (orderId) => {
 		setOpenMenuId(openMenuId === orderId ? null : orderId);

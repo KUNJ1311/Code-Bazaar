@@ -2,6 +2,7 @@ import Razorpay from "razorpay";
 import connectDb from "@/middleware/mongoose";
 import User from "@/models/User";
 import Order from "@/models/Order";
+import Product from "@/models/Product";
 
 const instance = new Razorpay({
 	key_id: process.env.NEXT_PUBLIC_RAZORPAY_API_KEY,
@@ -12,15 +13,26 @@ const handler = async (req, res) => {
 	if (req.method == "POST") {
 		try {
 			const data = JSON.parse(req.body);
-			//TODO: check if the cart is tampered
 
+			//* check if the cart is tampered
+			let sum = 0;
+			for (let item of data.cart) {
+				let product = await Product.findOne({ slug: item.slug });
+				sum += item.price * item.qty;
+				if (product.price !== item.price) {
+					return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
+				}
+			}
+			if (sum !== data.amount) {
+				return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
+			}
 			//TODO: check if the cart items are out of stock
 
 			//TODO: check details are valid
 
 			const user = await User.findOne({ email: data.email });
 			if (!user) {
-				return res.status(401).json({ error: "User not found" });
+				return res.status(401).json({ error: true, msg: "User not found. Enter valid email." });
 			}
 
 			const totalAmount = Number(data.amount);
@@ -46,7 +58,7 @@ const handler = async (req, res) => {
 			return res.status(400).json({ msg: "Try Again", error: error });
 		}
 	} else {
-		return res.status(405).json({ success: false, error: "This method is not allowed" });
+		return res.status(405).json({ error: true, msg: "This method is not allowed" });
 	}
 };
 

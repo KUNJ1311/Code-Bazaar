@@ -11,10 +11,45 @@ const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
 	const router = useRouter();
 	const [disabled, setDisabled] = useState(true);
-	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "Ahmedabad", state: "Gujarat", pincode: "" });
+	const [service, setService] = useState();
+	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "", state: "", pincode: "" });
 	const { name, email, phone, address, city, state, pincode } = details;
-	const onChange = (e) => {
-		setDetails({ ...details, [e.target.name]: e.target.value });
+	const onChange = async (e) => {
+		const { name, value } = e.target;
+		setDetails({ ...details, [name]: value });
+
+		if (name === "pincode") {
+			if (value.length !== 6) {
+				setDetails((prevDetails) => ({
+					...prevDetails,
+					city: "",
+					state: "",
+				}));
+				setService(false);
+			} else if (value.length === 6) {
+				try {
+					const pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
+					const pinJson = await pins.json();
+					if (Object.keys(pinJson).includes(value)) {
+						setDetails((prevDetails) => ({
+							...prevDetails,
+							city: pinJson[value][0],
+							state: pinJson[value][1],
+						}));
+						setService(true);
+					} else {
+						setDetails((prevDetails) => ({
+							...prevDetails,
+							city: "",
+							state: "",
+						}));
+						setService(false);
+					}
+				} catch (error) {
+					console.log("Error fetching pincode data:", error);
+				}
+			}
+		}
 	};
 	useEffect(() => {
 		if (name && email && phone && address && city && state && pincode) {
@@ -30,17 +65,19 @@ const Checkout = () => {
 				method: "POST",
 				body: JSON.stringify({ email: email, amount: subTotal, cart: cart, phone: phone, address: `${address}, ${city}, ${state} - ${pincode}.` }),
 			});
+
+			const data = await res.json();
 			if (res.status !== 200) {
-				toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">User not found. Enter valid email.</span>);
+				toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">{data.msg}</span>);
 				return;
 			}
-			const { order } = await res.json();
+
 			const options = {
 				key: process.env.NEXT_PUBLIC_RAZORPAY_API_KEY,
 				name: "CodeBazaar",
-				currency: order.currency,
-				amount: order.amount,
-				order_id: order.id,
+				currency: data.order.currency,
+				amount: data.order.amount,
+				order_id: data.order.id,
 				theme: {
 					color: "#088178",
 				},
@@ -104,7 +141,7 @@ const Checkout = () => {
 								<CartList />
 							</div>
 						</div>
-						<div className="mt-0 bg-gray-50 px-4 pt-8 lg:mx-0 mx-4 lg:mt-10 mb-8 ">
+						<div className="mt-0 bg-gray-50 border border-gray-200 rounded-md px-4 pt-4 lg:mx-0 mx-4 lg:mt-10 mb-8 ">
 							<p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium">Delivery Details</p>
 							<p className="text-sm md:text-base text-gray-500">Complete your order by providing your delivery details.</p>
 							<div className="flex flex-col ">
@@ -153,7 +190,17 @@ const Checkout = () => {
 									</div>
 								</div>
 								<div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-3">
-									<input onChange={onChange} type="text" name="pincode" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="PIN Code" />
+									<div className="flex relative w-full">
+										<input onChange={onChange} type="text" name="pincode" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="PIN Code" />
+										<div className="h-full flex absolute right-2">
+											{service && service != null && (
+												<svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+													<circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+													<path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+												</svg>
+											)}
+										</div>
+									</div>
 									<input value={details.city} type="text" name="city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="City" readOnly />
 									<input value={details.state} type="text" name="state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="State" readOnly />
 								</div>
@@ -173,7 +220,7 @@ const Checkout = () => {
 									<p className="text-xl font-medium text-gray-600">₹{subTotal}</p>
 								</div>
 							</div>
-							<div className="mt-4 lg:mb-0 mb-8 w-full">
+							<div className="mt-4 lg:mb-4 mb-8 w-full">
 								<button type="button" onClick={makePayment} disabled={disabled} className="disabled:opacity-60 disabled:cursor-not-allowed transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark active:scale-95 disabled:active:scale-100 shadow-slate-400 shadow-md active:shadow">
 									Place Order
 								</button>

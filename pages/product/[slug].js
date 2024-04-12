@@ -18,7 +18,7 @@ const Post = (props) => {
 	const checkServiceability = async () => {
 		let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
 		let pinJson = await pins.json();
-		if (pinJson.includes(parseInt(pin))) {
+		if (Object.keys(pinJson).includes(pin)) {
 			toast.success(<span className="text-gray-900 lg:text-base text-sm font-medium">Yay! This PIN Code is serviceable</span>);
 			setService(true);
 		} else {
@@ -152,13 +152,21 @@ const Post = (props) => {
 							<div className="flex flex-col">
 								<span className="text-xs sm:text-sm md:text-base mt-4 mb-1">Check Availability At</span>
 								<div className="flex space-x-2 text-sm">
-									<input type="text" className="px-2 border-2 min-[350px]:w-[192px] w-full border-gray-400 rounded-md text-xs sm:text-sm md:text-base" placeholder="Enter PIN Code" onChange={onChangePin} />
+									<div className="flex relative">
+										<input type="text" className="px-2 border-2 min-[350px]:w-[192px] w-full border-gray-400 rounded-md text-xs sm:text-sm md:text-base" placeholder="Enter PIN Code" onChange={onChangePin} />
+										<div className="h-full flex absolute right-2">
+											{service && service != null && (
+												<svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+													<circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+													<path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+												</svg>
+											)}
+										</div>
+									</div>
 									<button type="button" className="flex ml-auto text-white bg-primary border-0 py-2 sm:px-6 px-4 focus:outline-none hover:bg-primary-dark rounded text-xs sm:text-sm md:text-base active:scale-95 shadow-slate-400 shadow-md active:shadow" onClick={checkServiceability}>
 										Check
 									</button>
 								</div>
-								{!service && service != null && <div className="text-red-700 font-semibold text-sm mt-2">Sorry! We do not deliver to this PIN Code yet</div>}
-								{service && service != null && <div className="text-primary-dark font-semibold text-sm mt-2">Yay! This PIN Code is serviceable</div>}
 							</div>
 						</div>
 					</div>
