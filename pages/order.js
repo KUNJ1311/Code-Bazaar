@@ -1,12 +1,9 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import mongoose from "mongoose";
 import Order from "@/models/Order";
 import FormatDateTime from "@/components/FormatDateTime";
 
 const MyOrder = ({ order }) => {
-	const router = useRouter();
-	const { id } = router.query;
 	return (
 		<>
 			<div className="flex justify-start items-center flex-col mt-5 font-poppins">
@@ -68,7 +65,7 @@ const MyOrder = ({ order }) => {
 						</div>
 					</div>
 				</div>
-				<div className="mt-4 bg-gray-50 border border-gray-200 rounded-md pt-3 px-4 lg:mx-0 mx-4 mb-8 lg:w-1/2">
+				<div className="mt-4 bg-gray-50 border border-gray-200 rounded-md pt-3 px-4 lg:mx-0 max-[300px]:mx-0 mx-4 mb-8 pb-4 lg:w-1/2">
 					<h3 className="md:text-xl text-lg md:font-semibold font-medium leading-5 text-gray-800">Summary</h3>
 					<div className="flex justify-between items-center w-full mt-3">
 						<p className="md:text-lg text-base md:font-medium font-normal leading-4 text-gray-800">Payment Status</p>
@@ -99,7 +96,7 @@ const MyOrder = ({ order }) => {
 							<p className="w-56 lg:w-full xl:w-48 text-left md:text-sm text-xs leading-5 text-gray-600">{order.address}</p>
 						</div>
 					</div>
-					<div className="mt-4 lg:mb-0 mb-8 w-full">
+					<div className="mt-4 w-full">
 						<Link href="#" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 md:text-base text-sm md:font-medium font-normal text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow">
 							Track Order
 						</Link>

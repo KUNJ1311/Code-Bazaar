@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import connectDb from "@/middleware/mongoose";
 import Order from "@/models/Order";
+import Product from "@/models/Product";
 
 const handler = async (req, res) => {
 	if (req.method == "POST") {
@@ -13,7 +14,10 @@ const handler = async (req, res) => {
 
 		const isAuthentic = expectedSignature === razorpay_signature;
 		if (isAuthentic) {
-			await Order.findOneAndUpdate({ order_id: razorpay_order_id }, { signature: razorpay_signature, payment_id: razorpay_payment_id, hasPaid: true });
+			const { products } = await Order.findOneAndUpdate({ order_id: razorpay_order_id }, { signature: razorpay_signature, payment_id: razorpay_payment_id, hasPaid: true });
+			for (let item of products) {
+				await Product.findOneAndUpdate({ slug: item.slug }, { $inc: { availableQty: -item.qty } });
+			}
 			return res.status(200).json({ success: true, msg: "Payment Done" });
 		} else {
 			return res.status(400).json({ message: "invalid payment signature", error: true });

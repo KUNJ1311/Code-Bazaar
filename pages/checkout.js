@@ -2,18 +2,24 @@ import CartList from "@/components/Shop/CartList";
 import { FaAddressCard } from "react-icons/fa6";
 import { HiPhone } from "react-icons/hi2";
 import Link from "next/link";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import { updateCart } from "@/lib/actions/cartAction";
 
 const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
+	const dispatch = useAppDispatch();
+
 	const router = useRouter();
+
 	const [disabled, setDisabled] = useState(true);
 	const [service, setService] = useState();
+
 	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "", state: "", pincode: "" });
 	const { name, email, phone, address, city, state, pincode } = details;
+
 	const onChange = async (e) => {
 		const { name, value } = e.target;
 		setDetails({ ...details, [name]: value });
@@ -51,6 +57,28 @@ const Checkout = () => {
 			}
 		}
 	};
+
+	useEffect(() => {
+		const getUser = async () => {
+			try {
+				const { token } = JSON.parse(localStorage.getItem("token"));
+				const res = await fetch("/api/getuser", {
+					method: "POST",
+					body: JSON.stringify({ token }),
+				});
+				const data = await res.json();
+				setDetails((prevDetails) => ({
+					...prevDetails,
+					email: data.email,
+					name: data.name,
+				}));
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getUser();
+	}, []);
+
 	useEffect(() => {
 		if (name && email && phone && address && city && state && pincode) {
 			setDisabled(false);
@@ -67,9 +95,12 @@ const Checkout = () => {
 			});
 
 			const data = await res.json();
-			if (res.status !== 200) {
-				toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">{data.msg}</span>);
-				return;
+			if (res.status !== 201) {
+				if (res.status === 422) {
+					localStorage.removeItem("cart");
+					dispatch(updateCart([]));
+				}
+				return toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">{data.msg}</span>);
 			}
 
 			const options = {
@@ -97,17 +128,19 @@ const Checkout = () => {
 					});
 					if (data.status === 200) {
 						router.push(`/order?id=${response.razorpay_order_id}`);
+						localStorage.setItem("cart", []);
+						dispatch(updateCart([]));
 					}
 				},
 			};
 
 			const paymentObject = new window.Razorpay(options);
 			paymentObject.open();
-
 			paymentObject.on("payment.failed", function (response) {
 				toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Payment failed. Please try again.</span>);
 			});
 		} catch (error) {
+			console.log(error);
 			toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Please try again.</span>);
 		}
 	};
@@ -149,7 +182,7 @@ const Checkout = () => {
 									Email
 								</label>
 								<div className="relative flex">
-									<input onChange={onChange} type="email" id="email" name="email" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="your.email@gmail.com" />
+									<input type="email" id="email" name="email" value={email} className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="your.email@gmail.com" readOnly />
 									<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 											<path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
@@ -162,7 +195,7 @@ const Checkout = () => {
 											Name
 										</label>
 										<div className="relative flex">
-											<input onChange={onChange} type="text" id="name" name="name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Name" />
+											<input value={name} type="text" id="name" name="name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Name" readOnly />
 											<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 												<FaAddressCard className="h-4 w-4 text-gray-400 " />
 											</div>
@@ -201,8 +234,8 @@ const Checkout = () => {
 											)}
 										</div>
 									</div>
-									<input value={details.city} type="text" name="city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="City" readOnly />
-									<input value={details.state} type="text" name="state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="State" readOnly />
+									<input value={city} type="text" name="city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="City" readOnly />
+									<input value={state} type="text" name="state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="State" readOnly />
 								</div>
 
 								<div className="mt-6 border-t border-b py-2">

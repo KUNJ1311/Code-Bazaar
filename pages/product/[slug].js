@@ -127,7 +127,7 @@ const Post = (props) => {
 							<div className="mt-2 flex select-none flex-wrap items-center gap-1">{renderSizeButtons()}</div>
 							<div className="mt-8 flex items-center justify-between border-t border-b py-4 flex-row">
 								<div className="flex items-end">
-									<h1 className="lg:text-3xl md:text-2xl text-xl font-bold ">₹6099</h1>
+									<h1 className="lg:text-3xl md:text-2xl text-xl font-bold ">₹{product.price}</h1>
 								</div>
 								<button
 									type="button"
@@ -175,8 +175,7 @@ const Post = (props) => {
 							<div className="border-b border-gray-300">
 								<nav className="flex gap-4">
 									<a href="#" title="" className="border-b-2 border-gray-900 mt-5 pb-2 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800">
-										{" "}
-										Description{" "}
+										Description
 									</a>
 									<a href="#" title="" className="inline-flex items-center border-b-2 border-transparent mt-5 pb-2 text-sm font-medium text-gray-600">
 										Reviews

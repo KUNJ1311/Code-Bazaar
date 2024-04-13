@@ -38,15 +38,14 @@ const Orders = () => {
 	};
 
 	return (
-		<div className="bg-gray-50 font-poppins flex justify-center">
+		<div className="bg-gray-50 font-poppins h-full flex-1 flex justify-center">
 			<main className="py-6 w-full">
 				<div className="max-w-7xl mx-auto sm:px-2 lg:px-8">
 					<div className="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
-						<h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Your Order History</h1>
-						<p className="mt-2 text-sm text-gray-500">Check the status of recent orders.</p>
+						<h1 className="text-2xl text-center font-bold tracking-tight text-gray-900 sm:text-3xl">Your Order History</h1>
+						{orders && orders.length > 0 ? <p className="mt-2 text-center text-sm text-gray-500">Check the status of recent orders.</p> : <p className="text-lg text-center font-medium tracking-tight text-gray-900 sm:text-xl">No order records found</p>}
 					</div>
 				</div>
-
 				{orders && orders.length > 0 ? (
 					orders.map((order) => (
 						<section key={order.order_id} aria-labelledby={`recent-heading-${order.order_id}`} className="mt-5">
@@ -167,7 +166,7 @@ const Orders = () => {
 						</section>
 					))
 				) : (
-					<p>TODO</p>
+					<img src="./assets/noorders.svg" className="flex mx-auto justify-center m-5  " alt="No orders found" />
 				)}
 			</main>
 		</div>

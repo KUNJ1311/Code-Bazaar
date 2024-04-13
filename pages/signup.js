@@ -31,6 +31,7 @@ const Signup = () => {
 		const json = await response.json();
 		if (json.success) {
 			toast.success(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Your account has been created successfully.</span>);
+			router.push("/login");
 		} else {
 			toast.error(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">User already exists!</span>);
 		}

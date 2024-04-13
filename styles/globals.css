@@ -246,18 +246,6 @@ body,
 }
 
 @media (max-width: 500px) {
-	#hero h4 {
-		font-size: 15px;
-	}
-	#hero h2 {
-		font-size: 35px;
-	}
-	#hero h1 {
-		font-size: 37px;
-	}
-	#hero p {
-		font-size: 13px;
-	}
 	.product-card {
 		display: flex;
 		flex-direction: row;

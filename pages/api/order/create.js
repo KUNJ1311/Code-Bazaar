@@ -14,19 +14,25 @@ const handler = async (req, res) => {
 		try {
 			const data = JSON.parse(req.body);
 
-			//* check if the cart is tampered
 			let sum = 0;
 			for (let item of data.cart) {
 				let product = await Product.findOne({ slug: item.slug });
+
+				//* check if the cart items are out of stock
+				if (product.availableQty < item.qty) {
+					return res.status(200).json({ error: true, msg: "Some items in your cart went out of stock." });
+				}
+
+				//* check if the cart is tampered
 				sum += item.price * item.qty;
 				if (product.price !== item.price) {
 					return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
 				}
 			}
+			//* check if the cart is tampered
 			if (sum !== data.amount) {
 				return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
 			}
-			//TODO: check if the cart items are out of stock
 
 			//TODO: check details are valid
 
@@ -53,7 +59,7 @@ const handler = async (req, res) => {
 				hasPaid: false,
 			});
 
-			return res.status(200).json({ success: true, order });
+			return res.status(201).json({ success: true, order });
 		} catch (error) {
 			return res.status(400).json({ msg: "Try Again", error: error });
 		}
