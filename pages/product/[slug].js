@@ -53,13 +53,24 @@ const Post = (props) => {
 	const updateData = (color, size) => {
 		const selectedVariant = variants[color]?.size[size];
 		if (selectedVariant) {
-			router.push({ pathname: router.pathname, query: { ...router.query, slug: selectedVariant.slug } });
+			router.push({ pathname: router.pathname, query: { ...router.query, slug: selectedVariant.slug } }, undefined, { scroll: false });
 		}
 	};
 
 	const renderColorButtons = () => {
 		const colors = Object.keys(variants);
-		return colors.map((color, index) => <button type="button" key={index} className={`border-2 mr-2 border-gray-300 rounded-full w-7 h-7 ${selectedColor === color ? "ring-2 ring-gray-400" : ""} focus:outline-none`} style={{ background: variants[color].colorCode }} onClick={(e) => handleColorButtonClick(color, e)}></button>);
+		return colors.map((color, index) => (
+			<button
+				type="button"
+				key={index}
+				className={`border-2 mr-2 border-gray-300 rounded-full w-7 h-7 ${selectedColor === color ? "ring-2 ring-gray-400" : ""} focus:outline-none`}
+				style={{ background: variants[color].colorCode }}
+				onClick={(e) => {
+					handleColorButtonClick(color);
+					e.preventDefault();
+				}}
+			></button>
+		));
 	};
 
 	const renderSizeButtons = () => {
@@ -68,8 +79,20 @@ const Post = (props) => {
 
 		return sizes.map((size) => (
 			<label key={size}>
-				<input type="radio" name="size" value={size} className="peer sr-only cursor-pointer" checked={selectedSize === size} onChange={() => handleSizeChange(size)} />
-				<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-semibold text-lg ${selectedSize === size ? "bg-primary text-white border-primary" : ""}`}>{size}</p>
+				<input
+					type="radio"
+					name="size"
+					value={size}
+					className="sr-only cursor-pointer"
+					checked={selectedSize === size}
+					onChange={(e) => {
+						handleSizeChange(size);
+						e.preventDefault();
+					}}
+				/>
+				<p className={`peer-checked:bg-primary cursor-pointer peer-checked:text-white rounded-xl border border-black md:px-5 px-3 py-1 md:py-2 font-semibold text-lg ${selectedSize === size ? "bg-primary text-white border-primary" : ""}`} aria-label={`Select size ${size}`}>
+					{size}
+				</p>
 			</label>
 		));
 	};
@@ -213,6 +236,7 @@ export async function getServerSideProps(context) {
 
 		colorSizeSlug[item.color].size[item.size] = { slug: item.slug };
 	}
+
 	return {
 		props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) },
 	};

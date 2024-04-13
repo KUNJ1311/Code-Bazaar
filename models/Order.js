@@ -22,6 +22,7 @@ const OrderSchema = new mongoose.Schema(
 		address: { type: String, requied: true },
 		amount: { type: Number, requied: true },
 		hasPaid: { type: Boolean, default: false, required: true },
+		deliveryStatus: { type: String, default: "Shipping Preparation", required: true },
 	},
 	{ timestamps: true }
 );

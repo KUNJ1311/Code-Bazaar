@@ -6,10 +6,12 @@ import { useRouter } from "next/router";
 const Account = () => {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
+
 	const handleLogout = () => {
 		dispatch(logoutUser());
 		router.push("/");
 	};
+
 	return (
 		<div className="flex flex-1 w-full h-full justify-center font-poppins">
 			<div className="flex flex-1 h-full flex-col justify-start max-w-5xl">

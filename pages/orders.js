@@ -7,7 +7,6 @@ const Orders = () => {
 	const [orders, setOrders] = useState();
 	const [openMenuId, setOpenMenuId] = useState(null);
 	const router = useRouter();
-
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		const fetchOrders = async () => {
@@ -53,7 +52,7 @@ const Orders = () => {
 								<div className="max-w-2xl mx-auto space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
 									<div className="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border">
 										<h3 className="sr-only">
-											Order placed on <time>{FormatDateTime(order.createdAt)}</time>
+											Order placed on <time>{FormatDateTime(order.createdAt).formattedDate + " - " + FormatDateTime(order.createdAt).formattedTime}</time>
 										</h3>
 
 										<div className="relative flex items-center p-4 border-b border-gray-200 sm:grid sm:grid-cols-4 sm:gap-x-6">
@@ -68,10 +67,11 @@ const Orders = () => {
 												</div>
 											</dl>
 											<div className="absolute sm:top-[-13px] top-[-11px] left-4">
-												{/* <dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${order.status === "Delivered" ? "bg-primary" : order.status === "Shipped" ? "bg-indigo-500" : "bg-red-500"}`}> */}
-												<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${order.hasPaid === true ? "bg-primary" : "bg-red-500"}`}>
-													{order.hasPaid === true ? "Paid" : "Pending"} - {FormatDateTime(order.createdAt)}
-												</dd>
+												{order.hasPaid === true ? (
+													<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${order.deliveryStatus === "Delivered" ? "bg-primary" : order.deliveryStatus === "Shipped" ? "bg-indigo-500" : "bg-red-500"}`}>{order.deliveryStatus === "Shipping Preparation" ? `${order.deliveryStatus}` : `${order.deliveryStatus} On ${FormatDateTime(order.createdAt).formattedDate}`}</dd>
+												) : (
+													<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center bg-red-500`}>Payment Pending</dd>
+												)}
 											</div>
 
 											<div className="relative flex justify-end lg:hidden">

@@ -14,6 +14,10 @@ const handler = async (req, res) => {
 		try {
 			const data = JSON.parse(req.body);
 
+			if (data.amount <= 0) {
+				return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
+			}
+
 			let sum = 0;
 			for (let item of data.cart) {
 				let product = await Product.findOne({ slug: item.slug });
@@ -29,12 +33,20 @@ const handler = async (req, res) => {
 					return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
 				}
 			}
+
 			//* check if the cart is tampered
 			if (sum !== data.amount) {
 				return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
 			}
 
-			//TODO: check details are valid
+			//* check details are valid
+			const numberRegex = /^\d+$/;
+			if (data.phone.length !== 10 || !numberRegex.test(data.phone)) {
+				return res.status(200).json({ error: true, msg: "Please enter your 10 digit phone number." });
+			}
+			if (data.pincode.length !== 6 || !numberRegex.test(data.pincode)) {
+				return res.status(200).json({ error: true, msg: "Please enter your 6 digit PIN Code." });
+			}
 
 			const user = await User.findOne({ email: data.email });
 			if (!user) {
@@ -53,7 +65,7 @@ const handler = async (req, res) => {
 				order_id: order.id,
 				user: user._id,
 				products: data.cart,
-				address: data.address,
+				address: `${data.address}, ${data.city}, ${data.state} - ${data.pincode}.`,
 				phone: data.phone,
 				amount: String(Number(amount) / 100),
 				hasPaid: false,

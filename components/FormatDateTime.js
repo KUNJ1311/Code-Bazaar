@@ -1,8 +1,15 @@
 const FormatDateTime = (time) => {
 	const date = new Date(time);
-	const options = { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "numeric" };
-	const formattedDateTime = date.toLocaleDateString("en-US", options);
-	return formattedDateTime;
+
+	// Format date
+	const dateFormatOptions = { month: "short", day: "2-digit", year: "numeric" };
+	const formattedDate = date.toLocaleDateString("en-US", dateFormatOptions);
+
+	// Format time
+	const timeFormatOptions = { hour: "numeric", minute: "numeric", hour12: true };
+	const formattedTime = date.toLocaleTimeString("en-US", timeFormatOptions);
+
+	return { formattedDate, formattedTime };
 };
 
 export default FormatDateTime;

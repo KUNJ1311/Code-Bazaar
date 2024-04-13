@@ -59,10 +59,10 @@ const ProductCarousel = () => {
 	];
 	return (
 		<>
-			<div className="flex md:text-3xl text-xl font-normal text-gray-900 justify-center text-center pt-5 relative font-poppins">
+			{/* <div className="flex md:text-3xl text-xl font-normal text-gray-900 justify-center text-center pt-5 relative font-poppins">
 				<h1 className="m-1 relative">Product Category</h1>
 				<span className="absolute md:top-16 top-14 w-24 h-1 bg-primary border rounded-xl border-transparent"></span>
-			</div>
+			</div> */}
 
 			<div className="relative flex justify-center mx-auto mt-1 w-full">
 				<div className="relative flex items-center lg:container overflow-hidden justify-center w-full">

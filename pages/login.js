@@ -15,27 +15,32 @@ const Login = () => {
 	}, []);
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();
-		const { email, password } = credentials;
-		const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ email, password }),
-		});
-		const json = await response.json();
-		if (json.success) {
-			localStorage.setItem("token", JSON.stringify({ token: json.token, key: Math.random() }));
-			router.push(`${process.env.NEXT_PUBLIC_HOST}/account`);
-		} else {
-			toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">Wrong credentials. Try again...</span>);
+		try {
+			e.preventDefault();
+			const { email, password } = credentials;
+			const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password }),
+			});
+			const json = await response.json();
+			if (json.success) {
+				localStorage.setItem("token", JSON.stringify({ token: json.token, key: Math.random() }));
+				router.push(`${process.env.NEXT_PUBLIC_HOST}/account`);
+			} else {
+				toast.error(<span className="text-gray-900 lg:text-base text-sm font-medium">Wrong credentials. Try again...</span>);
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
+
 	return (
 		<div className="flex flex-col flex-1 justify-center mx-auto bg-white rounded-lg font-poppins">
 			<div className="text-[#333] flex items-start justify-center py-3 px-2">

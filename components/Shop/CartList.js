@@ -26,7 +26,7 @@ const CartList = ({ toggleCart }) => {
 			<div className="flow-root">
 				<ul role="list" className="-my-6 divide-y divide-gray-200">
 					{cart?.map((product) => (
-						<li key={product.slug} className="flex py-6">
+						<li key={product.slug} className="flex py-3">
 							<div className="h-[102px] w-[85px] cart-img-small sm:h-[115px] sm:w-24 lg:w-32 lg:h-[153px] flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 								<img src={product.img} alt={product.title} className="h-full w-full object-cover object-center" />
 							</div>

@@ -63,7 +63,7 @@ const Products = (props) => {
 												{ autoClose: 4000 }
 											);
 										}}
-										className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10 w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal"
+										className="button-style leading-10 rounded-full flex justify-center items-center md:w-10 md:h-10 w-8 h-8 absolute bottom-3 md:bottom-4 md:right-4 right-3 cursor-pointer font-normal max-[300px]:hidden"
 									>
 										<svg className="md:w-6 md:h-6 w-5 h-5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<g clipPath="url(#clip0_1_2)">

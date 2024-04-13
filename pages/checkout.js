@@ -15,7 +15,7 @@ const Checkout = () => {
 	const router = useRouter();
 
 	const [disabled, setDisabled] = useState(true);
-	const [service, setService] = useState();
+	const [service, setService] = useState(false);
 
 	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "", state: "", pincode: "" });
 	const { name, email, phone, address, city, state, pincode } = details;
@@ -89,9 +89,16 @@ const Checkout = () => {
 
 	const makePayment = async () => {
 		try {
+			const numberRegex = /^\d+$/;
+			if (phone.length !== 10 || !numberRegex.test(phone)) {
+				return toast.info(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Please enter your 10 digit phone number.</span>);
+			}
+			if (pincode.length !== 6 || !numberRegex.test(pincode)) {
+				return toast.info(<span className="text-gray-900 lg:sm:text-base text-sm font-medium">Please enter your 6 digit PIN Code.</span>);
+			}
 			const res = await fetch("/api/order/create", {
 				method: "POST",
-				body: JSON.stringify({ email: email, amount: subTotal, cart: cart, phone: phone, address: `${address}, ${city}, ${state} - ${pincode}.` }),
+				body: JSON.stringify({ email: email, amount: subTotal, cart: cart, phone: phone, address: address, city: city, state: state, pincode: pincode }),
 			});
 
 			const data = await res.json();
@@ -206,7 +213,7 @@ const Checkout = () => {
 											Phone
 										</label>
 										<div className="relative flex">
-											<input onChange={onChange} type="text" id="phone" name="phone" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Phone No." />
+											<input onChange={onChange} type="text" id="phone" name="phone" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your 10 Digit Phone No." />
 											<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 												<HiPhone className="h-4 w-4 text-gray-400 " />
 											</div>

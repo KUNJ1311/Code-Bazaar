@@ -10,7 +10,7 @@ const MyOrder = ({ order }) => {
 				<div className="text-xl md:text-2xl lg:text-3xl md:font-semibold font-medium text-gray-800">Order</div>
 				<p className="md:text-base text-sm font-medium text-gray-600 flex justify-center flex-wrap">
 					<span>{order.order_id} -&nbsp;</span>
-					<span>{FormatDateTime(order.createdAt)}</span>
+					<span>{FormatDateTime(order.createdAt).formattedDate + " - " + FormatDateTime(order.createdAt).formattedTime}</span>
 				</p>
 			</div>
 			<div className="flex sm:px-10 lg:flex-row flex-col lg:px-20 xl:px-32 font-poppins">
@@ -69,8 +69,14 @@ const MyOrder = ({ order }) => {
 					<h3 className="md:text-xl text-lg md:font-semibold font-medium leading-5 text-gray-800">Summary</h3>
 					<div className="flex justify-between items-center w-full mt-3">
 						<p className="md:text-lg text-base md:font-medium font-normal leading-4 text-gray-800">Payment Status</p>
-						{order.hasPaid === true ? <p className="md:text-lg text-base md:font-semibold font-medium leading-4 text-primary">Paid</p> : <p className="md:text-lg text-base md:font-semibold font-medium leading-4 text-red-600">Pending</p>}
+						{order.hasPaid === true ? <p className="md:text-lg text-base md:font-semibold font-medium leading-4 text-primary">Paid</p> : <p className="md:text-lg text-base md:font-semibold font-medium leading-4 text-red-500">Pending</p>}
 					</div>
+					{order.hasPaid && (
+						<div className="flex justify-between items-center w-full mt-3">
+							<p className="md:text-lg text-base md:font-medium font-normal leading-4 text-gray-800">Delivery Status</p>
+							<p className={`md:text-lg text-base md:font-semibold font-medium leading-4 ${order.deliveryStatus === "Delivered" ? "text-primary" : order.deliveryStatus === "Shipped" ? "text-indigo-500" : "text-red-500"}`}>{order.deliveryStatus}</p>
+						</div>
+					)}
 					<div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
 						<div className="flex justify-between w-full mt-5">
 							<p className="md:text-base text-sm leading-4 text-gray-800">Subtotal</p>

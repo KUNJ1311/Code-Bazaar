@@ -20,20 +20,18 @@ export async function getServerSideProps(context) {
 	let hoodies = {};
 	for (let item of products) {
 		if (item.title in hoodies) {
-			if (!hoodies[item.title].color.includes(item.color) && item.availableQty > 0) {
+			if (!hoodies[item.title].color.includes(item.color)) {
 				hoodies[item.title].color.push(item.color);
 				hoodies[item.title].colorCode.push(item.colorCode);
 			}
-			if (!hoodies[item.title].size.includes(item.size) && item.availableQty > 0) {
+			if (!hoodies[item.title].size.includes(item.size)) {
 				hoodies[item.title].size.push(item.size);
 			}
 		} else {
 			hoodies[item.title] = JSON.parse(JSON.stringify(item));
-			if (item.availableQty > 0) {
-				hoodies[item.title].color = [item.color];
-				hoodies[item.title].size = [item.size];
-				hoodies[item.title].colorCode = [item.colorCode];
-			}
+			hoodies[item.title].color = [item.color];
+			hoodies[item.title].size = [item.size];
+			hoodies[item.title].colorCode = [item.colorCode];
 		}
 	}
 	return {
