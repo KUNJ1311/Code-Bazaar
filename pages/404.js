@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-export default function FourOhFour() {
+export default function Error() {
 	return (
 		<>
-			<div className="text-center flex flex-1 flex-col w-full h-full justify-center bg-gray-100 font-poppins py-20">
+			<div className="text-center flex flex-1 flex-col w-full h-full justify-center bg-gray-100 py-20">
 				<h1 className="mb-4 md:text-8xl text-6xl font-semibold text-red-500">404</h1>
 				<p className="mb-4 md:text-3xl text-xl text-gray-600">Oops! Looks like you&apos;re lost.</p>
 				<div className="animate-bounce">
@@ -16,7 +16,6 @@ export default function FourOhFour() {
 					<Link href="/" className="text-primary-dark underline">
 						Home
 					</Link>
-					.
 				</p>
 			</div>
 		</>

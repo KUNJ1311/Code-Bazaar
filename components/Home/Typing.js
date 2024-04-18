@@ -42,10 +42,10 @@ const Typing = () => {
 		return () => clearInterval(blinkInterval);
 	}, [wordIndex]);
 	return (
-		<span className="font-poppins">
+		<>
 			{`${words[wordIndex].substring(0, subIndex)}`}
 			<span className="font-normal">{`${blink ? "|" : " "}`}</span>
-		</span>
+		</>
 	);
 };
 

@@ -1,15 +1,11 @@
-import { addToCart, saveCart } from "@/lib/actions/cartAction";
-import { useAppDispatch } from "@/lib/hooks";
 import Link from "next/link";
 import StarRating from "./StarRating";
-import { toast } from "react-toastify";
 
 const Products = (props) => {
 	const { products, title } = props;
-	const dispatch = useAppDispatch();
 
 	return (
-		<section className="md:px-5 w-full mx-auto font-poppins flex flex-1">
+		<section className="md:px-5 w-full mx-auto flex flex-1">
 			<div className="lg:container flex flex-wrap w-full mb-4 mx-auto">
 				<div className="w-full">
 					<div className="md:pl-12 pl-6 flex md:text-3xl text-xl font-normal text-gray-900 justify-startr text-start mb-1 mt-2 md:mt-5 md:mb-5 relative">
@@ -24,7 +20,7 @@ const Products = (props) => {
 						)}
 						{products &&
 							Object.keys(products).map((data) => (
-								<div key={products[data]._id} className="p-2 my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[15px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card ">
+								<div key={products[data]._id} className="p-2 my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[15px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card flex flex-col">
 									<Link href={`/product/${products[data].slug}`} className="flex items-center card-product-out">
 										{/* <div className="overflow-hidden border border-slate-300 rounded-[20px] cursor-pointer card-product-img">
 											<img className="transition-my object-cover hover:scale-110 " src={products[data].img} alt={products[data].title} />
@@ -33,13 +29,13 @@ const Products = (props) => {
 											<img className="absolute top-0 left-0 w-full h-full object-cover hover:scale-110 transition-my" src={products[data].img} alt={products[data].title} />
 										</div>
 									</Link>
-									<div className="text-start md:py-[10px] py-[5px] px-2 flex flex-col justify-start">
+									<div className="text-start py-[4px] px-2 flex flex-col flex-1 md:h-full justify-end">
 										<h3 className="text-[#606063] lg:text-base md:text-sm text-xs font-semibold">Brand Name</h3>
 										<Link href={`/product/${products[data].slug}`}>
-											<h5 className="pt-[4px] mb-1 text-gray-900 lg:text-base md:text-sm text-xs font-medium cursor-pointer hover:text-primary multi-line-ellipsis">{products[data].title}</h5>
+											<h5 className="pt-[1px] mb-1 text-gray-900 lg:text-base md:text-sm text-xs font-medium cursor-pointer hover:text-primary multi-line-ellipsis">{products[data].title}</h5>
 										</Link>
-										<div className="absolute sm:bottom-1 bottom-2">
-											<div className="flex items-center mt-1 w-full h-full">
+										<div className="flex flex-1 flex-col justify-end h-full">
+											<div className="flex items-center mt-1 w-full">
 												<StarRating rating={parseFloat(products[data].rating).toFixed(1)} Code={products[data].slug} />
 											</div>
 											<h4 className="space-x-2">
@@ -48,7 +44,7 @@ const Products = (props) => {
 											</h4>
 										</div>
 									</div>
-									<button
+									{/* <button
 										type="button"
 										onClick={() => {
 											dispatch(addToCart(products[data].slug, 1, products[data].price, products[data].title, products[data].size[0], products[data].color[0], products[data].img));
@@ -81,7 +77,7 @@ const Products = (props) => {
 												</clipPath>
 											</defs>
 										</svg>
-									</button>
+									</button> */}
 								</div>
 							))}
 					</div>

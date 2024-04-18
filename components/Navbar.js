@@ -19,24 +19,48 @@ const Navbar = () => {
 
 	useEffect(() => {
 		try {
-			const cartData = localStorage.getItem("cart");
-			if (cartData) {
-				dispatch(updateCart(JSON.parse(cartData)));
-			} else {
-				localStorage.removeItem("cart");
-			}
-
 			const token = localStorage.getItem("token");
+
 			if (token) {
 				dispatch(addUserData(JSON.parse(token)));
 			} else {
 				localStorage.removeItem("token");
+			}
+
+			const cartData = localStorage.getItem("cart");
+
+			if (cartData) {
+				dispatch(updateCart(JSON.parse(cartData)));
+			} else {
+				localStorage.removeItem("cart");
 			}
 		} catch (error) {
 			console.error(error);
 			localStorage.clear();
 		}
 	}, [dispatch]);
+
+	useEffect(() => {
+		const getQty = async () => {
+			const cartData = localStorage.getItem("cart");
+			if (cartData) {
+				const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product/cartstock`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(JSON.parse(cartData)),
+				});
+				const json = await response.json();
+				if (json.success) {
+					dispatch(updateCart(json.data));
+				}
+			} else {
+				localStorage.removeItem("cart");
+			}
+		};
+		getQty();
+	}, []);
 
 	const items = [
 		{
@@ -109,7 +133,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav key={userData.key} className="z-50 sm:h-[69px] h-[56px] sticky top-0 bg-second flex tracking-wide font-poppins">
+			<nav key={userData.key} className="z-50 sm:h-[69px] h-[56px] sticky top-0 bg-second flex tracking-wide">
 				<Link href="/">
 					<img className="sm:w-[248px] sm:h-[69px] w-[200px] h-[56px]" src="/assets/logo.svg" alt="CodeBazaar" />
 				</Link>
@@ -139,7 +163,7 @@ const Navbar = () => {
 									</li>
 								</Link>
 							) : (
-								<Link href="/login" key={3} className="w-full h-full justify-center flex pr-5 " onClick={hideCart}>
+								<Link href="/user/login" key={3} className="w-full h-full justify-center flex pr-5 " onClick={hideCart}>
 									<li className={`nav-name flex cursor-pointer transition-my hover:text-primary space-x-2 items-center justify-center ${active === 3 ? "nav-active text-primary" : ""}`}>
 										<BsPersonLock className="relative text-2xl" />
 										<span className={`nav-under before:-bottom-[4px] relative ${active === 3 ? "nav-active text-primary" : ""}`}>Login</span>
@@ -183,7 +207,7 @@ const Navbar = () => {
 											</li>
 										) : (
 											<li key={3} className={`relative flex list-none w-14 h-14 z-1 justify-center items-center ${active === 3 ? "nav-mobile-active" : ""}`} onClick={hideCart}>
-												<Link className="relative flex justify-center items-center flex-col text-center font-medium" href="/login">
+												<Link className="relative flex justify-center items-center flex-col text-center font-medium" href="/user/login">
 													<span className="mobile-icon relative text-[1.5em] text-center block z-20">
 														<BsPersonLock className="relative text-2xl" />
 													</span>

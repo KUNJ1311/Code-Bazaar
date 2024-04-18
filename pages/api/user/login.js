@@ -8,20 +8,20 @@ const handler = async (req, res) => {
 		try {
 			let user = await User.findOne({ email: req.body.email });
 			const bytes = CryptoJS.AES.decrypt(user.password, process.env.AES_SECRET);
-			const decryptedPass = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)).toString();
+			const decryptedPass = bytes.toString(CryptoJS.enc.Utf8);
 			if (user) {
 				if (req.body.email === user.email && req.body.password === decryptedPass) {
 					const token = jwt.sign({ _id: user._id, email: user.email, name: user.name }, process.env.JWT_SECRET);
 					return res.status(200).json({ success: true, token });
 				} else {
-					return res.status(401).json({ success: false, error: "Invalid Credentials" });
+					return res.status(401).json({ success: false, msg: "Invalid Credentials" });
 				}
 			}
 		} catch (error) {
-			return res.status(401).json({ success: false, error: "User Not Found" });
+			return res.status(401).json({ success: false, msg: "User Not Found", error: error });
 		}
 	} else {
-		return res.status(405).json({ error: "This method is not allowed" });
+		return res.status(405).json({ success: false, msg: "This method is not allowed" });
 	}
 };
 

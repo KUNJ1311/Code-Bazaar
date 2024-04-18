@@ -37,7 +37,7 @@ const Orders = () => {
 	};
 
 	return (
-		<div className="bg-gray-50 font-poppins h-full flex-1 flex justify-center">
+		<div className="bg-gray-50 h-full flex-1 flex justify-center">
 			<main className="py-6 w-full">
 				<div className="max-w-7xl mx-auto sm:px-2 lg:px-8">
 					<div className="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
@@ -68,7 +68,7 @@ const Orders = () => {
 											</dl>
 											<div className="absolute sm:top-[-13px] top-[-11px] left-4">
 												{order.hasPaid === true ? (
-													<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${order.deliveryStatus === "Delivered" ? "bg-primary" : order.deliveryStatus === "Shipped" ? "bg-indigo-500" : "bg-red-500"}`}>{order.deliveryStatus === "Shipping Preparation" ? `${order.deliveryStatus}` : `${order.deliveryStatus} On ${FormatDateTime(order.createdAt).formattedDate}`}</dd>
+													<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center ${order.deliveryStatus === "Delivered" ? "bg-primary" : order.deliveryStatus === "Shipped" ? "bg-indigo-500" : "bg-red-500"}`}>{order.deliveryStatus === "Preparing" ? `${order.deliveryStatus}` : `${order.deliveryStatus} On ${FormatDateTime(order.createdAt).formattedDate}`}</dd>
 												) : (
 													<dd className={`sm:text-sm text-xs font-medium flex justify-center text-white rounded-full border border-gray-200 px-2 w-full py-[2px] text-center bg-red-500`}>Payment Pending</dd>
 												)}
@@ -86,7 +86,7 @@ const Orders = () => {
 												<div className="relative mt-4">
 													{openMenuId === order.order_id && (
 														<div className="absolute right-0 z-10 mt-1 w-36 origin-top-right rounded-md divide-y divide-gray-200 bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby={`order-menu-button-${order.order_id}`} tabIndex="-1">
-															<Link href={`/order?id=${order.order_id}`} className="text-gray-700 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1" id={`order-menu-option-0-${order.order_id}`}>
+															<Link href={`/account/order?id=${order.order_id}`} className="text-gray-700 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1" id={`order-menu-option-0-${order.order_id}`}>
 																View Order
 															</Link>
 															<Link href="#" className="text-gray-700 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1" id={`order-menu-option-1-${order.order_id}`}>
@@ -97,7 +97,7 @@ const Orders = () => {
 												</div>
 											</div>
 											<div className="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
-												<Link href={`/order?id=${order.order_id}`} className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
+												<Link href={`/account/order?id=${order.order_id}`} className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
 													<span>View Order</span>
 													<span className="sr-only">{order.order_id}</span>
 												</Link>
@@ -166,7 +166,7 @@ const Orders = () => {
 						</section>
 					))
 				) : (
-					<img src="./assets/noorders.svg" className="flex mx-auto justify-center m-5  " alt="No orders found" />
+					<img src="/assets/noorders.svg" className="flex mx-auto justify-center m-5  " alt="No orders found" />
 				)}
 			</main>
 		</div>

@@ -3,6 +3,7 @@ import connectDb from "@/middleware/mongoose";
 import User from "@/models/User";
 import Order from "@/models/Order";
 import Product from "@/models/Product";
+import pincodes from "@/pincodes.json";
 
 const instance = new Razorpay({
 	key_id: process.env.NEXT_PUBLIC_RAZORPAY_API_KEY,
@@ -13,7 +14,6 @@ const handler = async (req, res) => {
 	if (req.method == "POST") {
 		try {
 			const data = JSON.parse(req.body);
-
 			if (data.amount <= 0) {
 				return res.status(422).json({ error: true, msg: "The price of some items in your cart have changed." });
 			}
@@ -44,8 +44,14 @@ const handler = async (req, res) => {
 			if (data.phone.length !== 10 || !numberRegex.test(data.phone)) {
 				return res.status(200).json({ error: true, msg: "Please enter your 10 digit phone number." });
 			}
+
 			if (data.pincode.length !== 6 || !numberRegex.test(data.pincode)) {
 				return res.status(200).json({ error: true, msg: "Please enter your 6 digit PIN Code." });
+			}
+
+			//* check pincode is serviceable
+			if (!Object.keys(pincodes).includes(data.pincode)) {
+				return res.status(200).json({ error: true, msg: "This pincode you have entered is not serviceable." });
 			}
 
 			const user = await User.findOne({ email: data.email });

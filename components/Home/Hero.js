@@ -2,7 +2,7 @@ import Typing from "./Typing";
 import Link from "next/link";
 const Hero = () => {
 	return (
-		<section id="hero" className="font-poppins h-[236px] md:h-[500px] bg-[#D9DFFF] w-full flex flex-col items-start pl-2 md:pl-16 justify-center">
+		<section id="hero" className="h-[236px] md:h-[500px] bg-[#D9DFFF] w-full flex flex-col items-start pl-2 md:pl-16 justify-center">
 			<div className="overflow-hidden flex relative w-full h-[236px] md:h-[500px] items-center">
 				<div className="z-10 space-y-1 md:space-y-3">
 					<h4 className="text-sm md:text-2xl font-medium">Trade-in-offer</h4>

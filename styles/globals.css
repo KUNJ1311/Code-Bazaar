@@ -19,6 +19,14 @@ body,
 	width: 100%;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
 .multi-line-ellipsis {
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
