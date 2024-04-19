@@ -45,7 +45,10 @@ const Cart = (props) => {
 								<div className="border-t border-gray-200 px-4 py-6 sm:px-6 mt-8">
 									<div className="flex justify-between text-sm md:text-base font-medium text-gray-900 font-robot">
 										<p>Subtotal</p>
-										<p>₹{subTotal}</p>
+										<p>
+											<span className="font-sans">₹</span>
+											{subTotal}
+										</p>
 									</div>
 									<p className="mt-0.5 text-xs md:text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
 									<div className="mt-6">

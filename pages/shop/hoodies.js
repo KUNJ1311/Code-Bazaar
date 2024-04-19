@@ -2,10 +2,14 @@ import Products from "@/components/Shop/Products";
 import ProductCarousel from "@/components/Shop/ProductCarousel";
 import Product from "@/models/Product";
 import mongoose from "mongoose";
+import Head from "next/head";
 
 const Hoodies = (props) => {
 	return (
 		<>
+			<Head>
+				<title>Hoodies - CodeBazaar</title>
+			</Head>
 			<ProductCarousel />
 			<Products title={"Hoodies"} products={props.products} />
 		</>

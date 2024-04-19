@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Error from "../404";
 import Reviews from "@/components/Shop/Reviews";
+import Head from "next/head";
 
 const Post = (props) => {
 	const { product, variants, error } = props;
@@ -115,6 +116,9 @@ const Post = (props) => {
 				<Error />
 			) : (
 				<>
+					<Head>
+						<title>{product.title} - CodeBazaar</title>
+					</Head>
 					<section className="sm:py-5">
 						<div className="container mx-auto px-4">
 							<div className="lg:col-gap-12 xl:col-gap-16 mt-6 grid grid-cols-1 md:gap-5 sm:gap-9 gap-4 lg:mt-12 lg:grid-cols-5 lg:gap-12">
@@ -165,7 +169,16 @@ const Post = (props) => {
 									<h2 className="mt-2 md:lg text-base font-medium text-gray-900">Size</h2>
 									<div className="mt-2 flex select-none flex-wrap items-center gap-1">{renderSizeButtons()}</div>
 									<div className="mt-8 flex items-center justify-between border-t border-b border-gray-300 py-4 flex-row">
-										<div className="flex items-end">{product.availableQty <= 0 ? <p className="lg:text-3xl md:text-2xl text-xl font-bold text-red-500">Out of stock</p> : <h2 className="lg:text-3xl md:text-2xl text-xl font-bold">₹{product.price}</h2>}</div>
+										<div className="flex items-end">
+											{product.availableQty <= 0 ? (
+												<p className="lg:text-3xl md:text-2xl text-xl font-bold text-red-500">Out of stock</p>
+											) : (
+												<h2 className="lg:text-3xl md:text-2xl text-xl font-bold">
+													<span className="font-sans">₹</span>
+													{product.price}
+												</h2>
+											)}
+										</div>
 
 										<button
 											disabled={product.availableQty <= 0 ? true : false}

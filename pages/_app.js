@@ -7,12 +7,17 @@ import { Provider } from "react-redux";
 import { Store } from "@/lib/store";
 import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
 import Script from "next/script";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
 	const store = Store();
 
 	return (
 		<Provider store={store}>
+			<Head>
+				<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0" />
+				<link rel="icon" href="favicon.ico" type="image/x-icon" />
+			</Head>
 			<ToastContainer position="top-center" limit={3} autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
 			<ProgressBar height="3px" color="#25756d" startPosition={0.3} options={{ showSpinner: false }} shallowRouting />
 			<div className="flex flex-col min-h-full font-poppins">

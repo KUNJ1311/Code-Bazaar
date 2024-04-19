@@ -71,6 +71,7 @@ const handler = async (req, res) => {
 				order_id: order.id,
 				user: user._id,
 				products: data.cart,
+				name: data.name,
 				address: `${data.address}, ${data.city}, ${data.state} - ${data.pincode}.`,
 				phone: data.phone,
 				amount: String(Number(amount) / 100),

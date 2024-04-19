@@ -7,8 +7,8 @@ const Footer = () => {
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap text-left lg:text-left">
 					<div className="w-full lg:w-6/12 px-4">
-						<h4 className="lg:text-3xl md:text-2xl text-xl fonat-semibold text-slate-700">Let&apos;s keep in touch!</h4>
-						<h5 className="lg:text-lg md:text-base text-sm mt-0 mb-2 text-slate-600">Find us on any of these platforms.</h5>
+						<h4 className="lg:text-2xl md:text-xl text-lg fonat-semibold text-slate-700">Let&apos;s keep in touch!</h4>
+						<h5 className="lg:text-base md:text-sm text-xs mt-0 mb-2 text-slate-600">Find us on any of these platforms.</h5>
 						<div className="flex space-x-2 mt-6 lg:mb-0 mb-6 flex-wrap">
 							<Link href={"/"}>
 								<button className="flex bg-white border border-slate-200 hover:scale-110 transition-my font-normal shadow-slate-400 shadow-md h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
@@ -89,7 +89,7 @@ const Footer = () => {
 				</div>
 				<hr className=" border-slate-400" />
 				<div className="flex flex-wrap items-center justify-center md:justify-between">
-					<div className="flex">
+					<div className="flex p-3">
 						<Link href="/">
 							<Image width={200} height={56} src="/assets/logo.svg" alt="CodeBazaar" />
 						</Link>

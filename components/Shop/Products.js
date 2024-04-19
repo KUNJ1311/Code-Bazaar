@@ -39,8 +39,13 @@ const Products = (props) => {
 												<StarRating rating={parseFloat(products[data].rating).toFixed(1)} Code={products[data].slug} />
 											</div>
 											<h4 className="space-x-2">
-												<del className="lg:text-lg text-sm font-medium text-red-400">₹999</del>
-												<span className="lg:text-xl text-base font-semibold text-primary">₹{products[data].price}</span>
+												<del className="lg:text-lg text-xs font-medium text-red-400">
+													<span className="font-sans">₹</span>999
+												</del>
+												<span className="lg:text-xl text-base font-semibold text-primary">
+													<span className="font-sans ">₹</span>
+													{products[data].price}
+												</span>
 											</h4>
 										</div>
 									</div>

@@ -22,7 +22,8 @@ const handler = async (req, res) => {
 				return res.status(200).json({ success: false, msg: "Wrong Password" });
 			}
 		} catch (error) {
-			return res.status(401).json({ success: false, msg: "Try Again...", error: error });
+			console.log(error);
+			return res.status(401).json({ success: false, msg: "Try Again..." });
 		}
 	} else {
 		return res.status(405).json({ msg: "This method is not allowed" });

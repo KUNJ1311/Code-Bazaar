@@ -21,7 +21,8 @@ const handler = async (req, res) => {
 			await u.save();
 			return res.status(201).json({ success: true });
 		} catch (error) {
-			return res.status(401).json(error);
+			console.log(error);
+			return res.status(401).json({ success: false, msg: "Try Again..." });
 		}
 	} else {
 		return res.status(405).json({ success: false, error: "This method is not allowed" });

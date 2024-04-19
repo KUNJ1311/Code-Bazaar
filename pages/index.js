@@ -9,7 +9,6 @@ export default function Home() {
 			<Head>
 				<title>CodeBazaar - Wear the code</title>
 				<meta name="description" content="CodeBazaar - Wear the code" />
-				<link rel="icon" href="favicon.ico" type="image/x-icon" />
 			</Head>
 			<Hero />
 			<div className="mx-auto lg:container">

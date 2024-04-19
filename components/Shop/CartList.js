@@ -43,7 +43,12 @@ const CartList = ({ toggleCart }) => {
 												{product.title}
 											</Link>
 										</h3>
-										{product.availableQty >= product.qty && <p className="ml-4">₹{product.price}</p>}
+										{product.availableQty >= product.qty && (
+											<p className="ml-4">
+												<span className="font-sans">₹</span>
+												{product.price}
+											</p>
+										)}
 									</div>
 									<p className="mt-1 md:text-sm text-gray-500 text-xs font-medium">
 										{product.size} - {product.color.charAt(0).toUpperCase() + product.color.slice(1)}

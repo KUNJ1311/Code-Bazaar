@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -117,51 +118,56 @@ const Address = () => {
 	};
 
 	return (
-		<div className="w-full flex flex-col items-center flex-1">
-			<div className="flex justify-center flex-col mt-7">
-				<h1 className="text-2xl lg:text-3xl text-center font-medium">Address</h1>
-				<h2 className="text-xs lg:text-base text-center text-gray-500">Edit address for orders.</h2>
-			</div>
-			<div className="container max-w-4xl bg-gray-50 border border-gray-200 rounded-md px-4 pt-2 lg:mx-0 mx-4 max-[300px]:mx-0 max-[300px]:px-2 mt-7 mb-8">
-				<div className="flex flex-col">
-					<label htmlFor="address" className="mt-4 mb-2 block text-xs sm:text-sm font-medium">
-						Billing Address
-					</label>
-					<div className="relative mb-3 flex">
-						<textarea onChange={onChange} defaultValue={address} type="text" id="address" name="address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary max-h-16 min-h-[45px]" placeholder="Street Address" />
-						<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-							<img className="h-4 w-4 object-contain" src="/assets/india.svg" alt="" />
-						</div>
-					</div>
-					<div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-3">
-						<div className="flex relative w-full">
-							<input onChange={onChange} defaultValue={pincode} type="text" name="pincode" className="w-full rounded-md border border-gray-200 px-4 py-3 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="PIN Code" />
-							<div className="h-full flex absolute right-2">
-								{pincode.length === 6 && service ? (
-									<svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-										<circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-										<path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-									</svg>
-								) : (
-									pincode.length === 6 && (
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" className="checkmark">
-											<circle cx="26" cy="26" r="25" fill="none" className="checkmark__circle checkmark__cross"></circle> <path fill="none" d="M 12,12 L 40,40 M 40,12 L 12,40" className="checkmark__check"></path>
-										</svg>
-									)
-								)}
+		<>
+			<Head>
+				<title>Address - CodeBazaar</title>
+			</Head>
+			<div className="w-full flex flex-col items-center flex-1">
+				<div className="flex justify-center flex-col mt-7">
+					<h1 className="text-2xl lg:text-3xl text-center font-medium">Address</h1>
+					<h2 className="text-xs lg:text-base text-center text-gray-500">Edit address for orders.</h2>
+				</div>
+				<div className="container max-w-4xl bg-gray-50 border border-gray-200 rounded-md px-4 pt-2 lg:mx-0 mx-4 max-[300px]:mx-0 max-[300px]:px-2 mt-7 mb-8">
+					<div className="flex flex-col">
+						<label htmlFor="address" className="mt-4 mb-2 block text-xs sm:text-sm font-medium">
+							Billing Address
+						</label>
+						<div className="relative mb-3 flex">
+							<textarea onChange={onChange} defaultValue={address} type="text" id="address" name="address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary max-h-16 min-h-[45px]" placeholder="Street Address" />
+							<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+								<img className="h-4 w-4 object-contain" src="/assets/india.svg" alt="" />
 							</div>
 						</div>
-						<input value={city} type="text" name="city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="City" readOnly />
-						<input value={state} type="text" name="state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="State" readOnly />
+						<div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-3">
+							<div className="flex relative w-full">
+								<input onChange={onChange} defaultValue={pincode} type="text" name="pincode" className="w-full rounded-md border border-gray-200 px-4 py-3 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="PIN Code" />
+								<div className="h-full flex absolute right-2">
+									{pincode.length === 6 && service ? (
+										<svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+											<circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+											<path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+										</svg>
+									) : (
+										pincode.length === 6 && (
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" className="checkmark">
+												<circle cx="26" cy="26" r="25" fill="none" className="checkmark__circle checkmark__cross"></circle> <path fill="none" d="M 12,12 L 40,40 M 40,12 L 12,40" className="checkmark__check"></path>
+											</svg>
+										)
+									)}
+								</div>
+							</div>
+							<input value={city} type="text" name="city" className="w-full rounded-md border border-gray-200 px-4 py-3 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="City" readOnly />
+							<input value={state} type="text" name="state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="State" readOnly />
+						</div>
+					</div>
+					<div className="mt-4 lg:mb-4 mb-8 w-full">
+						<button type="button" onClick={handleUpdate} disabled={disabled} className="disabled:opacity-60 disabled:cursor-not-allowed transition flex items-center justify-center rounded-md border border-transparent bg-primary px-4 lg:py-3 py-[10px] text-sm lg:text-base font-medium text-white hover:bg-primary-dark active:scale-95 disabled:active:scale-100 shadow-slate-400 shadow-md active:shadow">
+							Update
+						</button>
 					</div>
 				</div>
-				<div className="mt-4 lg:mb-4 mb-8 w-full">
-					<button type="button" onClick={handleUpdate} disabled={disabled} className="disabled:opacity-60 disabled:cursor-not-allowed transition flex items-center justify-center rounded-md border border-transparent bg-primary px-4 lg:py-3 py-[10px] text-sm lg:text-base font-medium text-white hover:bg-primary-dark active:scale-95 disabled:active:scale-100 shadow-slate-400 shadow-md active:shadow">
-						Update
-					</button>
-				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

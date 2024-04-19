@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { updateCart } from "@/lib/actions/cartAction";
+import Head from "next/head";
 
 const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
@@ -112,7 +113,7 @@ const Checkout = () => {
 			}
 			const res = await fetch("/api/order/create", {
 				method: "POST",
-				body: JSON.stringify({ email: email, amount: subTotal, cart: cart, phone: phone, address: address, city: city, state: state, pincode: pincode }),
+				body: JSON.stringify({ email: email, name: name, amount: subTotal, cart: cart, phone: phone, address: address, city: city, state: state, pincode: pincode }),
 			});
 
 			const data = await res.json();
@@ -169,11 +170,14 @@ const Checkout = () => {
 		if (!isLoggedIn) {
 			toast.info(<span className="text-gray-900 lg:sm:text-base text-xs sm:text-sm font-medium">Please login to place your order.</span>);
 		} else {
-			toast.info(<span className="text-gray-900 lg:sm:text-base text-xs sm:text-sm font-medium">You can edit from your account page.</span>);
+			toast.info(<span className="text-gray-900 lg:sm:text-base text-xs sm:text-sm font-medium">Can not change your email.</span>);
 		}
 	};
 	return (
 		<>
+			<Head>
+				<title>Checkout - CodeBazaar</title>
+			</Head>
 			{cart.length == 0 ? (
 				<>
 					<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
@@ -223,7 +227,7 @@ const Checkout = () => {
 											Name
 										</label>
 										<div className="relative flex">
-											<input onClick={handleInfo} value={name} type="text" id="name" name="name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Name" readOnly />
+											<input onChange={onChange} defaultValue={name} type="text" id="name" name="name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary" placeholder="Enter Your Name" />
 											<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 												<FaAddressCard className="h-4 w-4 text-gray-400 " />
 											</div>
@@ -275,16 +279,24 @@ const Checkout = () => {
 								<div className="mt-6 border-t border-b py-2">
 									<div className="flex items-center justify-between">
 										<p className="text-xs sm:text-sm lg:text-base leading-4 text-gray-800">Subtotal</p>
-										<p className="text-xs sm:text-sm lg:text-base font-medium text-gray-800">₹{parseFloat(subTotal).toFixed(2)}</p>
+										<p className="text-xs sm:text-sm lg:text-base font-medium text-gray-800">
+											<span className="font-sans">₹</span>
+											{parseFloat(subTotal).toFixed(2)}
+										</p>
 									</div>
 									<div className="flex items-center justify-between">
 										<p className="text-xs sm:text-sm lg:text-base leading-4 text-gray-800">Shipping</p>
-										<p className="text-xs sm:text-sm lg:text-base font-medium text-gray-800">₹8.00</p>
+										<p className="text-xs sm:text-sm lg:text-base font-medium text-gray-800">
+											<span className="font-sans">₹</span>8.00
+										</p>
 									</div>
 								</div>
 								<div className="mt-2 mb-4 flex items-center justify-between">
 									<p className="text-base sm:text-lg lg:text-xl font-semibold leading-4 text-gray-900">Total</p>
-									<p className="text-base sm:text-lg lg:text-xl font-medium text-gray-900">₹{parseFloat(subTotal).toFixed(2)}</p>
+									<p className="text-base sm:text-lg lg:text-xl font-medium text-gray-900">
+										<span className="font-sans">₹</span>
+										{parseFloat(subTotal).toFixed(2)}
+									</p>
 								</div>
 							</div>
 							{isLoggedIn ? (

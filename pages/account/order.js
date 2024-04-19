@@ -3,11 +3,15 @@ import mongoose from "mongoose";
 import Order from "@/models/Order";
 import FormatDateTime from "@/components/FormatDateTime";
 import Error from "../404";
+import Head from "next/head";
 
-const MyOrder = ({ order, error }) => {
+const MyOrder = ({ order, success }) => {
 	return (
 		<>
-			{error ? (
+			<Head>
+				<title>Order - CodeBazaar</title>
+			</Head>
+			{!success ? (
 				<Error />
 			) : (
 				<>
@@ -60,7 +64,10 @@ const MyOrder = ({ order, error }) => {
 															</div>
 														</div>
 														<div className="flex items-end">
-															<p className="text-xs sm:text-sm md:text-base font-medium">₹{product.price}</p>
+															<p className="text-xs sm:text-sm md:text-base font-medium">
+																<span className="font-sans">₹</span>
+																{product.price}
+															</p>
 														</div>
 													</div>
 												</div>
@@ -73,38 +80,50 @@ const MyOrder = ({ order, error }) => {
 						<div className="mt-4 bg-gray-50 border border-gray-200 rounded-md pt-3 px-4 lg:mx-0 max-[300px]:mx-0 mx-4 mb-8 pb-4 lg:w-1/2">
 							<h3 className="md:text-xl text-lg md:font-semibold font-medium leading-5 text-gray-800">Summary</h3>
 							<div className="flex justify-between items-center w-full mt-3">
-								<p className="md:text-lg text-base md:font-medium font-normal leading-4 text-gray-800">Payment Status</p>
-								{order.hasPaid === true ? <p className="md:text-lg text-base md:font-semibold font-medium leading-4 text-primary">Paid</p> : <p className="md:text-lg text-base md:font-semibold font-medium leading-4 text-red-500">Pending</p>}
+								<p className="md:text-lg text-base font-medium leading-4 text-gray-800">Payment Status</p>
+								{order.hasPaid === true ? <p className="md:text-lg text-base font-medium leading-4 text-primary">Paid</p> : <p className="md:text-lg text-base font-medium leading-4 text-red-500">Pending</p>}
 							</div>
 							{order.hasPaid && (
 								<div className="flex justify-between items-center w-full mt-3">
-									<p className="md:text-lg text-base md:font-medium font-normal leading-4 text-gray-800">Delivery Status</p>
-									<p className={`md:text-lg text-base md:font-semibold font-medium leading-4 ${order.deliveryStatus === "Delivered" ? "text-primary" : order.deliveryStatus === "Shipped" ? "text-indigo-500" : "text-red-500"}`}>{order.deliveryStatus}</p>
+									<p className="md:text-lg text-base font-medium leading-4 text-gray-800">Delivery Status</p>
+									<p className={`md:text-lg text-base font-medium leading-4 ${order.deliveryStatus === "Delivered" ? "text-primary" : order.deliveryStatus === "Shipped" ? "text-indigo-500" : "text-red-500"}`}>{order.deliveryStatus}</p>
 								</div>
 							)}
 							<div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
 								<div className="flex justify-between w-full mt-5">
 									<p className="md:text-base text-sm leading-4 text-gray-800">Subtotal</p>
-									<p className="md:text-base text-sm leading-4 text-gray-600">₹{order.amount}</p>
+									<p className="md:text-base text-sm leading-4 text-gray-600">
+										<span className="font-sans">₹</span>
+										{order.amount}
+									</p>
 								</div>
 								<div className="flex justify-between items-center w-full">
 									<p className="md:text-base text-sm leading-4 text-gray-800">Discount</p>
-									<p className="md:text-base text-sm leading-4 text-gray-600">-₹28.00 (50%)</p>
+									<p className="md:text-base text-sm leading-4 text-gray-600">
+										-<span className="font-sans">₹</span>28.00 (50%)
+									</p>
 								</div>
 								<div className="flex justify-between items-center w-full">
 									<p className="md:text-base text-sm leading-4 text-gray-800">Shipping</p>
-									<p className="md:text-base text-sm leading-4 text-gray-600">₹8.00</p>
+									<p className="md:text-base text-sm leading-4 text-gray-600">
+										<span className="font-sans">₹</span>8.00
+									</p>
 								</div>
 							</div>
 							<div className="flex justify-between items-center w-full mt-5">
 								<p className="md:text-xl text-lg md:font-semibold font-medium leading-4 text-gray-800">Total</p>
-								<p className="md:text-xl text-lg md:font-semibold font-medium leading-4 text-gray-600">₹{order.amount}</p>
+								<p className="md:text-xl text-lg md:font-semibold font-medium leading-4 text-gray-600">
+									<span className="font-sans">₹</span>
+									{order.amount}
+								</p>
 							</div>
 
 							<div className="flex justify-start xl:flex-col mt-3 flex-col md:space-x-6 lg:space-x-8 xl:space-x-0 space-y-4 xl:space-y-12 md:space-y-0 md:flex-row items-start">
-								<div className="flex justify-start items-start flex-col space-y-2">
-									<p className="md:text-base text-sm md:font-medium font-normal leading-4 text-center md:text-left text-gray-800">Shipping Address</p>
-									<p className="w-56 lg:w-full xl:w-48 text-left md:text-sm text-xs leading-5 text-gray-600">{order.address}</p>
+								<div className="flex justify-start items-start flex-col space-y-1">
+									<p className="md:text-base text-sm md:font-medium font-normal leading-4 text-center md:text-left text-gray-800">Shipping Details</p>
+									<p className="w-56 lg:w-full xl:w-48 text-left md:text-sm text-xs text-gray-600">{order.name}</p>
+									<p className="w-56 lg:w-full xl:w-48 text-left md:text-sm text-xs text-gray-600">{order.phone}</p>
+									<p className="w-56 lg:w-full xl:w-48 text-left md:text-sm text-xs text-gray-600">{order.address}</p>
 								</div>
 							</div>
 							<div className="mt-4 w-full">
@@ -127,10 +146,10 @@ export async function getServerSideProps(context) {
 		}
 		let order = await Order.findOne({ order_id: context.query.id });
 		if (order === null) {
-			return { props: { error: true, order: {} } };
+			return { props: { success: false, order: {} } };
 		}
 		return {
-			props: { error: false, order: JSON.parse(JSON.stringify(order)) },
+			props: { success: true, order: JSON.parse(JSON.stringify(order)) },
 		};
 	} catch (error) {
 		console.log(error);
