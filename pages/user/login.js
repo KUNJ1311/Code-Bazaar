@@ -49,8 +49,8 @@ const Login = () => {
 				<title>Login - CodeBazaar</title>
 			</Head>
 			<div className="flex flex-col flex-1 justify-center bg-white rounded-lg">
-				<div className="text-[#333] flex items-start justify-center py-3 px-2">
-					<div className="shadow-card w-full sm:w-11/12 max-w-4xl rounded-md p-6 bg-white">
+				<div className="text-[#333] flex items-start justify-center py-3 sm:px-2">
+					<div className="shadow-card w-full sm:w-11/12 max-w-4xl rounded-md sm:p-6 p-2 bg-white">
 						<div className="grid md:grid-cols-2 items-center md:gap-8">
 							<div className="max-md:order-1">
 								<img src="/assets/shop.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
@@ -87,7 +87,9 @@ const Login = () => {
 										Reset Now
 									</Link>
 								</div>
-								<button className="w-full px-6 py-5 mb-5 sm:text-base text-sm font-semibold leading-none text-white transition duration-300 rounded-2xl hover:bg-primary-dark focus:ring-4 focus:ring-primary-light bg-primary">Log In</button>
+								<div className="flex justify-center">
+									<button className="w-[150px] sm:py-5 py-4 mb-5 sm:text-base text-sm font-semibold leading-none text-white transition duration-300 rounded-2xl hover:bg-primary-dark focus:ring-4 focus:ring-primary-light bg-primary">Login</button>
+								</div>
 								<p className="sm:text-base text-sm leading-relaxed text-slate-900">
 									Don&apos;t have an account?{" "}
 									<Link href="/user/signup" className="font-semibold text-primary">

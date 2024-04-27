@@ -1,21 +1,27 @@
 import connectDb from "@/middleware/mongoose";
 import Otp from "@/models/Otp.js";
-import User from "@/models/User.js";
+import User from "@/models/User";
 import { registerMail } from "@/pages/api/mail/mailer.js";
 
 const handler = async (req, res) => {
 	if (req.method == "GET") {
 		try {
-			const { email } = req.query;
-			let user = await User.findOne({ email });
-			if (!user) {
-				return res.status(401).send({ success: false, msg: "Email address does not exist." });
+			const { email, name } = req.query;
+			//* check the existing user
+			const existUsername = await User.findOne({ name });
+			if (existUsername) {
+				return res.status(400).json({ msg: "Sorry a user with this Username is already exists" });
 			}
-
+			//* check the existing email
+			const existEmail = await User.findOne({ email });
+			if (existEmail) {
+				return res.status(400).json({ msg: "Sorry E-mail Id is already exists" });
+			}
 			let otpData = await Otp.findOne({ email });
-			const otpCode = Math.floor(100000 + Math.random() * 900000);
+			let otpCode;
 			if (!otpData) {
 				//* create new OTP object if it doesn't exist
+				otpCode = Math.floor(100000 + Math.random() * 900000);
 				otpData = new Otp({
 					email,
 					code: otpCode,
@@ -24,6 +30,7 @@ const handler = async (req, res) => {
 				});
 			} else {
 				//* update existing OTP object with new code and expiration time
+				otpCode = Math.floor(100000 + Math.random() * 900000);
 				otpData.code = otpCode;
 				otpData.verified = false;
 				otpData.expiresIn = new Date(Date.now() + 300 * 1000); //* 5 minutes
@@ -31,12 +38,12 @@ const handler = async (req, res) => {
 			await otpData.save();
 
 			const data = await registerMail({
-				username: user.username,
 				userEmail: email,
 				subject: "Your OTP for Verification",
 				code: otpCode,
-				extra: "verify and change your password.",
+				extra: "complete your registration process.",
 			});
+
 			if (data.success) {
 				return res.status(200).send({ success: true, msg: data.msg });
 			} else {

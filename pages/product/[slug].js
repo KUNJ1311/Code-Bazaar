@@ -124,8 +124,8 @@ const Post = (props) => {
 							<div className="lg:col-gap-12 xl:col-gap-16 mt-6 grid grid-cols-1 md:gap-5 sm:gap-9 gap-4 lg:mt-12 lg:grid-cols-5 lg:gap-12">
 								<div className="lg:col-span-3 lg:row-end-1">
 									<div className="lg:flex lg:items-start justify-center">
-										<div className="lg:order-2 lg:ml-5 justify-center flex">
-											<div className="max-w-md overflow-hidden rounded-lg">
+										<div className="lg:order-2 lg:ml-5 justify-center flex h-full">
+											<div className="max-w-md overflow-hidden rounded-lg h-full">
 												<img className="h-full w-full max-w-full object-cover" src={product.img} alt={product.title} />
 											</div>
 										</div>
