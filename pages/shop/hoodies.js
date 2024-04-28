@@ -5,58 +5,64 @@ import mongoose from "mongoose";
 import Head from "next/head";
 import Pagination from "@/components/Shop/Pagination";
 
-const Hoodies = (props) => {
+const Tshirts = (props) => {
 	return (
 		<>
 			<Head>
-				<title>Hoodies - CodeBazaar</title>
+				<title>T-Shirts - CodeBazaar</title>
 			</Head>
 			<ProductCarousel />
-			<Products title={"Hoodies"} products={props.products} />
+			<Products title={"T-Shirts"} products={props.products} />
 			{props.totalPages > 0 && <Pagination totalPages={props.totalPages} category={"hoodies"} />}
 		</>
 	);
 };
 
 export async function getServerSideProps(context) {
-	if (!mongoose.connections[0].readyState) {
-		await mongoose.connect(process.env.MONGO_URI);
-	}
-
-	let { page } = context.query;
-	if (!page || page < 1) {
-		page = 1;
-	}
-	const limit = 3;
-	const totalProductsCount = await Product.countDocuments({ category: "hoodie" });
-	const totalPages = Math.ceil(totalProductsCount / limit);
-	if (page > totalPages) {
-		page = 1;
-	}
-	const skip = (page - 1) * limit;
-
-	let products = await Product.find({ category: "hoodie" }).skip(skip).limit(limit);
-
-	let hoodies = {};
-	for (let item of products) {
-		if (item.title in hoodies) {
-			if (!hoodies[item.title].color.includes(item.color)) {
-				hoodies[item.title].color.push(item.color);
-				hoodies[item.title].colorCode.push(item.colorCode);
-			}
-			if (!hoodies[item.title].size.includes(item.size)) {
-				hoodies[item.title].size.push(item.size);
-			}
-		} else {
-			hoodies[item.title] = JSON.parse(JSON.stringify(item));
-			hoodies[item.title].color = [item.color];
-			hoodies[item.title].size = [item.size];
-			hoodies[item.title].colorCode = [item.colorCode];
+	try {
+		if (!mongoose.connections[0].readyState) {
+			await mongoose.connect(process.env.MONGO_URI);
 		}
-	}
-	return {
-		props: { products: hoodies, totalPages },
-	};
-}
 
-export default Hoodies;
+		let { page } = context.query;
+		if (!page || page < 1) {
+			page = 1;
+		}
+		const limit = 15;
+		const totalProductsCount = await Product.aggregate([{ $match: { category: "hoodie" } }, { $group: { _id: "$title" } }, { $count: "count" }]);
+		if (totalProductsCount.length === 0) {
+			return {
+				props: { products: {}, totalPages: 0 },
+			};
+		}
+		const totalPages = Math.ceil(totalProductsCount[0].count / limit);
+		if (page > totalPages) {
+			page = 1;
+		}
+		const skip = (page - 1) * limit;
+
+		const products = await Product.aggregate([{ $match: { category: "hoodie" } }, { $group: { _id: "$title", doc: { $first: "$$ROOT" } } }, { $skip: skip }, { $limit: limit }]);
+		let hoodies = {};
+		products.forEach((item) => {
+			const product = item.doc;
+			hoodies[product.title] = {
+				title: product.title,
+				slug: product.slug,
+				img: product.img,
+				category: product.category,
+				price: product.price,
+				rating: product.rating,
+			};
+		});
+
+		return {
+			props: { products: hoodies, totalPages },
+		};
+	} catch (error) {
+		console.error("Error fetching products:", error);
+		return {
+			props: { products: {}, totalPages: 0 },
+		};
+	}
+}
+export default Tshirts;
