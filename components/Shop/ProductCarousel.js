@@ -43,17 +43,17 @@ const ProductCarousel = () => {
 	const data = [
 		{
 			img: "/assets/tshirts.jpg",
-			link: "/shop/tshirts",
+			link: "/shop/tshirts?page=1",
 			name: "T-Shirts",
 		},
 		{
 			img: "/assets/hoodie.jpg",
-			link: "/shop/hoodies",
+			link: "/shop/hoodies?page=1",
 			name: "Hoodies",
 		},
 		{
 			img: "/assets/mugs.jpg",
-			link: "/shop/mugs",
+			link: "/shop/mugs?page=1",
 			name: "Mugs",
 		},
 	];

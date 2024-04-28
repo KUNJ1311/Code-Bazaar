@@ -43,7 +43,7 @@ const reviews = {
 
 const Reviews = () => {
 	return (
-		<div className="py-5 mx-auto lg:grid lg:grid-cols-12 lg:gap-x-8">
+		<div className="py-5 mx-auto lg:max-w-7xl max-w-2xl lg:grid lg:grid-cols-12 lg:gap-x-8">
 			<div className="lg:col-span-4">
 				<h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sr-only">Customer Reviews</h2>
 				<div className="flex items-center mt-5">

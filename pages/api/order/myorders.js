@@ -6,7 +6,7 @@ const handler = async (req, res) => {
 	if (req.method == "POST") {
 		try {
 			const data = jwt.verify(req.body.token, process.env.JWT_SECRET);
-			const orders = await Order.find({ user: data._id });
+			const orders = await Order.find({ user: data._id }).sort({ _id: -1 });
 			return res.status(200).json({ orders });
 		} catch (error) {
 			return res.status(500).json({ error });

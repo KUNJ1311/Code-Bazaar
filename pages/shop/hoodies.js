@@ -3,6 +3,7 @@ import ProductCarousel from "@/components/Shop/ProductCarousel";
 import Product from "@/models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
+import Pagination from "@/components/Shop/Pagination";
 
 const Hoodies = (props) => {
 	return (
@@ -12,6 +13,7 @@ const Hoodies = (props) => {
 			</Head>
 			<ProductCarousel />
 			<Products title={"Hoodies"} products={props.products} />
+			{props.totalPages > 0 && <Pagination totalPages={props.totalPages} category={"hoodies"} />}
 		</>
 	);
 };
@@ -20,7 +22,21 @@ export async function getServerSideProps(context) {
 	if (!mongoose.connections[0].readyState) {
 		await mongoose.connect(process.env.MONGO_URI);
 	}
-	let products = await Product.find({ category: "hoodie" });
+
+	let { page } = context.query;
+	if (!page || page < 1) {
+		page = 1;
+	}
+	const limit = 3;
+	const totalProductsCount = await Product.countDocuments({ category: "hoodie" });
+	const totalPages = Math.ceil(totalProductsCount / limit);
+	if (page > totalPages) {
+		page = 1;
+	}
+	const skip = (page - 1) * limit;
+
+	let products = await Product.find({ category: "hoodie" }).skip(skip).limit(limit);
+
 	let hoodies = {};
 	for (let item of products) {
 		if (item.title in hoodies) {
@@ -39,7 +55,7 @@ export async function getServerSideProps(context) {
 		}
 	}
 	return {
-		props: { products: hoodies },
+		props: { products: hoodies, totalPages },
 	};
 }
 
