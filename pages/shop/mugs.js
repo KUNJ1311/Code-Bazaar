@@ -13,7 +13,7 @@ const Tshirts = (props) => {
 			</Head>
 			<ProductCarousel />
 			<Products title={"T-Shirts"} products={props.products} />
-			{props.totalPages > 0 && <Pagination totalPages={props.totalPages} category={"mugs"} />}
+			{props.totalPages > 0 && <Pagination totalPages={props.totalPages} category={"/shop/mugs"} />}
 		</>
 	);
 };

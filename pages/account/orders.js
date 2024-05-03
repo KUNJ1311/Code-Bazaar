@@ -8,6 +8,7 @@ const Orders = () => {
 	const [orders, setOrders] = useState();
 	const [openMenuId, setOpenMenuId] = useState(null);
 	const router = useRouter();
+
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		const fetchOrders = async () => {

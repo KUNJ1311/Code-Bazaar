@@ -1,7 +1,7 @@
 import Link from "next/link";
 import StarRating from "./StarRating";
 import { IoFilter } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Products = (props) => {
 	const { products, title } = props;
@@ -10,6 +10,20 @@ const Products = (props) => {
 	const toggleFilter = () => {
 		setIsFilterOpen(!isFilterOpen);
 	};
+
+	//* Close login page with ESC Key
+	useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (event.key === "Escape") {
+				setIsFilterOpen(false);
+			}
+		};
+		window.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown);
+		};
+	});
 
 	return (
 		<section className="md:px-5 w-full mx-auto flex flex-1">
@@ -28,7 +42,7 @@ const Products = (props) => {
 								</button>
 							</div>
 							{isFilterOpen && (
-								<div className="absolute right-9 z-10 top-10 w-36 origin-top-right rounded-md divide-y divide-gray-200 bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="filter" id="filter-menu" tabIndex="-1">
+								<div className="absolute right-9 z-10 top-10 w-36 origin-top-right rounded-md divide-y divide-gray-200 bg-white py-1 shadow-lg " role="menu" aria-orientation="vertical" aria-labelledby="filter" id="filter-menu" tabIndex="-1">
 									<div className="text-gray-700 cursor-pointer hover:bg-slate-200 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1">
 										Top Ratings
 									</div>

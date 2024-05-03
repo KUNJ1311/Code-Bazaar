@@ -8,7 +8,7 @@ const Cart = (props) => {
 
 	return (
 		<>
-			<div className="pointer-events-auto w-screen max-w-md">
+			<div className="pointer-events-auto w-screen max-w-md" onClick={(e) => e.stopPropagation()}>
 				<div className="flex h-full flex-col">
 					<div className="flex-1 md:rounded-bl-2xl px-4 py-6 sm:px-6 md:pl-4 lg:pl-5 border-gray-300 border-b-2 border-l-2 bg-white overflow-y-auto overflow-x-hidden scroller remove-scrollbar footer-mobile">
 						<div className="flex items-start justify-between">

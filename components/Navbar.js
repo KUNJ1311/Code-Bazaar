@@ -1,21 +1,22 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { HiOutlineHome, HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi2";
-import { useRouter } from "next/router";
-import Cart from "./Shop/Cart";
 import { updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { BsCart3, BsPersonLock } from "react-icons/bs";
 import { addUserData } from "@/lib/actions/userAction";
 
-const Navbar = () => {
-	const ref = useRef();
-	const router = useRouter();
+const Navbar = (props) => {
+	const { active, toggleCart, hideCart } = props;
 	const dispatch = useAppDispatch();
 	const { totalQty } = useAppSelector((state) => state.cart);
 	const userData = useAppSelector((state) => state.user);
 
 	const [isMobile, setIsMobile] = useState(false);
+
+	const indicatorStyle = {
+		transform: `translateX(${active * 56}px)`,
+	};
 
 	useEffect(() => {
 		try {
@@ -74,49 +75,6 @@ const Navbar = () => {
 			link: "/shop",
 		},
 	];
-	const [active, setActive] = useState(0);
-
-	const indicatorStyle = {
-		transform: `translateX(${active * 56}px)`,
-	};
-
-	const getPath = () => {
-		const pathname = router.pathname;
-		if (pathname === "/") {
-			setActive(0);
-		} else if (pathname.startsWith("/shop")) {
-			setActive(1);
-		} else if (pathname === "/account" || pathname === "/login" || pathname === "/signup") {
-			setActive(3);
-		} else {
-			setActive();
-		}
-	};
-
-	useEffect(() => {
-		getPath();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [router.pathname]);
-
-	const toggleCart = () => {
-		if (ref.current.classList.contains("translate-x-full")) {
-			setActive(2);
-			ref.current.classList.remove("translate-x-full");
-			ref.current.classList.add("translate-x-0");
-		} else if (!ref.current.classList.contains("translate-x-full")) {
-			getPath();
-			ref.current.classList.remove("translate-x-0");
-			ref.current.classList.add("translate-x-full");
-		}
-	};
-
-	const hideCart = () => {
-		if (!ref.current.classList.contains("translate-x-full")) {
-			getPath();
-			ref.current.classList.remove("translate-x-0");
-			ref.current.classList.add("translate-x-full");
-		}
-	};
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -222,12 +180,6 @@ const Navbar = () => {
 						</div>
 					</>
 				)}
-				{/* Cart */}
-				<div className="relative sm:top-[69px] top-[56px] right-0 z-0 sm:pt-[-69px] pt-[-56px]">
-					<div ref={ref} className="transition translate-x-full pointer-events-none fixed right-0 flex sm:max-h-[calc(100%-69px)] max-h-[calc(100%-56px)] max-w-full ">
-						<Cart toggleCart={toggleCart} />
-					</div>
-				</div>
 			</nav>
 		</>
 	);
