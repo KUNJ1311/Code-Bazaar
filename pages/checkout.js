@@ -202,7 +202,7 @@ const Checkout = () => {
 						<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
 							<p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium max-[300px]:px-2">Order Summary</p>
 							<p className="text-xs md:text-sm lg:text-base text-gray-500 max-[300px]:px-2">Review Cart Items</p>
-							<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 pb-6">
+							<div className="mt-3 rounded-lg border bg-white px-2 sm:px-6 ">
 								<CartList />
 							</div>
 						</div>
@@ -307,7 +307,7 @@ const Checkout = () => {
 								</div>
 							) : (
 								<div className="lg:mb-4 mb-8 w-full">
-									<Link href={"/login"}>
+									<Link href={"/user/login"}>
 										<button type="button" className="transition flex items-center justify-center rounded-md border border-transparent bg-primary px-4 lg:py-3 py-[10px] font-medium text-white hover:bg-primary-dark active:scale-95 shadow-slate-400 shadow-md active:shadow text-sm lg:text-base">
 											Login
 										</button>

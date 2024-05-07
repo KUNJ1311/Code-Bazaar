@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import Head from "next/head";
 import Pagination from "@/components/Shop/Pagination";
 
-const Tshirts = (props) => {
+const Hoodies = (props) => {
 	return (
 		<>
 			<Head>
@@ -65,4 +65,4 @@ export async function getServerSideProps(context) {
 		};
 	}
 }
-export default Tshirts;
+export default Hoodies;

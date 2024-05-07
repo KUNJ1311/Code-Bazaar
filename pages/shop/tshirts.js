@@ -55,7 +55,6 @@ export async function getServerSideProps(context) {
 				rating: product.rating,
 			};
 		});
-
 		return {
 			props: { products: tshirts, totalPages },
 		};

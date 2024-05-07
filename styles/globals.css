@@ -232,9 +232,6 @@ body,
 	.main-footer {
 		padding-bottom: 90px;
 	}
-	.footer-mobile {
-		padding-bottom: 70px;
-	}
 }
 
 @media (max-width: 640px) {

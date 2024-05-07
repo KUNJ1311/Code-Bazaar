@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const incentives = [
@@ -20,7 +21,7 @@ const incentives = [
 
 const Content = () => {
 	return (
-		<section className="text-gray-600 body-font md:px-9">
+		<section className="text-gray-600 body-font">
 			<div className="mt-4">
 				<div className="pt-32 overflow-hidden sm:pt-14">
 					<div className="bg-gray-800">
@@ -43,29 +44,29 @@ const Content = () => {
 									<div className="ml-24 flex space-x-6 min-w-max sm:ml-3 lg:space-x-8">
 										<div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
 											<div className="flex-shrink-0">
-												<img className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/m4.jpg" alt="" />
+												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/m4.jpg" alt="" />
 											</div>
 
 											<div className="mt-6 flex-shrink-0 sm:mt-0">
-												<img className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t2.jpg" alt="" />
+												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t2.jpg" alt="" />
 											</div>
 										</div>
 										<div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
 											<div className="flex-shrink-0">
-												<img className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t4.jpg" alt="" />
+												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t4.jpg" alt="" />
 											</div>
 
 											<div className="mt-6 flex-shrink-0 sm:mt-0">
-												<img className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t5.jpg" alt="" />
+												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t5.jpg" alt="" />
 											</div>
 										</div>
 										<div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
 											<div className="flex-shrink-0">
-												<img className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t6.jpg" alt="" />
+												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t6.jpg" alt="" />
 											</div>
 
 											<div className="mt-6 flex-shrink-0 sm:mt-0">
-												<img className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t3.jpg" alt="" />
+												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t3.jpg" alt="" />
 											</div>
 										</div>
 									</div>
@@ -75,7 +76,6 @@ const Content = () => {
 					</div>
 				</div>
 			</div>
-
 			<div className="bg-gray-50">
 				<div className="max-w-7xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4">
 					<div className="max-w-2xl mx-auto px-4 grid grid-cols-1 gap-y-10 gap-x-8 lg:max-w-none lg:grid-cols-3">

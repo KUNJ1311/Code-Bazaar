@@ -1,30 +1,8 @@
 import Link from "next/link";
 import StarRating from "./StarRating";
-import { IoFilter } from "react-icons/io5";
-import { useEffect, useState } from "react";
 
 const Products = (props) => {
 	const { products, title } = props;
-	const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-	const toggleFilter = () => {
-		setIsFilterOpen(!isFilterOpen);
-	};
-
-	//* Close login page with ESC Key
-	useEffect(() => {
-		const handleKeyDown = (event) => {
-			if (event.key === "Escape") {
-				setIsFilterOpen(false);
-			}
-		};
-		window.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			window.removeEventListener("keydown", handleKeyDown);
-		};
-	});
-
 	return (
 		<section className="md:px-5 w-full mx-auto flex flex-1">
 			<div className="lg:container flex flex-wrap w-full mb-4 mx-auto">
@@ -33,30 +11,6 @@ const Products = (props) => {
 						<div className="flex">
 							<h1 className="m-1">{title}</h1>
 							<span className="absolute md:top-11 top-8 md:w-32 w-24 h-1 bg-primary border rounded-xl border-transparent"></span>
-						</div>
-						<div className="relative flex md:text-xl text-base items-center justify-center">
-							<div className="flex items-center">
-								<button type="button" className={`pr-6 flex items-center hover:text-primary ${isFilterOpen ? "text-primary" : ""}`} id="filter" aria-controls="filter-menu" aria-expanded={isFilterOpen} aria-haspopup="true" onClick={toggleFilter} role="button">
-									<span className="mr-2">Filters</span>
-									<IoFilter />
-								</button>
-							</div>
-							{isFilterOpen && (
-								<div className="absolute right-9 z-10 top-10 w-36 origin-top-right rounded-md divide-y divide-gray-200 bg-white py-1 shadow-lg " role="menu" aria-orientation="vertical" aria-labelledby="filter" id="filter-menu" tabIndex="-1">
-									<div className="text-gray-700 cursor-pointer hover:bg-slate-200 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1">
-										Top Ratings
-									</div>
-									<div className="text-gray-700 cursor-pointer hover:bg-slate-200 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1">
-										Most Popular
-									</div>
-									<div className="text-gray-700 cursor-pointer hover:bg-slate-200 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1">
-										Price: High to Low
-									</div>
-									<div className="text-gray-700 cursor-pointer hover:bg-slate-200 block px-2 py-2 text-sm font-medium text-center" role="menuitem" tabIndex="-1">
-										Price: Low to High
-									</div>
-								</div>
-							)}
 						</div>
 					</div>
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">

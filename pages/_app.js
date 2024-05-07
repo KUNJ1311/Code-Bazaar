@@ -77,7 +77,7 @@ export default function App({ Component, pageProps }) {
 		<Provider store={store}>
 			<Head>
 				<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0" />
-				<link rel="icon" href="favicon.ico" type="image/x-icon" />
+				<link rel="icon" href={`${process.env.NEXT_PUBLIC_HOST}/favicon.ico`} type="image/x-icon" />
 			</Head>
 			<ToastContainer position="top-center" limit={3} autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
 			<ProgressBar height="3px" color="#25756d" startPosition={0.3} options={{ showSpinner: false }} shallowRouting />

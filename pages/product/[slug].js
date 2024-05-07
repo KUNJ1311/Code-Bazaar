@@ -12,7 +12,6 @@ import Head from "next/head";
 
 const Post = (props) => {
 	const { product, variants, error } = props;
-
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 
@@ -117,16 +116,16 @@ const Post = (props) => {
 			) : (
 				<>
 					<Head>
-						<title>{product.title} - CodeBazaar</title>
+						<title>{`${product.title} - CodeBazaar`}</title>
 					</Head>
 					<section className="sm:py-5">
 						<div className="container mx-auto px-4">
 							<div className="lg:col-gap-12 xl:col-gap-16 mt-6 grid grid-cols-1 md:gap-5 sm:gap-9 gap-4 lg:mt-12 lg:grid-cols-5 lg:gap-12">
 								<div className="lg:col-span-3 lg:row-end-1">
 									<div className="lg:flex lg:items-start justify-center">
-										<div className="lg:order-2 lg:ml-5 justify-center flex h-full">
+										<div className="lg:order-2 lg:ml-5 justify-center flex h-full ">
 											<div className="max-w-md overflow-hidden rounded-lg h-full">
-												<img className="h-full w-full max-w-full object-cover" src={product.img} alt={product.title} />
+												<img className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.img} alt={product.title} />
 											</div>
 										</div>
 										<div className="mt-6 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">

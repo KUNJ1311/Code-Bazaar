@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const ProductCarousel = () => {
 	const maxScrollWidth = useRef(0);
@@ -56,6 +57,51 @@ const ProductCarousel = () => {
 			link: "/shop/mugs?page=1",
 			name: "Mugs",
 		},
+		{
+			img: "/assets/tshirts.jpg",
+			link: "/shop/tshirts?page=1",
+			name: "T-Shirts",
+		},
+		{
+			img: "/assets/hoodie.jpg",
+			link: "/shop/hoodies?page=1",
+			name: "Hoodies",
+		},
+		{
+			img: "/assets/mugs.jpg",
+			link: "/shop/mugs?page=1",
+			name: "Mugs",
+		},
+		{
+			img: "/assets/tshirts.jpg",
+			link: "/shop/tshirts?page=1",
+			name: "T-Shirts",
+		},
+		{
+			img: "/assets/hoodie.jpg",
+			link: "/shop/hoodies?page=1",
+			name: "Hoodies",
+		},
+		{
+			img: "/assets/mugs.jpg",
+			link: "/shop/mugs?page=1",
+			name: "Mugs",
+		},
+		{
+			img: "/assets/tshirts.jpg",
+			link: "/shop/tshirts?page=1",
+			name: "T-Shirts",
+		},
+		{
+			img: "/assets/hoodie.jpg",
+			link: "/shop/hoodies?page=1",
+			name: "Hoodies",
+		},
+		{
+			img: "/assets/mugs.jpg",
+			link: "/shop/mugs?page=1",
+			name: "Mugs",
+		},
 	];
 	return (
 		<>
@@ -65,15 +111,15 @@ const ProductCarousel = () => {
 			</div> */}
 
 			<div className="relative flex justify-center mx-auto mt-1 w-full">
-				<div className="relative flex items-center lg:container overflow-hidden justify-center w-full">
-					<div className="flex justify-between absolute items-center w-full h-full">
-						<button onClick={movePrev} className="hover:bg-primary bg-slate-500 hover:text-white text-black w-8 h-8 lg:w-12 lg:h-12 items-center justify-center flex rounded-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 ml-2 transition-all ease-in-out duration-300" disabled={isDisabled("prev")}>
+				<div className="relative flex items-center lg:container overflow-hidden justify-center w-full md:px-8 px-0">
+					<div className="md:flex hidden justify-between absolute items-center w-full h-full">
+						<button onClick={movePrev} className="hover:bg-primary bg-slate-300 hover:text-white text-black w-8 h-full items-center justify-center flex rounded-md text-center opacity-75 hover:opacity-100 disabled:opacity-50 disabled:cursor-not-allowed z-10 p-0 m-0  transition-all ease-in-out duration-300" disabled={isDisabled("prev")}>
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-9 lg:h-7 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 								<path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
 							</svg>
 							<span className="sr-only">Prev</span>
 						</button>
-						<button onClick={moveNext} className="hover:bg-primary mr-2 bg-slate-500 hover:text-white text-black w-8 h-8 lg:w-12 lg:h-12 items-center justify-center flex text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300 rounded-full" disabled={isDisabled("next")}>
+						<button onClick={moveNext} className="hover:bg-primary  bg-slate-300 hover:text-white text-black w-8 h-full items-center justify-center flex text-center opacity-75 hover:opacity-100 disabled:opacity-50 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300 rounded-md" disabled={isDisabled("next")}>
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-9 lg:h-7 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 								<path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
 							</svg>
@@ -86,7 +132,7 @@ const ProductCarousel = () => {
 							<div key={index} className="relative lg:w-32 w-24 lg:h-32 h-24 rounded-full">
 								<Link href={data.link}>
 									<div className="flex items-center justify-center lg:w-32 w-24 lg:h-32 h-24 bg-white rounded-full button-style">
-										<img className="object-cover block" src={data.img} alt={data.name} width="128px" height="128px" />
+										<Image className="object-cover block" src={data.img} alt={data.name} width={128} height={128} />
 									</div>
 								</Link>
 							</div>
