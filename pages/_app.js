@@ -20,7 +20,6 @@ export default function App({ Component, pageProps }) {
 
 	const toggleCart = () => {
 		if (ref.current.classList.contains("translate-x-full")) {
-			console.log("tra");
 			setActive(2);
 			ref.current.classList.remove("translate-x-full");
 			ref.current.classList.add("translate-x-0");

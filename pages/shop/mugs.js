@@ -9,10 +9,10 @@ const Mugs = (props) => {
 	return (
 		<>
 			<Head>
-				<title>T-Shirts - CodeBazaar</title>
+				<title>Mugs - CodeBazaar</title>
 			</Head>
 			<ProductCarousel />
-			<Products title={"T-Shirts"} products={props.products} />
+			<Products title={"Mugs"} products={props.products} />
 			{props.totalPages > 0 && <Pagination totalPages={props.totalPages} category={"/shop/mugs"} />}
 		</>
 	);

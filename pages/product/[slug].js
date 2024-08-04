@@ -172,13 +172,17 @@ const Post = (props) => {
 											{product.availableQty <= 0 ? (
 												<p className="lg:text-3xl md:text-2xl text-xl font-bold text-red-500">Out of stock</p>
 											) : (
-												<h2 className="lg:text-3xl md:text-2xl text-xl font-bold">
-													<span className="font-sans">₹</span>
-													{product.price}
+												<h2 className="space-x-2">
+													<span className="lg:text-3xl md:text-2xl text-xl font-bold text-primary">
+														<span className="font-sans ">₹</span>
+														{product.price}
+													</span>
+													<del className="lg:text-xl text-base font-semibold text-red-400">
+														<span className="font-sans">₹</span>999
+													</del>
 												</h2>
 											)}
 										</div>
-
 										<button
 											disabled={product.availableQty <= 0 ? true : false}
 											type="button"
@@ -255,27 +259,34 @@ const Post = (props) => {
 };
 
 export async function getServerSideProps(context) {
-	if (!mongoose.connections[0].readyState) {
-		await mongoose.connect(process.env.MONGO_URI);
-	}
-	let product = await Product.findOne({ slug: context.query.slug });
-	if (product === null) {
-		return { props: { error: true, product: {} } };
-	}
-	let variants = await Product.find({ title: product.title });
-	let colorSizeSlug = {};
+	try {
+		if (!mongoose.connections[0].readyState) {
+			await mongoose.connect(process.env.MONGO_URI);
+		}
+		let product = await Product.findOne({ slug: context.query.slug });
+		if (product === null) {
+			return { props: { error: true, product: {} } };
+		}
+		let variants = await Product.find({ title: product.title });
+		let colorSizeSlug = {};
 
-	for (let item of variants) {
-		if (!colorSizeSlug[item.color]) {
-			colorSizeSlug[item.color] = { size: {}, colorCode: item.colorCode };
+		for (let item of variants) {
+			if (!colorSizeSlug[item.color]) {
+				colorSizeSlug[item.color] = { size: {}, colorCode: item.colorCode };
+			}
+
+			colorSizeSlug[item.color].size[item.size] = { slug: item.slug };
 		}
 
-		colorSizeSlug[item.color].size[item.size] = { slug: item.slug };
+		return {
+			props: { error: false, product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) },
+		};
+	} catch (error) {
+		console.error("Error fetching product:", error);
+		return {
+			props: { error: true, product: {}, variants: {} },
+		};
 	}
-
-	return {
-		props: { error: false, product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) },
-	};
 }
 
 export default Post;

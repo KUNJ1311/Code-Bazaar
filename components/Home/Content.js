@@ -39,14 +39,12 @@ const Content = () => {
 										</Link>
 									</div>
 								</div>
-
 								<div className="absolute -top-32 left-1/2 transform -translate-x-1/2 sm:top-6 sm:translate-x-0">
 									<div className="ml-24 flex space-x-6 min-w-max sm:ml-3 lg:space-x-8">
 										<div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
 											<div className="flex-shrink-0">
 												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/m4.jpg" alt="" />
 											</div>
-
 											<div className="mt-6 flex-shrink-0 sm:mt-0">
 												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t2.jpg" alt="" />
 											</div>
@@ -55,7 +53,6 @@ const Content = () => {
 											<div className="flex-shrink-0">
 												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t4.jpg" alt="" />
 											</div>
-
 											<div className="mt-6 flex-shrink-0 sm:mt-0">
 												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t5.jpg" alt="" />
 											</div>
@@ -64,7 +61,6 @@ const Content = () => {
 											<div className="flex-shrink-0">
 												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t6.jpg" alt="" />
 											</div>
-
 											<div className="mt-6 flex-shrink-0 sm:mt-0">
 												<Image width={256} height={256} className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72" src="/assets/t3.jpg" alt="" />
 											</div>
