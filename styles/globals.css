@@ -269,7 +269,7 @@ body,
 		margin: 3px 9px;
 		padding: 5px;
 	}
-	.card-product-Image {
+	.card-product-img {
 		max-width: 120px;
 	}
 	.card-product-out {
@@ -283,7 +283,7 @@ body,
 }
 
 @media (max-width: 410px) {
-	.img_hero Image {
+	.img_hero img {
 		right: -50px;
 	}
 }
@@ -309,7 +309,7 @@ body,
 	}
 }
 @media (max-width: 350px) {
-	.cart-Image-small {
+	.cart-img-small {
 		width: 70px;
 		height: 84px;
 	}
