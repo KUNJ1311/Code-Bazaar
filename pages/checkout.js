@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { updateCart } from "@/lib/actions/cartAction";
 import Head from "next/head";
+import Image from "next/image";
 
 const Checkout = () => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);

@@ -2,6 +2,7 @@ import { useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import CartList from "./CartList";
+import Image from "next/image";
 
 const Cart = (props) => {
 	const { cart, subTotal } = useAppSelector((state) => state.cart);
