@@ -49,7 +49,7 @@ export async function getServerSideProps(context) {
 			mugs[product.title] = {
 				title: product.title,
 				slug: product.slug,
-				img: product.img,
+				Image: product.Image,
 				category: product.category,
 				price: product.price,
 				rating: product.rating,

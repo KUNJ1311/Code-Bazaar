@@ -5,6 +5,7 @@ import { updateCart } from "@/lib/actions/cartAction";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { BsCart3, BsPersonLock } from "react-icons/bs";
 import { addUserData } from "@/lib/actions/userAction";
+import Image from "next/image";
 
 const Navbar = (props) => {
 	const { active, toggleCart, hideCart } = props;
@@ -93,7 +94,7 @@ const Navbar = (props) => {
 		<>
 			<nav key={userData.key} className="z-50 sm:h-[69px] h-[56px] sticky top-0 bg-second flex tracking-wide">
 				<Link href="/">
-					<img className="ml-5 sm:w-[248px] sm:h-[69px] w-[200px] h-[56px]" src="/assets/logo.svg" alt="CodeBazaar" />
+					<Image className="ml-5 sm:w-[248px] sm:h-[69px] w-[200px] h-[56px]" src="/assets/logo.svg" alt="CodeBazaar" />
 				</Link>
 				{!isMobile ? (
 					<div className="flex space-x-8 ml-auto z-10 navbar_main">

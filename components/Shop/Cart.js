@@ -25,7 +25,7 @@ const Cart = (props) => {
 							<>
 								<div className="flex flex-col justify-center">
 									<div className="pt-7 pb-5 flex justify-center">
-										<img src="/assets/cart.svg" className="w-44 h-44" alt="Empty Cart" />
+										<Image src="/assets/cart.svg" className="w-44 h-44" alt="Empty Cart" />
 									</div>
 									<span className="text-center text-2xl text-red-700 font-medium font-spartan">OOPS!</span>
 									<span className="text-center text-xl text-black font-medium font-spartan mt-1">Your Cart Is Empty...</span>

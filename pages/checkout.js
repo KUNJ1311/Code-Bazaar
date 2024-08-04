@@ -183,7 +183,7 @@ const Checkout = () => {
 					<div className="px-4 lg:pb-8 pt-8 pb-0 padding-minus">
 						<div className="flex flex-col justify-center">
 							<div className="pt-7 pb-5 flex justify-center">
-								<img src="/assets/emptycart.jpg" className="max-h-[550px]" alt="Empty Cart" />
+								<Image src="/assets/emptycart.jpg" className="max-h-[550px]" alt="Empty Cart" />
 							</div>
 						</div>
 						<div className="pt-4 pb-5 flex justify-center text-center text-xs md:text-xs sm:text-sm text-gray-500">
@@ -251,7 +251,7 @@ const Checkout = () => {
 								<div className="relative mb-3 flex">
 									<textarea onChange={onChange} defaultValue={address} type="text" id="address" name="address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-xs sm:text-sm shadow-sm outline-none focus:border-primary focus:ring-primary max-h-16 min-h-[45px]" placeholder="Street Address" />
 									<div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-										<img className="h-4 w-4 object-contain" src="/assets/india.svg" alt="" />
+										<Image className="h-4 w-4 object-contain" src="/assets/india.svg" alt="" />
 									</div>
 								</div>
 								<div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-3">

@@ -150,7 +150,7 @@ const OTP = (props) => {
 							<div className="shadow-card w-full sm:w-11/12 max-w-4xl rounded-md sm:p-6 p-2 bg-white">
 								<div className="grid md:grid-cols-2 items-center md:gap-8">
 									<div className="max-md:order-1">
-										<img src="/assets/otp.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
+										<Image src="/assets/otp.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
 									</div>
 									<form onSubmit={handleVerifyOTP} className="flex justify-center items-center flex-col h-full ">
 										<h3 className="mb-3 sm:text-4xl text-2xl sm:font-bold font-semibold text-primary">OTP Verification</h3>

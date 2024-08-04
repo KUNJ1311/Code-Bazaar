@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Error from "../404";
 import Reviews from "@/components/Shop/Reviews";
 import Head from "next/head";
+import Image from "next/image";
 
 const Post = (props) => {
 	const { product, variants, error } = props;
@@ -125,19 +126,19 @@ const Post = (props) => {
 									<div className="lg:flex lg:items-start justify-center">
 										<div className="lg:order-2 lg:ml-5 justify-center flex h-full ">
 											<div className="max-w-md overflow-hidden rounded-lg h-full">
-												<img className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.img} alt={product.title} />
+												<Image className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.Image} alt={product.title} />
 											</div>
 										</div>
 										<div className="mt-6 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
 											<div className="flex flex-row items-start lg:flex-col">
 												<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-													<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
+													<Image className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 												</button>
 												<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-													<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
+													<Image className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 												</button>
 												<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-													<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
+													<Image className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 												</button>
 											</div>
 										</div>
@@ -188,7 +189,7 @@ const Post = (props) => {
 											type="button"
 											className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 sm:py-3 py-2 text-center md:text-lg sm:text-base text-sm font-medium text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow disabled:opacity-60"
 											onClick={() => {
-												dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.img, product.availableQty));
+												dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.Image, product.availableQty));
 												dispatch(saveCart());
 												toast.success(
 													<>

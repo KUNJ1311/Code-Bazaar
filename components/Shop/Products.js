@@ -1,5 +1,6 @@
 import Link from "next/link";
 import StarRating from "./StarRating";
+import Image from "next/image";
 
 const Products = (props) => {
 	const { products, title } = props;
@@ -16,15 +17,15 @@ const Products = (props) => {
 					<div className="mt-2 flex flex-wrap items-center justify-center card-box">
 						{products && Object.keys(products).length === 0 && (
 							<div className="max-w-2xl p-4">
-								<img className="rounded-3xl border border-indigo-200" src="/assets/outstock.jpg" alt="Out of Stock" />
+								<Image className="rounded-3xl border border-indigo-200" src="/assets/outstock.jpg" alt="Out of Stock" />
 							</div>
 						)}
 						{products &&
 							Object.keys(products).map((data) => (
 								<div key={products[data].slug} className="p-2 my-[15px] mx-2 md:w-[18%] w-[23%] min-w-[220px] lg:min-h-[420px] md:min-h-[390px] min-h-[376px] border rounded-[15px] border-slate-300 transition duration-200 ease md:shadow-md md:hover:shadow-lg hover:shadow-gray-300 relative shadow-gray-300 product-card flex flex-col">
 									<Link href={`/product/${products[data].slug}`} className="flex items-center card-product-out">
-										<div className="overflow-hidden border border-slate-300 rounded-[10px] cursor-pointer card-product-img" style={{ position: "relative", width: "100%", paddingTop: "120%" }}>
-											<img className="absolute top-0 left-0 w-full h-full object-cover hover:scale-110 transition-my" src={products[data].img} alt={products[data].title} />
+										<div className="overflow-hidden border border-slate-300 rounded-[10px] cursor-pointer card-product-Image" style={{ position: "relative", width: "100%", paddingTop: "120%" }}>
+											<Image className="absolute top-0 left-0 w-full h-full object-cover hover:scale-110 transition-my" src={products[data].Image} alt={products[data].title} />
 										</div>
 									</Link>
 									<div className="text-start py-[4px] px-2 flex flex-col flex-1 md:h-full justify-end">

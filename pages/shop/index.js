@@ -7,7 +7,7 @@ const index = () => {
 		"Code Mastermind Test": {
 			title: "Code Mastermind Test",
 			slug: "code-mastermind-t",
-			img: "/assets/t1.jpg",
+			Image: "/assets/t1.jpg",
 			category: "tshirt",
 			price: 59999,
 			rating: 4.3,
@@ -15,7 +15,7 @@ const index = () => {
 		"Code Mastermind": {
 			title: "Code Mastermind",
 			slug: "code-mastermind-blue",
-			img: "/assets/t2.jpg",
+			Image: "/assets/t2.jpg",
 			category: "tshirt",
 			price: 649,
 			rating: 5,
@@ -23,7 +23,7 @@ const index = () => {
 		"Algorithm Artistry": {
 			title: "Algorithm Artistry",
 			slug: "algorithm-artistry-blue",
-			img: "/assets/t3.jpg",
+			Image: "/assets/t3.jpg",
 			category: "tshirt",
 			price: 699,
 			rating: 5,
@@ -31,7 +31,7 @@ const index = () => {
 		"Coding Wizardry": {
 			title: "Coding Wizardry",
 			slug: "coding-wizardry-orange",
-			img: "/assets/t4.jpg",
+			Image: "/assets/t4.jpg",
 			category: "tshirt",
 			price: 649,
 			rating: 5,
@@ -39,7 +39,7 @@ const index = () => {
 		"Code Ninja": {
 			title: "Code Ninja",
 			slug: "code-ninja",
-			img: "/assets/t5.jpg",
+			Image: "/assets/t5.jpg",
 			category: "tshirt",
 			price: 749,
 			rating: 5,
@@ -47,7 +47,7 @@ const index = () => {
 		"Code Mastermind bada bada title dala he check karne ke liye ki work karta he ya nahi tume kya lagta he?? hoga?": {
 			title: "Code Mastermind bada bada title dala he check karne ke liye ki work karta he ya nahi tume kya lagta he?? hoga?",
 			slug: "code-mastermind-s-test",
-			img: "/assets/t6.jpg",
+			Image: "/assets/t6.jpg",
 			category: "tshirt",
 			price: 599,
 			rating: 5,
@@ -55,7 +55,7 @@ const index = () => {
 		"Recursive Mug": {
 			title: "Recursive Mug",
 			slug: "recursive-mug",
-			img: "/assets/m2.jpg",
+			Image: "/assets/m2.jpg",
 			category: "mug",
 			price: 349,
 			rating: 5,
@@ -63,7 +63,7 @@ const index = () => {
 		"Code Mastermind Mug": {
 			title: "Code Mastermind Mug",
 			slug: "code-mastermind-mug-blue-s",
-			img: "/assets/m1.jpg",
+			Image: "/assets/m1.jpg",
 			category: "mug",
 			price: 199,
 			rating: 5,
@@ -71,7 +71,7 @@ const index = () => {
 		"Code Mastermind Mug new": {
 			title: "Code Mastermind Mug new",
 			slug: "code-mastermind-mug-blue-s-new",
-			img: "/assets/m4.jpg",
+			Image: "/assets/m4.jpg",
 			category: "mug",
 			price: 199,
 			rating: 5,
@@ -79,7 +79,7 @@ const index = () => {
 		"Binary Brew Mug": {
 			title: "Binary Brew Mug",
 			slug: "binary-brew-mug-black",
-			img: "/assets/m3.jpg",
+			Image: "/assets/m3.jpg",
 			category: "mug",
 			price: 349,
 			rating: 5,

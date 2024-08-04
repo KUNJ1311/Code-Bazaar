@@ -31,7 +31,7 @@ const MyOrder = ({ order, success }) => {
 										{order.products?.map((product) => (
 											<li key={product.slug} className="flex py-3">
 												<div className="h-[102px] w-[85px] sm:h-[115px] sm:w-24 lg:w-32 lg:h-[153px] flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-													<img src={product.img} alt={product.title} className="h-full w-full object-cover object-center" />
+													<Image src={product.Image} alt={product.title} className="h-full w-full object-cover object-center" />
 												</div>
 												<div className="md:ml-4 ml-2 flex flex-1 flex-col">
 													<h3 className="flex text-xs sm:text-sm md:text-base font-medium text-gray-900">

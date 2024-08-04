@@ -79,7 +79,7 @@ const Content = () => {
 							<div key={incentive.name} className="text-center sm:flex sm:text-left lg:block lg:text-center">
 								<div className="sm:flex-shrink-0">
 									<div className="flow-root">
-										<img className="w-28 h-24 mx-auto" src={incentive.imageSrc} alt="" />
+										<Image className="w-28 h-24 mx-auto" src={incentive.imageSrc} alt="" />
 									</div>
 								</div>
 								<div className="mt-3 sm:mt-0 sm:ml-3 lg:mt-3 lg:ml-0">

@@ -16,7 +16,7 @@ const Hero = () => {
 					</Link>
 				</div>
 				<div className="right-0 absolute img_hero overflow-hidden sm:w-[250px] sm:h-[236px] md:w-[530px] md:h-[500px]">
-					<img className="-z-0 right-0 absolute" src="/assets/shop.png" alt="" />
+					<Image className="-z-0 right-0 absolute" src="/assets/shop.png" alt="" />
 				</div>
 			</div>
 		</section>
