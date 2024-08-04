@@ -100,7 +100,7 @@ const Reviews = () => {
 						{reviews.featured.map((review) => (
 							<div key={review.id} className="py-5">
 								<div className="flex items-center">
-									<Image src={review.avatarSrc} alt={`${review.author}.`} className="h-12 w-12 rounded-full" />
+									<img src={review.avatarSrc} alt={`${review.author}.`} className="h-12 w-12 rounded-full" />
 									<div className="ml-4">
 										<h4 className="text-sm font-bold text-gray-900">{review.author}</h4>
 										<div className="mt-1 flex items-center">

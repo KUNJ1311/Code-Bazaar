@@ -55,7 +55,7 @@ const ForgetPassword = () => {
 							<div className="shadow-card w-full sm:w-11/12 max-w-4xl rounded-md sm:p-6 p-2 bg-white">
 								<div className="grid md:grid-cols-2 items-center md:gap-8">
 									<div className="max-md:order-1">
-										<Image src="/assets/forgot.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
+										<img src="/assets/forgot.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
 									</div>
 									<form className="flex flex-col w-full h-full justify-center pb-6 text-center bg-white rounded-3xl">
 										<h3 className="mb-3 sm:text-4xl sm:font-bold text-2xl font-semibold text-primary">Forgot Your Password?</h3>

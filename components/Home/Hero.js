@@ -13,7 +13,7 @@ const Hero = () => {
 					</h1>
 					<p className="text-xs md:text-xl font-normal text-gray-500 pb-3">Save more with coupons & up to 70% off!</p>
 					<Link href={"/shop"}>
-						<button className="text-sm md:text-lg bg-[url('../public/assets/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-medium hover:scale-110 transition-my">Shop Now</button>
+						<button className="text-sm md:text-lg bg-[url('/assets/button.png')] bg-transparent text-primary bg-no-repeat py-[12px] pr-20 pl-[68px] font-medium hover:scale-110 transition-my">Shop Now</button>
 					</Link>
 				</div>
 				<div className="right-0 absolute img_hero overflow-hidden sm:w-[250px] sm:h-[236px] md:w-[530px] md:h-[500px]">

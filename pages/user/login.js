@@ -54,7 +54,7 @@ const Login = () => {
 					<div className="shadow-card w-full sm:w-11/12 max-w-4xl rounded-md sm:p-6 p-2 bg-white">
 						<div className="grid md:grid-cols-2 items-center md:gap-8">
 							<div className="max-md:order-1">
-								<Image src="/assets/shop.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
+								<img src="/assets/shop.svg" className="md:flex hidden w-full object-cover" alt="login-image" />
 							</div>
 							<form onSubmit={handleSubmit} className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl">
 								<h3 className="mb-3 sm:text-4xl text-2xl sm:font-bold font-semibold text-primary">Log In</h3>

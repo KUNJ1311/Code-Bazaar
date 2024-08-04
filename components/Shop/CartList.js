@@ -27,7 +27,7 @@ const CartList = ({ toggleCart }) => {
 				{cart?.map((product) => (
 					<li key={product.slug} className="flex py-3">
 						<div className="relative h-[102px] w-[85px] cart-img-small sm:h-[115px] sm:w-24 lg:w-32 lg:h-[153px] flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-							<Image src={product.img} alt={product.title} className="h-full w-full object-cover object-center" />
+							<img src={product.img} alt={product.title} className="h-full w-full object-cover object-center" />
 							{product.availableQty < product.qty && (
 								<p className="absolute top-0 left-0 w-full h-full opacity-70 flex items-center justify-center bg-gray-50 ">
 									<span className="-rotate-45 text-red-500 opacity-100 md:font-semibold font-medium lg:text-lg sm:text-sm text-[10px]">Out of stock</span>

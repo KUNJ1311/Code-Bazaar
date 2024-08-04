@@ -126,19 +126,19 @@ const Post = (props) => {
 									<div className="lg:flex lg:items-start justify-center">
 										<div className="lg:order-2 lg:ml-5 justify-center flex h-full ">
 											<div className="max-w-md overflow-hidden rounded-lg h-full">
-												<Image className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.img} alt={product.title} />
+												<img className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.img} alt={product.title} />
 											</div>
 										</div>
 										<div className="mt-6 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
 											<div className="flex flex-row items-start lg:flex-col">
 												<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-													<Image className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
+													<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 												</button>
 												<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-													<Image className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
+													<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 												</button>
 												<button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-													<Image className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
+													<img className="h-full w-full object-cover" src="/assets/t2.jpg" alt="" />
 												</button>
 											</div>
 										</div>
