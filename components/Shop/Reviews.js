@@ -1,4 +1,5 @@
 import StarRating from "@/components/Shop/StarRating";
+import Image from "next/image";
 
 const reviews = {
 	average: 4,

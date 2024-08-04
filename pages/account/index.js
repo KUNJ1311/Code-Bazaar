@@ -1,6 +1,7 @@
 import { logoutUser } from "@/lib/actions/userAction";
 import { useAppDispatch } from "@/lib/hooks";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

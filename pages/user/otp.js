@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import ChangePassword from "./changepassword";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const OTP = (props) => {
 	const router = useRouter();

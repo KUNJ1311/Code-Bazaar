@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Typing from "./Typing";
 import Link from "next/link";
 const Hero = () => {

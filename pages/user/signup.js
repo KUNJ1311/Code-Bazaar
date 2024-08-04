@@ -6,6 +6,7 @@ import { FaAddressCard } from "react-icons/fa6";
 import { HiLockClosed } from "react-icons/hi2";
 import { toast } from "react-toastify";
 import OTP from "./otp";
+import Image from "next/image";
 
 const Signup = () => {
 	const router = useRouter();
