@@ -43,62 +43,17 @@ const ProductCarousel = () => {
 
 	const data = [
 		{
-			Image: "/assets/tshirts.jpg",
+			img: "/assets/tshirts.jpg",
 			link: "/shop/tshirts?page=1",
 			name: "T-Shirts",
 		},
 		{
-			Image: "/assets/hoodie.jpg",
+			img: "/assets/hoodie.jpg",
 			link: "/shop/hoodies?page=1",
 			name: "Hoodies",
 		},
 		{
-			Image: "/assets/mugs.jpg",
-			link: "/shop/mugs?page=1",
-			name: "Mugs",
-		},
-		{
-			Image: "/assets/tshirts.jpg",
-			link: "/shop/tshirts?page=1",
-			name: "T-Shirts",
-		},
-		{
-			Image: "/assets/hoodie.jpg",
-			link: "/shop/hoodies?page=1",
-			name: "Hoodies",
-		},
-		{
-			Image: "/assets/mugs.jpg",
-			link: "/shop/mugs?page=1",
-			name: "Mugs",
-		},
-		{
-			Image: "/assets/tshirts.jpg",
-			link: "/shop/tshirts?page=1",
-			name: "T-Shirts",
-		},
-		{
-			Image: "/assets/hoodie.jpg",
-			link: "/shop/hoodies?page=1",
-			name: "Hoodies",
-		},
-		{
-			Image: "/assets/mugs.jpg",
-			link: "/shop/mugs?page=1",
-			name: "Mugs",
-		},
-		{
-			Image: "/assets/tshirts.jpg",
-			link: "/shop/tshirts?page=1",
-			name: "T-Shirts",
-		},
-		{
-			Image: "/assets/hoodie.jpg",
-			link: "/shop/hoodies?page=1",
-			name: "Hoodies",
-		},
-		{
-			Image: "/assets/mugs.jpg",
+			img: "/assets/mugs.jpg",
 			link: "/shop/mugs?page=1",
 			name: "Mugs",
 		},
@@ -132,7 +87,7 @@ const ProductCarousel = () => {
 							<div key={index} className="relative lg:w-32 w-24 lg:h-32 h-24 rounded-full">
 								<Link href={data.link}>
 									<div className="flex items-center justify-center lg:w-32 w-24 lg:h-32 h-24 bg-white rounded-full button-style">
-										<Image className="object-cover block" src={data.Image} alt={data.name} width={128} height={128} />
+										<Image className="object-cover block" src={data.img} alt={data.name} width={128} height={128} />
 									</div>
 								</Link>
 							</div>

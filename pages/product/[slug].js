@@ -126,7 +126,7 @@ const Post = (props) => {
 									<div className="lg:flex lg:items-start justify-center">
 										<div className="lg:order-2 lg:ml-5 justify-center flex h-full ">
 											<div className="max-w-md overflow-hidden rounded-lg h-full">
-												<Image className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.Image} alt={product.title} />
+												<Image className="h-full w-full max-h-[540px] max-w-full object-cover" src={product.img} alt={product.title} />
 											</div>
 										</div>
 										<div className="mt-6 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
@@ -189,7 +189,7 @@ const Post = (props) => {
 											type="button"
 											className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-primary sm:px-8 px-3 sm:py-3 py-2 text-center md:text-lg sm:text-base text-sm font-medium text-white transition-all duration-200 ease-in-out focus:outline-none hover:bg-primary-dark active:scale-95 cursor-pointer shadow-slate-400 shadow-md active:shadow disabled:opacity-60"
 											onClick={() => {
-												dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.Image, product.availableQty));
+												dispatch(addToCart(product.slug, 1, product.price, product.title, product.size, product.color, product.img, product.availableQty));
 												dispatch(saveCart());
 												toast.success(
 													<>

@@ -48,7 +48,7 @@ export async function getServerSideProps(context) {
 			hoodies[product.title] = {
 				title: product.title,
 				slug: product.slug,
-				Image: product.Image,
+				img: product.img,
 				category: product.category,
 				price: product.price,
 				rating: product.rating,

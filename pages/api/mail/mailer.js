@@ -58,11 +58,11 @@ export const registerMail = async ({ userName, userEmail, subject, code, extra }
 							<tr style="vertical-align: bottom;">
 								<td>
 									<a href="#" target="_blank">
-										<Image id="logo"
+										<img id="logo"
 											src="https://cdn.discordapp.com/attachments/1080048471484157997/1230872858700283967/logo.png?ex=6634e6ae&is=662271ae&hm=b5643e3a213141431f02e7c05b208c721ad766c34ee77dda1e6dd8b60126b898&"
 											style="background-color: white; padding: 15px 20px; border-radius: 100px; border:1px solid #b3b3b3;"
 											width="300px">
-										</Image>
+										</img>
 									</a>
 								</td>
 							</tr>
@@ -107,13 +107,13 @@ export const registerMail = async ({ userName, userEmail, subject, code, extra }
 						<p style="margin: 0; margin-top: 40px; font-size: 16px; font-weight: 600; color: #434343;">CodeBazaar</p>
 						<p style="margin: 0; margin-top: 8px; color: #434343;">Address 540, City, State.</p>
 						<div style="margin: 0; margin-top: 16px;">
-							<a href="#" target="_blank" style="display: inline-block;"><Image width="36px" alt="Facebook"
+							<a href="#" target="_blank" style="display: inline-block;"><img width="36px" alt="Facebook"
 									src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661502815169_682499/email-template-icon-facebook" /></a>
-							<a href="#" target="_blank" style="display: inline-block; margin-left: 8px;"><Image width="36px" alt="Instagram"
+							<a href="#" target="_blank" style="display: inline-block; margin-left: 8px;"><img width="36px" alt="Instagram"
 									src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661504218208_684135/email-template-icon-instagram" /></a>
-							<a href="#" target="_blank" style="display: inline-block; margin-left: 8px;"><Image width="36px" alt="Twitter"
+							<a href="#" target="_blank" style="display: inline-block; margin-left: 8px;"><img width="36px" alt="Twitter"
 									src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661503043040_372004/email-template-icon-twitter" /></a>
-							<a href="#" target="_blank" style="display: inline-block; margin-left: 8px;"><Image width="36px" alt="Youtube"
+							<a href="#" target="_blank" style="display: inline-block; margin-left: 8px;"><img width="36px" alt="Youtube"
 									src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661503195931_210869/email-template-icon-youtube" /></a>
 						</div>
 						<p style="margin: 0; margin-top: 16px; color: #434343;">Copyright © 2022 Company. All rights reserved.</p>

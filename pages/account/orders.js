@@ -125,7 +125,7 @@ const Orders = () => {
 													<li key={item.slug} className="p-3">
 														<div className="flex items-center sm:items-start">
 															<div className="flex-shrink-0 md:w-28 md:h-[134px] lg:w-32 lg:h-[153px] h-[102px] w-[85px]  sm:h-[115px] sm:w-24 overflow-hidden">
-																<Image src={item.Image} alt={item.title} className="md:w-28 md:h-[134px] lg:w-32 lg:h-[153px] h-[102px] w-[85px]  sm:h-[115px] sm:w-24 rounded-md border border-gray-200 object-center object-cover" />
+																<Image src={item.img} alt={item.title} className="md:w-28 md:h-[134px] lg:w-32 lg:h-[153px] h-[102px] w-[85px]  sm:h-[115px] sm:w-24 rounded-md border border-gray-200 object-center object-cover" />
 															</div>
 															<div className="flex flex-col flex-1 w-full md:h-[134px] lg:h-[153px] h-[102px] sm:h-[115px] md:pl-5 pl-3">
 																<div className="flex flex-1 justify-between w-full h-full flex-col">
