@@ -1,5 +1,7 @@
 # Code Bazaar
 
+![Code Bazaar Logo](public/assets/logo.svg)
+
 Welcome to [**Code Bazaar**](https://codebazaar.vercel.app/), an e-commerce platform for all your coding merchandise needs. This repository contains the source code for the Code Bazaar web application.
 
 Visit our website: [Code Bazaar](https://codebazaar.vercel.app/)
