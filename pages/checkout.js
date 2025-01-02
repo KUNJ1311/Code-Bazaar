@@ -18,7 +18,7 @@ const Checkout = () => {
 	const [disabled, setDisabled] = useState(true);
 	const [service, setService] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "Ahmedabad", state: "Gujarat", pincode: "380050" });
+	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "", state: "", pincode: "" });
 	const { name, email, phone, address, city, state, pincode } = details;
 
 	const onChange = async (e) => {
@@ -83,12 +83,9 @@ const Checkout = () => {
 						email: data.email,
 						name: data.name,
 						phone: data.phone,
-						address: data.address,
-						pincode: data.pincode,
 					}));
-					getPinData(data.pincode);
+					getPinData("380050");
 				}
-				getPinData(details.pincode);
 			} catch (error) {
 				console.log(error);
 			}
