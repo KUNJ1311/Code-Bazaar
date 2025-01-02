@@ -88,6 +88,7 @@ const Checkout = () => {
 					}));
 					getPinData(data.pincode);
 				}
+				getPinData(details.pincode);
 			} catch (error) {
 				console.log(error);
 			}
