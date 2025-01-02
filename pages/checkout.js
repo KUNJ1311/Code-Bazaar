@@ -18,7 +18,7 @@ const Checkout = () => {
 	const [disabled, setDisabled] = useState(true);
 	const [service, setService] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "", state: "", pincode: "" });
+	const [details, setDetails] = useState({ name: "", email: "", phone: "", address: "", city: "", state: "", pincode: "380008" });
 	const { name, email, phone, address, city, state, pincode } = details;
 
 	const onChange = async (e) => {
