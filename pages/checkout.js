@@ -83,6 +83,7 @@ const Checkout = () => {
 						email: data.email,
 						name: data.name,
 						phone: data.phone,
+						pincode: "380050",
 					}));
 					getPinData("380050");
 				}
