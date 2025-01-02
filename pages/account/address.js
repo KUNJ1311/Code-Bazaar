@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const Address = () => {
 	const [disabled, setDisabled] = useState(true);
 	const [service, setService] = useState(false);
-	const [details, setDetails] = useState({ address: "", city: "", state: "", pincode: "380008" });
+	const [details, setDetails] = useState({ address: "", city: "Ahmedabad", state: "Gujarat", pincode: "380050"  });
 	const { address, city, state, pincode } = details;
 
 	useEffect(() => {
