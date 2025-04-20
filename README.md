@@ -1,4 +1,4 @@
-# Code Bazaar
+# **Code Bazaar**
 
 ![Code Bazaar Logo](public/assets/logo.svg)
 
